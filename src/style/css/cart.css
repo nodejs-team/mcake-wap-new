@@ -1,0 +1,154 @@
+@charset "UTF-8";
+.cart-list ul {
+  display: flex;
+  display: box;
+  flex-direction: column; }
+  .cart-list ul li {
+    flex: 1;
+    margin-top: 0.41667rem; }
+    .cart-list ul li .check {
+      flex: 1;
+      position: relative; }
+      .cart-list ul li .check i {
+        position: absolute;
+        top: 35%;
+        left: 20%;
+        font-size: 0.27778rem;
+        background: #ffcd20;
+        color: #fff;
+        padding: 0.06944rem;
+        border-radius: 0.06944rem; }
+    .cart-list ul li .pro-img {
+      width: 2.72222rem;
+      flex: 3; }
+    .cart-list ul li .content {
+      flex: 5;
+      text-align: left;
+      padding: 0 0.13889rem 0 0.41667rem;
+      font-size: 0.22222rem;
+      color: #a2a2a2;
+      text-align: left; }
+      .cart-list ul li .content h2 {
+        display: inline-block;
+        font-size: 0.25rem;
+        color: #000;
+        font-weight: bold; }
+      .cart-list ul li .content .fittings {
+        margin-top: 0.69444rem; }
+    .cart-list ul li .edit {
+      flex: 1; }
+      .cart-list ul li .edit i {
+        font-size: 0.83333rem;
+        background: #e6e6e6;
+        border-radius: 50%; }
+      .cart-list ul li .edit .price {
+        margin-top: 1.11111rem;
+        font-size: 0.27778rem; }
+
+.recommend {
+  margin: 0.41667rem 0; }
+  .recommend h2 {
+    font-size: 0.41667rem;
+    text-align: left;
+    font-weight: bold;
+    color: #000;
+    padding-left: 0.55556rem;
+    line-height: 1.11111rem; }
+  .recommend ul {
+    margin-left: 0.27778rem; }
+    .recommend ul li {
+      float: left;
+      width: 2.22222rem;
+      margin: 0 0.13889rem 0 0; }
+      .recommend ul li p {
+        font-size: 0.27778rem;
+        line-height: 0.69444rem; }
+
+.bottom-count {
+  bottom: 0;
+  width: 100%;
+  background: #fff; }
+  .bottom-count .total-count {
+    line-height: 0.55556rem;
+    margin-bottom: 0.27778rem;
+    color: #000;
+    text-align: left;
+    display: flex;
+    display: box; }
+    .bottom-count .total-count span {
+      flex: 1;
+      padding: 0 0.27778rem;
+      font-size: 0.41667rem; }
+    .bottom-count .total-count .count-price {
+      font-size: 0.69444rem; }
+      .bottom-count .total-count .count-price i {
+        font-size: 0.36111rem;
+        font-style: normal; }
+  .bottom-count .btns {
+    padding: 0 0 0 0.13889rem; }
+    .bottom-count .btns li {
+      margin-right: 0.13889rem; }
+
+.cartBottom {
+  height: 2.08333rem; }
+
+/*寮圭獥*/
+.cart-line {
+  border-top: 1px solid #eaeaea; }
+
+.cart-dialog .cart-content {
+  margin: 0.27778rem 0 0; }
+  .cart-dialog .cart-content img {
+    width: 100%; }
+  .cart-dialog .cart-content .cart-pro {
+    margin: 0 0.27778rem 0.27778rem; }
+    .cart-dialog .cart-content .cart-pro .pro-img {
+      width: 2.72222rem;
+      flex: 2; }
+    .cart-dialog .cart-content .cart-pro .content {
+      flex: 4;
+      text-align: left;
+      padding: 0 0.13889rem 0 0.41667rem;
+      font-size: 0.22222rem;
+      color: #a2a2a2;
+      text-align: left; }
+      .cart-dialog .cart-content .cart-pro .content h2 {
+        display: inline-block;
+        font-size: 0.25rem;
+        color: #000;
+        font-weight: bold; }
+      .cart-dialog .cart-content .cart-pro .content .fittings {
+        margin-top: 0.27778rem; }
+  .cart-dialog .cart-content .items {
+    font-size: 0.33333rem;
+    line-height: 1.25rem;
+    display: flex;
+    display: box;
+    flex-direction: row; }
+    .cart-dialog .cart-content .items h3 {
+      flex: 4;
+      text-align: left;
+      padding-left: 0.41667rem; }
+    .cart-dialog .cart-content .items select {
+      flex: 2;
+      text-align: right;
+      color: #888888; }
+    .cart-dialog .cart-content .items i {
+      flex: 1; }
+    .cart-dialog .cart-content .items .nums {
+      flex: 2; }
+      .cart-dialog .cart-content .items .nums i {
+        display: inline-block;
+        background: #f0f0f0;
+        border-radius: 50%;
+        width: 0.55556rem;
+        height: 0.55556rem;
+        line-height: 0.55556rem;
+        color: #888888; }
+      .cart-dialog .cart-content .items .nums span {
+        display: inline-block;
+        width: 0.97222rem;
+        line-height: 0.55556rem;
+        color: #000; }
+
+/*# sourceMappingURL=cart.css.map */

@@ -1,0 +1,22 @@
+@function px2rem($n) {
+  @return ($n * 10 / 720) * 1rem; 
+}
+
+@mixin font-dpr($font-size){
+  font-size: $font-size;
+
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+
+}
+
+
+.box{ height: 300px; background: green; border:1px solid blue;
+  p{color: red; font-size: 200px; background: blue;   }
+}
+

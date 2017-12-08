@@ -1,0 +1,65 @@
+@function px2rem($n) {
+  @return ($n * 10 / 720) * 1rem;
+}
+
+@mixin font-dpr($font-size){
+  font-size: $font-size;
+
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+
+}
+
+/*首页*/
+
+
+
+/*产品列表*/
+.btns{position: relative; float: right; width:px2rem(130); height:px2rem(40); background:#ffcd20;  text-align: center; border-radius:px2rem(20); cursor: pointer;
+  span{ display: block; color: #000; font-size:px2rem(22); line-height:px2rem(40);}
+}
+.products{ padding: px2rem(20) px2rem(10);
+  ul{margin-left:px2rem(5); padding: 0;
+    li{ color: #000;  float: left;  font-size:px2rem(15);  margin: 0 px2rem(12) px2rem(18) 0; width: px2rem(340); background: #fff;
+      .pro-liimg{position: relative; overflow: hidden;
+        .liImg{width: px2rem(360); height:px2rem(341); z-index: 1;}
+        .cart-icon{position: absolute; right:px2rem(14); bottom:px2rem(14); width:px2rem(100); height:px2rem(100); background: url("../../../static/images/car-icon.png") bottom right  no-repeat;  background-size: 50%; cursor: pointer; z-index: 5;}
+      }
+      .fl {float: left;  text-align: left; font-size: px2rem(18); }
+      .fr { float: right;  text-align: left;  }
+      .p2,.p3 { margin:0 0 px2rem(15); padding: 0 px2rem(10); }
+      .p2{height:px2rem(30);}
+      .p2 .line{ position: absolute; bottom: 0; left:px2rem(10); color:#dedede; }
+      .p1{ padding: px2rem(15) px2rem(10) px2rem(5); line-height:px2rem(25);}
+      .fr.he{ width: px2rem(50) !important;}
+      .p1 .fr {position: relative; width:px2rem(77); height:px2rem(25); line-height:px2rem(25); display: block; font-size: px2rem(18); font-weight: bold; text-indent:px2rem(18);
+        .js_bshu{display: block; width:px2rem(77); height:px2rem(25); z-index: 2;}
+        .js_bshu.on{ background: #d2d2d2;}
+        .dot{position: absolute; display: block; width: px2rem(15); height: px2rem(10); top:px2rem(7); left:px2rem(60); z-index: 0; background-size: 100%;
+        }
+        ul.js_select{  position: absolute;  width:px2rem(77);  top:px2rem(25);  left: 50%;  text-align: left;  margin-left: px2rem(-38);  font-size:px2rem(18);  background: #eaeaea;  z-index: 10; display: none;
+          li{  height:px2rem(30);  width:px2rem(77); text-indent:px2rem(18);  line-height:px2rem(30);  cursor: pointer;  color: #757575;  margin: 0; font-size:px2rem(16);  background: #eaeaea;  }
+          strong{  font-size:px2rem(14);  }
+          li.on{  color: #000;  }
+        }
+      }
+      .p2 .fl { color: #b1b1b1; font-size: px2rem(18); }
+      .p3 .fl { line-height:px2rem(30); font-size:px2rem(27);}
+      .p3 .fl b{font-size:px2rem(18); font-weight: normal; vertical-align: text-bottom !important;}
+    }
+
+    .postid{display: none;}
+    .selects-l{position: absolute; top: px2rem(-20); right: 0; width: px2rem(100); height: px2rem(60); background-size: 20%; border: none; color:#000; text-indent: px2rem(10); font-size: px2rem(20); font-weight: bold; }
+
+
+  }
+}
+.box{ height: px2rem(300); background: green; border: px2rem(1) solid blue;
+  p{color: red; font-size: px2rem(30); background: blue;   }
+}
+

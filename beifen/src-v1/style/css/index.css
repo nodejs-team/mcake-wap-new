@@ -1,0 +1,10 @@
+.box {
+  height: 300px;
+  background: green;
+  border: 1px solid blue; }
+  .box p {
+    color: red;
+    font-size: 200px;
+    background: blue; }
+
+/*# sourceMappingURL=index.css.map */

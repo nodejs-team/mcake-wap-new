@@ -1,0 +1,49 @@
+@function px2rem($n) {
+  @return ($n * 10 / 720) * 1rem;
+}
+
+@mixin font-dpr($font-size){
+  font-size: $font-size;
+
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+
+}
+
+
+.login{ background: #f9f9f9; height: 100%;
+  .login_box{
+    ul{ display: flex; display: box; flex-direction: column;
+      li{ flex: 1; font-size: px2rem(30); height: px2rem(90); line-height: px2rem(90); margin-bottom:px2rem(20); background: #fff; border-radius: px2rem(10); padding-left: px2rem(90); position: relative;
+        .icon{ position: absolute; top: 0; left:px2rem(20); font-size:px2rem(50); }
+        input{width: 100%; height: 100%; padding: 0 px2rem(10); font-size: px2rem(30); float: left; }
+        .input_short{width:px2rem(310);}
+        .send{background: #ffcd20; width:px2rem(270); float: right; border-radius: px2rem(10); color: #000;  }
+        .yzm{width:px2rem(270); float: right; border-radius: px2rem(10); color: #000;  }
+      }
+      .pwd{padding-left: px2rem(20); }
+    }
+  }
+  .tips{font-size: px2rem(26); line-height: px2rem(80); display: flex; display: box; text-align: center;
+    i{ flex: 1;}
+    span{ flex: 2;}
+  }
+  .yuedu{text-align: center; font-size: px2rem(26); line-height: px2rem(100);
+    span{
+      .icon{color: #e5e5e5; font-size: px2rem(40); margin-right: px2rem(10); vertical-align: middle;}
+      .icon.on{color: #888888;}
+    }
+  }
+}
+
+
+
+
+
+
+

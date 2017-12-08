@@ -1,0 +1,78 @@
+@function px2rem($n) {
+  @return ($n * 10 / 720) * 1rem;
+}
+
+@mixin font-dpr($font-size){
+  font-size: $font-size;
+
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+
+}
+
+
+.orders{ background:red; height: 100%;
+  .order-top{
+    background: #ebebeb; height: px2rem(70); line-height: px2rem(70); font-size: px2rem(30);
+    ul{display: flex; display: box; flex-direction: row;
+      li{flex: 1; background: #fff; overflow: hidden; }
+      li.on{color: #000;}
+    }
+  }
+  .order-box{padding:px2rem(30) px2rem(10); display: none; margin: 0; padding: 0;
+    li{margin-top: px2rem(20); background: #fff; border-radius: px2rem(10); padding: px2rem(20) 0 0; overflow: hidden; width: px2rem(700);}
+  }
+}
+
+/*列表*/
+.pro-list{ margin: 0; padding: 0;
+  .pro-box{ margin:0 px2rem(20) px2rem(20);
+    .pro-img{width: px2rem(196); flex:2; }
+    .content{ position: relative; flex:4; text-align: left; padding: 0 px2rem(10) 0 px2rem(10);  font-size: px2rem(16); color: #a2a2a2; text-align: left;
+      h2{ display: inline-block; font-size:px2rem(24); color: #3d3d3d; margin-bottom: px2rem(3); }
+      .luyin{ font-size:px2rem(16); margin-top: px2rem(10);
+        i{font-size: px2rem(34);}
+        span{padding: px2rem(5) px2rem(20);background: #75e790; color: #fff; line-height: px2rem(30); border-radius: px2rem(15);}
+      }
+      .o-time{position: absolute; bottom: 0; margin-top: px2rem(35);
+        i{font-size: px2rem(30);}
+      }
+    }
+    .edit{ position: relative; flex: 1;
+      p{font-size: px2rem(24);}
+      i{font-size: px2rem(26); background: #e6e6e6; border-radius: 50%; margin-right: px2rem(10); vertical-align: middle;}
+      .price{ position: absolute; bottom: 0; font-size: px2rem(42); color: #000;
+        em{font-size: px2rem(26);}
+      }
+    }
+  }
+
+  .pro-btns{ border-top: #dddddd 1px solid; margin:0 px2rem(20) 0;
+    ul{display: flex; display: box; flex-direction: row;
+      li{flex: 1; font-size: px2rem(22); line-height: px2rem(80); padding: 0 !important; margin-top: 0 !important; color: #000;
+        i{font-size: px2rem(40);}
+      }
+      li.share{color: #8e7964 !important;}
+      em{flex: 0; height: px2rem(22);margin-top: px2rem(25); border-right: 1px solid #b1b1b1;}
+    }
+  }
+
+  .pro-btns2{
+    dl{display: flex; display: box;
+      dd{flex: 1; background:#ffcd20 !important; text-align: center; margin: 0; padding: 0;
+        span{ display: block; color: #000; font-size:px2rem(26); line-height:px2rem(65);}
+        i{font-size: px2rem(50);}
+      }
+      dd.cancel{background: #ebebeb !important;
+        span{color: #000;}
+      }
+    }
+  }
+
+}
+
