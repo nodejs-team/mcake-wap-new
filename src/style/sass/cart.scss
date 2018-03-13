@@ -68,7 +68,9 @@
     .cart-content{ margin: px2rem(20) 0 0;
       img{width: 100%;}
       .cart-pro{ margin:0 px2rem(20) px2rem(20);
-        .pro-img{width: px2rem(196); flex:2; }
+        .pro-img{width: px2rem(196); flex:2;
+          img{border-radius: px2rem(8);}
+        }
         .content{flex:4; text-align: left; padding: 0 px2rem(10) 0 px2rem(30);  font-size: px2rem(16); color: #a2a2a2; text-align: left;
           h2{ display: inline-block; font-size:px2rem(18); color: #000; font-weight: bold;}
           .fittings{ margin-top: px2rem(20);}
@@ -89,7 +91,25 @@
 }
 
 
-
+.fast-mail{
+  .mail-banner{position: relative;
+    .state{position:absolute; left:px2rem(-60); bottom: px2rem(30); width: px2rem(200);
+      height:px2rem(50); border-radius: px2rem(50); background: #ffcd20; text-align: right;
+      span{line-height:px2rem(50); color: #000; text-align: right; margin-right: px2rem(40);}
+    }
+  }
+  .ziti-address{
+    b{font-weight: bold; color: #000;}
+  }
+  .wulist{margin-top: px2rem(-30); background: #fff;
+    ul{
+      li{padding-left:0 !important; margin-bottom: 0 !important; border-radius: 0 !important; border-bottom: #eaeaea 1px solid; margin: 0 px2rem(40); height: px2rem(70) !important; line-height: px2rem(70) !important; font-size: px2rem(30);
+        b{flex:3 !important; font-weight: normal;}
+        span{flex:5 !important;}
+      }
+    }
+  }
+}
 
 
 

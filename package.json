@@ -18,6 +18,7 @@
     "jquery": "^3.2.1",
     "mint-ui": "^2.2.10",
     "vue": "^2.5.2",
+    "vue-resource": "^1.4.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
@@ -79,6 +80,7 @@
     "shelljs": "^0.7.6",
     "sinon": "^4.0.0",
     "sinon-chai": "^2.8.0",
+    "swiper": "^4.1.6",
     "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",

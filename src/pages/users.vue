@@ -1,13 +1,14 @@
 <template>
-  <div class="orders">
-      <p>用户中心</p>
-
+  <div class="container-wrap">
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'user',
+  name: 'users',
   props: [],
   components: {
   },
@@ -31,5 +32,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  @import '../style/css/orders.css';
+  @import '../style/css/user.css';
 </style>

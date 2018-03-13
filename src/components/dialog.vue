@@ -91,7 +91,7 @@ export default {
   cursor: pointer;
 }
 .dialog-close:hover {
-  color: #4fc08d;
+  color: #59575b;
 }
 
 

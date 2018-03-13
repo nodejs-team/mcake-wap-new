@@ -24,6 +24,7 @@
       <li @click="isNavShow = false"><router-link :to="{ name: 'list'}" tag="span">蛋糕</router-link></li><em></em>
       <li @click="isNavShow = false"><router-link :to="{ name: 'list'}" tag="span">小食</router-link></li><em></em>
       <li @click="isNavShow = false"><router-link :to="{ name: 'cart'}" tag="span">购物车<i class="icon-badge"><b>0</b></i></router-link></li>
+      <li @click="isNavShow = false"><router-link :to="{ name: 'usersIndex'}" tag="span">我<i class="icon-badge"><b>0</b></i></router-link></li>
       <li @click="isNavShow = false"><router-link :to="{ name: 'demo'}" tag="span">demo</router-link></li>
 
     </ul>

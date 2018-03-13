@@ -2,7 +2,6 @@
   <div id="app">
 
     <div id="evt_loading" style="display:none;">0%</div>
-
     <div class="evt_content" style="display:none;">
       <div class="vue-header"><my-header></my-header></div>
       <div class="marginTop"></div>

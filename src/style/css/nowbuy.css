@@ -1,0 +1,393 @@
+.nowbuy ul.orderList {
+  background: #fff; }
+  .nowbuy ul.orderList li {
+    padding: 0.27778rem 0 0;
+    overflow: hidden;
+    width: 9.72222rem; }
+    .nowbuy ul.orderList li .pro-box {
+      margin: 0.27778rem 0.13889rem; }
+      .nowbuy ul.orderList li .pro-box .pro-img {
+        width: 2.72222rem;
+        flex: 1; }
+        .nowbuy ul.orderList li .pro-box .pro-img img {
+          border-radius: 0.09722rem; }
+      .nowbuy ul.orderList li .pro-box .content {
+        position: relative;
+        flex: 1;
+        text-align: left;
+        padding: 0 0.13889rem 0 0.27778rem;
+        font-size: 0.22222rem;
+        color: #a2a2a2;
+        text-align: left; }
+        .nowbuy ul.orderList li .pro-box .content h2 {
+          display: inline-block;
+          font-size: 0.33333rem;
+          color: #3d3d3d;
+          margin-bottom: 0.04167rem; }
+        .nowbuy ul.orderList li .pro-box .content dl dd {
+          display: flex;
+          display: box; }
+          .nowbuy ul.orderList li .pro-box .content dl dd em {
+            display: block;
+            flex: 3; }
+          .nowbuy ul.orderList li .pro-box .content dl dd i {
+            display: block;
+            flex: 1;
+            text-align: right; }
+          .nowbuy ul.orderList li .pro-box .content dl dd span {
+            display: block;
+            flex: 3;
+            text-align: right; }
+        .nowbuy ul.orderList li .pro-box .content dl dd.line {
+          border-bottom: #e9e9e9 1px solid;
+          margin: 0.13889rem auto; }
+.nowbuy dl.peijian {
+  background: #fff;
+  margin-top: 0.27778rem;
+  padding-bottom: 0.27778rem; }
+  .nowbuy dl.peijian dt {
+    display: flex;
+    display: box;
+    flex-direction: row;
+    padding: 0.13889rem 0.27778rem; }
+    .nowbuy dl.peijian dt i.pj-icon {
+      position: absolute;
+      left: -0.13889rem;
+      font-size: 0.41667rem;
+      color: #888888; }
+    .nowbuy dl.peijian dt h2 {
+      flex: 1;
+      display: block;
+      position: relative;
+      line-height: 0.69444rem;
+      color: #000; }
+    .nowbuy dl.peijian dt span {
+      flex: 3;
+      display: block;
+      line-height: 0.69444rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .nowbuy dl.peijian dt i.acrows {
+      color: #ffcd20;
+      font-size: 0.69444rem; }
+  .nowbuy dl.peijian dd {
+    overflow: hidden;
+    display: flex;
+    display: box;
+    flex-direction: row;
+    margin-bottom: 0.27778rem;
+    padding-left: 0.13889rem; }
+    .nowbuy dl.peijian dd .in-line {
+      flex: 1;
+      background: #f9f9f9;
+      display: flex;
+      display: box;
+      margin-right: 0.13889rem;
+      line-height: 1.25rem;
+      border-radius: 0.13889rem;
+      overflow: hidden; }
+      .nowbuy dl.peijian dd .in-line .icon {
+        color: #fff; }
+      .nowbuy dl.peijian dd .in-line span {
+        display: block;
+        float: left;
+        flex: 1;
+        background: #ffcd20; }
+      .nowbuy dl.peijian dd .in-line p {
+        flex: 5;
+        color: #000;
+        font-size: 0.36111rem; }
+        .nowbuy dl.peijian dd .in-line p i {
+          font-size: 0.16667rem;
+          line-height: 0.34722rem;
+          display: block; }
+      .nowbuy dl.peijian dd .in-line p.ewai {
+        line-height: 0.83333rem; }
+  .nowbuy dl.peijian .birthday-card {
+    line-height: 0.97222rem;
+    width: 97%;
+    margin: 0 auto;
+    border-radius: 0.13889rem;
+    display: flex;
+    display: box; }
+    .nowbuy dl.peijian .birthday-card i {
+      font-size: 0.55556rem; }
+    .nowbuy dl.peijian .birthday-card input {
+      flex: 2; }
+.nowbuy .order-line {
+  background: #fff;
+  width: 9.72222rem;
+  margin: 0.27778rem auto 0;
+  border-radius: 0.13889rem; }
+  .nowbuy .order-line .content {
+    position: relative;
+    text-align: left;
+    padding: 0.27778rem;
+    font-size: 0.22222rem;
+    color: #a2a2a2;
+    text-align: left; }
+    .nowbuy .order-line .content dl h2 {
+      font-size: 0.36111rem;
+      line-height: 0.69444rem;
+      color: #000;
+      font-weight: bold; }
+      .nowbuy .order-line .content dl h2 i {
+        float: right;
+        display: block;
+        width: 0.55556rem;
+        height: 0.55556rem;
+        line-height: 0.55556rem;
+        text-align: center;
+        border-radius: 50%;
+        background: #c0c0c0;
+        color: #fff;
+        font-size: 0.27778rem; }
+    .nowbuy .order-line .content dl dd {
+      position: relative;
+      display: flex;
+      display: box;
+      line-height: 0.55556rem;
+      font-size: 0.27778rem; }
+      .nowbuy .order-line .content dl dd em {
+        display: block;
+        flex: 2; }
+      .nowbuy .order-line .content dl dd span {
+        display: block;
+        flex: 3;
+        text-align: right; }
+    .nowbuy .order-line .content dl dd.longRight em {
+      flex: 1; }
+    .nowbuy .order-line .content dl dd.longRight span {
+      flex: 5; }
+    .nowbuy .order-line .content dl .i-edit {
+      display: block;
+      position: absolute;
+      width: 0.97222rem;
+      height: 0.97222rem;
+      line-height: 0.97222rem;
+      background: #e6e6e6;
+      font-size: 0.69444rem;
+      top: 50%;
+      margin-top: -0.48611rem;
+      right: 0.41667rem;
+      text-align: center;
+      border-radius: 50%; }
+.nowbuy .pjSelect .content {
+  display: flex;
+  display: box;
+  flex-direction: row; }
+  .nowbuy .pjSelect .content .pj {
+    flex: 1;
+    margin-right: 0.27778rem;
+    text-align: center; }
+    .nowbuy .pjSelect .content .pj p {
+      line-height: 0.69444rem;
+      font-size: 0.27778rem; }
+  .nowbuy .pjSelect .content .pj:last-child {
+    margin-right: 0; }
+.nowbuy dl.xianjin {
+  background: #fff;
+  margin-top: 0.27778rem;
+  padding-bottom: 0.27778rem; }
+  .nowbuy dl.xianjin dt {
+    display: flex;
+    display: box;
+    flex-direction: row;
+    padding: 0.13889rem 0.27778rem; }
+    .nowbuy dl.xianjin dt i.pj-icon {
+      position: absolute;
+      left: -0.13889rem;
+      font-size: 0.41667rem;
+      color: #888888; }
+    .nowbuy dl.xianjin dt h2 {
+      flex: 1;
+      display: block;
+      position: relative;
+      line-height: 0.69444rem;
+      color: #000; }
+    .nowbuy dl.xianjin dt span {
+      flex: 3;
+      display: block;
+      line-height: 0.69444rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .nowbuy dl.xianjin dt i.acrows {
+      color: #ffcd20;
+      font-size: 0.69444rem; }
+  .nowbuy dl.xianjin dd {
+    overflow: hidden;
+    margin-bottom: 0.27778rem;
+    padding-left: 0.13889rem; }
+    .nowbuy dl.xianjin dd .card {
+      display: flex;
+      display: box;
+      flex-direction: row; }
+      .nowbuy dl.xianjin dd .card .card-item {
+        width: 4.84722rem;
+        float: left;
+        margin-right: 0.13889rem; }
+
+.textLeft {
+  text-align: left; }
+
+.subtitle {
+  text-align: left;
+  font-size: 0.41667rem;
+  font-weight: bold;
+  color: #000;
+  line-height: 0.97222rem; }
+  .subtitle i {
+    font-size: 0.69444rem; }
+
+.order-line.userInfo .content dl dd em {
+  flex: 1;
+  font-weight: bold;
+  color: #000; }
+.order-line.userInfo .content dl dd span {
+  flex: 5; }
+
+.order-line.peisong {
+  margin-top: 0;
+  background: none; }
+  .order-line.peisong .in-line {
+    flex: 1;
+    background: #fff;
+    display: flex;
+    display: box;
+    line-height: 1.25rem;
+    border-radius: 0.13889rem;
+    overflow: hidden;
+    margin-bottom: 0.27778rem; }
+    .order-line.peisong .in-line .icon {
+      flex: 1;
+      color: #fff;
+      display: block;
+      background: #acacac;
+      width: 1.11111rem;
+      font-size: 0.69444rem; }
+    .order-line.peisong .in-line .icon.clock {
+      background: #ffcd20; }
+    .order-line.peisong .in-line select {
+      flex: 6;
+      padding-left: 0.27778rem; }
+    .order-line.peisong .in-line .icon.down {
+      background: #fff;
+      color: #acacac; }
+
+.tips {
+  line-height: 0.41667rem;
+  overflow: hidden;
+  margin-bottom: 0.27778rem;
+  text-align: left;
+  font-size: 0.33333rem; }
+
+.edit-fapiao .content {
+  padding: 0.13889rem 0.27778rem; }
+.edit-fapiao .textbox {
+  position: relative;
+  width: 100%;
+  height: 4.16667rem;
+  background: #f9f9f9; }
+.edit-fapiao .piao-text {
+  width: 100%;
+  height: 100%;
+  background: #f9f9f9;
+  padding: 0.13889rem;
+  font-size: 0.25rem;
+  border: #f3f3f3 1px solid; }
+.edit-fapiao .edit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -0.83333rem;
+  margin-left: -0.83333rem;
+  width: 1.66667rem;
+  height: 1.66667rem;
+  border-radius: 50%;
+  background: #e6e6e6; }
+  .edit-fapiao .edit i {
+    font-size: 1.66667rem;
+    margin-right: 0.13889rem;
+    vertical-align: middle; }
+  .edit-fapiao .edit p {
+    font-size: 0.13889rem; }
+.edit-fapiao .list_box {
+  padding-top: 0.41667rem; }
+  .edit-fapiao .list_box ul {
+    display: flex;
+    display: box;
+    flex-direction: column; }
+    .edit-fapiao .list_box ul li {
+      flex: 1;
+      font-size: 0.41667rem;
+      height: 1.25rem;
+      line-height: 1.25rem;
+      margin-bottom: 0.27778rem;
+      background: #fff;
+      border-radius: 0.13889rem;
+      padding-left: 0.27778rem;
+      position: relative; }
+      .edit-fapiao .list_box ul li .icon {
+        position: absolute;
+        top: 0;
+        right: 0.27778rem;
+        font-size: 0.69444rem;
+        z-index: 0; }
+      .edit-fapiao .list_box ul li select {
+        width: 100%;
+        height: 100%;
+        padding: 0 0.13889rem;
+        font-size: 0.41667rem;
+        float: left;
+        z-index: 1;
+        color: #acacac; }
+      .edit-fapiao .list_box ul li .input_short {
+        width: 4.30556rem; }
+      .edit-fapiao .list_box ul li .send {
+        background: #ffcd20;
+        width: 3.75rem;
+        float: right;
+        border-radius: 0.13889rem;
+        color: #000; }
+      .edit-fapiao .list_box ul li .yzm {
+        width: 3.75rem;
+        float: right;
+        border-radius: 0.13889rem;
+        color: #000; }
+      .edit-fapiao .list_box ul li b {
+        flex: 1;
+        text-align: left; }
+      .edit-fapiao .list_box ul li span {
+        flex: 3;
+        text-align: right;
+        padding-right: 0.27778rem; }
+    .edit-fapiao .list_box ul .pwd {
+      padding-left: 0.27778rem; }
+.edit-fapiao .fapiao-bt {
+  padding-top: 1.38889rem; }
+  .edit-fapiao .fapiao-bt .text {
+    display: flex;
+    display: box;
+    flex-direction: row;
+    font-size: 0.30556rem;
+    color: #000000;
+    font-weight: bold;
+    line-height: 0.69444rem;
+    border-bottom: #cdcdcd 1px solid; }
+    .edit-fapiao .fapiao-bt .text b {
+      display: block;
+      flex: 1;
+      text-align: left; }
+    .edit-fapiao .fapiao-bt .text span {
+      display: block;
+      flex: 1;
+      text-align: right; }
+  .edit-fapiao .fapiao-bt p {
+    color: #888888;
+    font-size: 0.22222rem;
+    line-height: 0.55556rem;
+    text-align: left; }
+
+/*# sourceMappingURL=nowbuy.css.map */

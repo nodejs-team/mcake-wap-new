@@ -15,8 +15,58 @@
 
 }
 
+.order-list{
+  .order-num{ display: flex; display: box; padding:px2rem(10) px2rem(20); text-align: left;
+    span{ flex: 1; font-size: px2rem(22); line-height: px2rem(50); color: #000; text-align: left;
+      i{font-size: px2rem(40); vertical-align:baseline;}
+    }
+  }
+  ul.orderList{ background: #fff; width:px2rem(700); margin: 0 auto; border-radius: px2rem(10);
+      li{ padding: px2rem(20) 0 0; overflow: hidden; width: px2rem(700); border-bottom: #e9e9e9 1px solid;
+        .pro-box{ margin:0 px2rem(20) px2rem(20);
+          .pro-img{width: px2rem(196); flex:2;
+            img{ border-radius: px2rem(7);}
+          }
+          .content{ position: relative; flex:4; text-align: left; padding: 0 px2rem(10) 0 px2rem(20);  font-size: px2rem(16); color: #a2a2a2; text-align: left;
+            h2{ display: inline-block; font-size:px2rem(24); color: #3d3d3d; margin-bottom: px2rem(3); }
+            dl{
+              dd{ display: flex; display: box;
+                em{ display: block; flex:2;}
+                span{ display: block; flex:2; text-align: right;}
+              }
+            }
+          }
+        }
+      }
+      .more{
+        i{font-size: px2rem(50); line-height: px2rem(80);}
+      }
+  }
+  .order-line{ background: #fff; width:px2rem(700); margin:px2rem(20) auto 0; border-radius: px2rem(10);
+      .content{ position: relative; text-align: left; padding: px2rem(20);  font-size: px2rem(16); color: #a2a2a2; text-align: left;
+        dl{
+          h2{font-size: px2rem(26); line-height: px2rem(50); color: #000; font-weight: bold;
+            i{ float: right; display: block; width: px2rem(40); height:px2rem(40); line-height:px2rem(40); text-align: center; border-radius: 50%; background: #c0c0c0; color: #fff; font-size: px2rem(20);}
+          }
+          dd{ position: relative; display: flex; display: box; line-height: px2rem(40); font-size: px2rem(20);
+            em{ display: block; flex:2;}
+            span{ display: block; flex:3; text-align: right;}
+          }
+          dd.longRight{
+            em{flex:1;}
+            span{flex:5;}
+          }
+          .i-complete{display: block; position: absolute; width: px2rem(70); height: px2rem(70); line-height: px2rem(70); border: #ffcd20 2px solid; color: #ffcd20; font-size: px2rem(50); right: px2rem(30); text-align: center; border-radius: 50%;}
+        }
+      }
+  }
+  .btns{margin-top: px2rem(20);}
+}
 
-.orders{ background:red; height: 100%;
+
+
+
+.orders{ height: 100%;
   .order-top{
     background: #ebebeb; height: px2rem(70); line-height: px2rem(70); font-size: px2rem(30);
     ul{display: flex; display: box; flex-direction: row;
@@ -76,3 +126,114 @@
 
 }
 
+.pinglun{
+  ul{
+    li{width: px2rem(700);
+      .order-num{ display: flex; display: box; padding:px2rem(10) px2rem(20);
+        span{ flex: 1; font-size: px2rem(22); line-height: px2rem(50); color: #000; text-align: left; }
+      }
+      .ping-box{ margin:0 0 px2rem(20); padding: px2rem(10); background: #fff; border-radius: px2rem(10); text-align: left;
+        .pro-img{ position: relative; width: px2rem(196); flex:2;
+          img{border-radius: px2rem(8);}
+          .bangshu{ position: absolute; bottom: 0; right: 0;}
+        }
+        .content{ position: relative; flex:4; padding: 0 px2rem(10) 0 px2rem(20);
+          .textbox{ width: 100%; height: 80%; background: #f9f9f9;}
+          .ping-text{ width: 100%; height:100%; background: #f9f9f9; padding: px2rem(10); font-size: px2rem(18); border: #f3f3f3 1px solid;}
+          p{text-align: left; padding-top: px2rem(10);
+            span{font-size: px2rem(18); line-height: px2rem(40); padding: px2rem(10) px2rem(20); background: #e6e6e6; border-radius: px2rem(10);}
+            span.on{background: #cccaca;}
+          }
+
+        }
+        .edit{ position: absolute; top:50%; left:50%; margin-top: px2rem(-60); margin-left: px2rem(-20);  width: px2rem(60); height: px2rem(60); border-radius: 50%; background: #e6e6e6;
+          i{font-size: px2rem(60); margin-right: px2rem(10); vertical-align: middle;}
+        }
+      }
+
+    }
+  }
+
+}
+
+
+/*收货*/
+
+.order-line{ background: #fff; width:px2rem(700); margin:px2rem(20) auto 0; border-radius: px2rem(10);
+  .content{ position: relative; text-align: left; padding:px2rem(20) 0;  font-size: px2rem(16); color: #a2a2a2; text-align: left;
+    dl{position: relative; border-bottom: 1px solid #e8e8e8; padding: px2rem(10) 0;
+      b{color: #000;}
+      h2{font-size: px2rem(26); line-height: px2rem(50); color: #000; font-weight: bold;
+        i{ float: right; display: block; width: px2rem(40); height:px2rem(40); line-height:px2rem(40); text-align: center; border-radius: 50%; background: #c0c0c0; color: #fff; font-size: px2rem(20);}
+      }
+      dd{ position: relative; display: flex; display: box; line-height: px2rem(40); font-size: px2rem(20);padding:0 px2rem(80) 0 px2rem(50);
+        em{ display: block; flex:2;}
+        span{ display: block; flex:3; text-align: right;}
+      }
+      dd.longRight{
+        em{flex:1;}
+        span{flex:5;}
+      }
+      .i-selected{display: block; position: absolute; width: px2rem(30); height: px2rem(30); line-height: px2rem(30); background: #e6e6e6; font-size: px2rem(20); left: px2rem(0); top: 50%; margin-top: px2rem(-30); text-align: center; color: #fff;}
+      .i-selected.on{background: #ffcd20; color: #fff;}
+      .i-edit{display: block; position: absolute; width: px2rem(70); height: px2rem(70); line-height: px2rem(70); color: #919191; font-size: px2rem(50); right: px2rem(-10);top: 50%; margin-top: px2rem(-35); text-align: center; border-radius: 50%; background: #e6e6e6;}
+    }
+    .ziti{text-align: center;font-size: px2rem(30);}
+  }
+}
+
+.address{
+  .order-line.address{
+    .content{ padding:px2rem(20) px2rem(20) 0;}
+  }
+  .add-address{text-align: center;display: flex; display: box; flex-direction: column; margin: px2rem(50) auto;
+    span{display:block;flex: 1;text-align: center;font-size: px2rem(30); line-height: px2rem(100);
+      i{display: block;width: px2rem(80); height:px2rem(80); line-height:px2rem(80); font-size: px2rem(50); color: #fff; background: #ffcd20; margin: 0 auto; border-radius: 50%;}
+    }
+  }
+
+  .pro-btns{ margin:0 px2rem(20) 0; text-align: center;
+    ul{display: flex; display: box; flex-direction: row;
+      li{flex: 1; font-size: px2rem(22); line-height: px2rem(60); padding: 0 !important; margin-top: 0 !important; color: #8b8b8b;
+        i{font-size: px2rem(40); margin-right: px2rem(10);}
+        i.delete{font-size: px2rem(26);}
+      }
+      li.share{color: #8e7964 !important;}
+      li.on{color: #000 !important;}
+      em{flex: 0; height: px2rem(22);margin-top: px2rem(25); border-right: 1px solid #b1b1b1;}
+    }
+  }
+}
+
+.new-address,.ziti-address{
+  .address_box{
+    ul{ display: flex; display: box; flex-direction: column;
+      li{ flex: 1; font-size: px2rem(30); height: px2rem(90); line-height: px2rem(90); margin-bottom:px2rem(20); background: #fff; border-radius: px2rem(10); padding-left: px2rem(90); position: relative;
+        .icon{ position: absolute; top: 0; left:px2rem(20); font-size:px2rem(50); }
+        input{width: 100%; height: 100%; padding: 0 px2rem(10); font-size: px2rem(30); float: left; }
+        .input_short{width:px2rem(310);}
+        .send{background: #ffcd20; width:px2rem(270); float: right; border-radius: px2rem(10); color: #000;  }
+        .yzm{width:px2rem(270); float: right; border-radius: px2rem(10); color: #000;  }
+        b{flex: 1; text-align: left;}
+        span{flex: 3; text-align: right; padding-right: px2rem(20);}
+      }
+      .pwd{padding-left: px2rem(20); }
+    }
+  }
+  .set-address{ margin: px2rem(50) auto;
+    span{display: block; width: px2rem(300); margin: 0 auto; font-size: px2rem(30);
+      b{display: inline-block;font-weight: normal;}
+    }
+  }
+  .icons-dui{font-size: px2rem(30); display:inline-block; width: px2rem(35); height: px2rem(35); line-height: px2rem(35); background: #ffce1f; color: #fff; border-radius: 50%; margin-right: px2rem(10); }
+
+}
+.ziti-address{
+  .content{padding: px2rem(50) px2rem(20);}
+  .address_box{
+    ul{
+      li{display: flex; flex-direction: row;}
+      li.on{background: #ffcd20; color: #000;}
+    }
+  }
+}
