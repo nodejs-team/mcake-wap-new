@@ -81,16 +81,17 @@
       font-size: 0.41667rem; }
     .bottom-count .total-count .count-price {
       font-size: 0.69444rem; }
+      .bottom-count .total-count .count-price b {
+        font-size: 0.25rem; }
       .bottom-count .total-count .count-price i {
-        font-size: 0.36111rem;
-        font-style: normal; }
-  .bottom-count .btns {
-    padding: 0 0 0 0.13889rem; }
-    .bottom-count .btns li {
-      margin-right: 0.13889rem; }
+        font-size: 0.22222rem;
+        font-style: normal;
+        vertical-align: baseline; }
+  .bottom-count .btns li {
+    margin-right: 0.13889rem; }
 
 .cartBottom {
-  height: 2.08333rem; }
+  height: 3.47222rem; }
 
 /*寮圭獥*/
 .cart-line {

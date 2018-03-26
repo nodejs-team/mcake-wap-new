@@ -13,16 +13,17 @@
     .users.index .topheader i {
       font-size: 0.55556rem; }
     .users.index .topheader em {
-      display: block;
       position: absolute;
-      width: 0.27778rem;
-      height: 0.27778rem;
+      display: block;
+      width: 0.41667rem;
+      height: 0.41667rem;
       border-radius: 50%;
-      top: 0.27778rem;
+      top: 0;
       right: -0.20833rem;
       background: #ee473f;
-      font-size: 0.13889rem;
-      line-height: 0.27778rem; }
+      font-size: 0.22222rem;
+      line-height: 0.41667rem;
+      color: #fff; }
   .users.index .mainContent {
     position: relative;
     background: #fff;
@@ -151,7 +152,7 @@
       .integral .integral-list ul li .list-content i, .money .integral-list ul li .list-content i {
         font-size: 0.55556rem; }
       .integral .integral-list ul li .list-content h2, .money .integral-list ul li .list-content h2 {
-        font-size: 0.27778rem;
+        font-size: 0.33333rem;
         line-height: 0.55556rem; }
       .integral .integral-list ul li .list-content span, .money .integral-list ul li .list-content span {
         font-size: 0.38889rem;
@@ -159,15 +160,14 @@
         padding-left: 0.69444rem;
         color: #888888; }
       .integral .integral-list ul li .list-content p, .money .integral-list ul li .list-content p {
-        font-size: 0.25rem;
+        font-size: 0.27778rem;
         line-height: 0.69444rem;
         color: #888888;
         border-top: #e4e4e4 1px solid; }
     .integral .integral-list ul li .pingjia, .money .integral-list ul li .pingjia {
-      width: 2.5rem;
       float: right;
       text-align: right;
-      margin-left: 0.13889rem; }
+      margin-left: 0.27778rem; }
       .integral .integral-list ul li .pingjia p, .money .integral-list ul li .pingjia p {
         font-size: 0.97222rem; }
       .integral .integral-list ul li .pingjia span, .money .integral-list ul li .pingjia span {

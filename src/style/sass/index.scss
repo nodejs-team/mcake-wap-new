@@ -55,7 +55,7 @@
   ul{margin-left:px2rem(8); padding: 0;
     li{ color: #000;  float: left;  font-size:px2rem(15);  margin: 0 px2rem(11) px2rem(18) 0; width: px2rem(335); background: #fff;
       .pro-liimg{position: relative; overflow: hidden;
-        .liImg{width: px2rem(360); height:px2rem(341); z-index: 1;}
+        .liImg{width: px2rem(360); height:px2rem(341); z-index: 1; background-size: 100%;}
         .cart-icon{position: absolute; right:px2rem(14); bottom:px2rem(14); width:px2rem(100); height:px2rem(100); background: url("../../../static/images/car-icon.png") bottom right  no-repeat;  background-size: 50%; cursor: pointer;}
       }
       .fl {float: left;  text-align: left; font-size: px2rem(18); }
@@ -63,7 +63,7 @@
       .p2,.p3 { margin:0 0 px2rem(15); padding: 0 px2rem(10); }
       .p2{height:px2rem(30);}
       .p2 .line{ position: absolute; bottom: 0; left:px2rem(10); color:#dedede; }
-      .p1{ padding: px2rem(15) px2rem(10) px2rem(5); line-height:px2rem(25);}
+      .p1{ padding: px2rem(15) px2rem(10) px2rem(5); line-height:px2rem(25);font-size: px2rem(30);}
       .fr.he{ width: px2rem(50) !important;}
       .p1 .fr {position: relative; width:px2rem(77); height:px2rem(25); line-height:px2rem(25); display: block; font-size: px2rem(18); font-weight: bold; text-indent:px2rem(18);
         .js_bshu{display: block; width:px2rem(77); height:px2rem(25); z-index: 2;}
@@ -76,9 +76,9 @@
           li.on{  color: #000;  }
         }
       }
-      .p2 .fl { color: #b1b1b1; font-size: px2rem(18); }
-      .p3 .fl { line-height:px2rem(30); font-size:px2rem(27);}
-      .p3 .fl b{font-size:px2rem(18); font-weight: normal; vertical-align: text-bottom !important;}
+      .p2 .fl { color: #b1b1b1; font-size: px2rem(18); vertical-align: baseline; }
+      .p3 .fl { line-height:px2rem(30); font-size:px2rem(30);}
+      .p3 .fl b{font-size:px2rem(18); font-weight: normal; vertical-align: baseline !important;}
     }
 
     .postid{display: none;}

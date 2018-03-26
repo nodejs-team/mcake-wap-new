@@ -4,7 +4,10 @@
       <ul class="clearfix" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="2">
         <li class="pro-li" v-for="item in prolist">
           <div class="pro-liimg">
-            <div class="liImg"><img :src="item.goodsImageUrl"></div>
+            <router-link :to="{ name: 'detail'}">
+              <div class="liImg" :style="{backgroundImage: 'url(' + item.goodsImageUrl + ')'}" >
+              </div>
+            </router-link>
             <div class="cart-icon" @click="cartDialog"></div>
           </div>
 
@@ -106,16 +109,16 @@ export default {
     this.init();
   },
   methods:{
-    loadMore() {
+    loadMore(){
       this.loading = true;
       setTimeout(() => {
-        let last = this.prolist[this.prolist.length - 1];
+        let last = this.prolist.length - 1;
         for (let i = 1; i <= 2; i++) {
-          this.prolist.push(last + i);
+          this.prolist.push(this.prolist[0]);
+          //console.log(this.prolist);
         }
         this.loading = false;
       }, 500);
-
     },
     cartDialog(){
       this.isblur = this.isShowDialog = true;
@@ -130,6 +133,7 @@ export default {
       }).then(function(response){  //接口返回数据
         this.data=response.data;
         this.prolist=this.data.data.goodsList;
+        console.log(this.prolist);
       },function(error){  //失败
         console.log(error);
       });
@@ -140,10 +144,6 @@ export default {
 }
 </script>
 
-
-
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>

@@ -92,19 +92,78 @@
 
   }
 
-
-  dl.xianjin{ background: #fff; margin-top: px2rem(20); padding-bottom: px2rem(20);
+  /*卡券*/
+  dl.ka-quan{ background: #fff;padding-top: px2rem(20); padding-bottom: px2rem(20); border-bottom: #e9e9e9 1px solid;
     dt{display: flex; display: box; flex-direction: row; padding: px2rem(10) px2rem(20);
       i.pj-icon{ position: absolute; left: px2rem(-10); font-size: px2rem(30); color: #888888;}
-      h2{flex: 1; display: block; position: relative; line-height: px2rem(50); color: #000;}
-      span{flex: 3; display: block; line-height: px2rem(50);overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+      h2{flex: 1; display: block; position: relative; line-height: px2rem(50); color: #000; text-align: left; padding-left: px2rem(30);}
+      span{flex: 3; display: block; line-height: px2rem(50);overflow:hidden; white-space:nowrap; text-overflow:ellipsis; text-align: right; padding-right: px2rem(20); }
       i.acrows{ color: #ffcd20;font-size: px2rem(50);}
     }
-    dd{ overflow: hidden;  margin-bottom: px2rem(20); padding-left: px2rem(10);
+    dd{ overflow: hidden;  margin-bottom: px2rem(20); padding-left: px2rem(10); display: none;
       .card{display: flex; display: box; flex-direction: row;
-        .card-item{width: px2rem(349); float: left; margin-right: px2rem(10);}
-      }
+        .card-item{width: px2rem(327); height: px2rem(164); float: left; margin-right: px2rem(35); background: url("../images/hongbao.png") center; background-size: 100%; font-size: px2rem(140); line-height: px2rem(140); color: #fff;}
+        .card-item:last-child{margin-right: 0;}
+        .card-item.cash{display: flex; width: px2rem(710); height: px2rem(320); background: url("../images/card-bg.png") center; background-size: 100%; float: left; margin-right: px2rem(10); color: #fff;text-align: left;
+            .card-left{flex: 1;
+              .card-con-top{padding: px2rem(40); font-size: px2rem(30); line-height: px2rem(40); }
+              .card-con-bottom{padding: px2rem(10) px2rem(40); font-size: px2rem(24); line-height: px2rem(40);
+                h3{font-size: px2rem(20); line-height: px2rem(70);}
+              }
+            }
+            .card-right{width: px2rem(280); float: right;
+              .card-con-top{padding:px2rem(15) px2rem(40); font-size: px2rem(30); line-height: px2rem(40);
+                span{font-size: px2rem(20); color: #52ff9b;}
+              }
+              .card-con-bottom{padding: px2rem(10) px2rem(40); line-height: px2rem(40);
+                h3{font-size: px2rem(20); line-height: px2rem(80);}
+                span{ font-size: px2rem(100);}
+              }
+            }
+        }
+        .card-item.quan{display: flex; width: px2rem(710); height: px2rem(174); background: url("../images/quan.png") center; background-size: 100%; float: left; margin-right: px2rem(10); color: #fff;text-align: left;
+          .card-left{float: left; width: px2rem(234); font-size: px2rem(150); text-align: center; line-height: px2rem(174);}
+          .card-content{flex: 1;
+            .card-con-top{padding:px2rem(20) px2rem(10) 0 px2rem(40); font-size: px2rem(30); line-height: px2rem(40); }
+            .card-con-bottom{padding:0 px2rem(10) px2rem(10) px2rem(40); font-size: px2rem(24); line-height: px2rem(40);
+              h3{font-size: px2rem(20); line-height: px2rem(40);}
+              span{padding: px2rem(5) px2rem(20); margin-top: px2rem(10); line-height: px2rem(30); background: #ac2b1a; border-radius: px2rem(20);}
+            }
+          }
+          .card-right{width: px2rem(150); float: right; text-align: right;
+            .card-con-top{padding:px2rem(20) px2rem(20); font-size: px2rem(22); line-height: px2rem(40);  }
+            .card-con-bottom{padding: px2rem(20) px2rem(20); line-height: px2rem(40);
+              span{ font-size: px2rem(20);}
+            }
+          }
+        }
 
+      }
+      .quan-add{ display: flex;padding: px2rem(20) px2rem(10);
+        input{ flex: 1; padding: 0 px2rem(10); background: #f9f9f9;}
+        .add{ width: px2rem(280); float: right; line-height: px2rem(90); background: #ffcd20; display: block; border-radius: px2rem(10); color: #000;}
+      }
+      .text{text-align: left; padding-left: px2rem(20);}
+      .piao-line{display: flex; padding: px2rem(20) px2rem(40); line-height: px2rem(40); background: #f9f9f9; margin-bottom: px2rem(10);
+        select{flex: 1;}
+        .piao-text{width: 100%; border: none; background: #f9f9f9;}
+      }
+      .payfor{
+        ul{ width:px2rem(680); margin: 0 auto; padding-top: px2rem(20);
+          li{float: left; background: #fff; margin-right: px2rem(20);flex-wrap: wrap; width: px2rem(330); margin-bottom: px2rem(20); padding: px2rem(20) 0; height: px2rem(300); border-radius: px2rem(10);
+            i{font-size: px2rem(150); color: #9e9e9e; }
+            b{ color: #000; font-size: px2rem(30);}
+            span{font-size: px2rem(20);}
+          }
+          li:nth-of-type(2n){
+            margin-right:0;
+          }
+          li.on{background: #ffcd20; color: #fff;
+            i{color:#fff;}
+            b{color:#fff;}
+          }
+        }
+      }
     }
 
   }
@@ -163,13 +222,18 @@
     }
   }
 
-  .fapiao-bt{ padding-top: px2rem(100);
-    .text{display: flex; display: box; flex-direction: row; font-size: px2rem(22); color: #000000; font-weight: bold; line-height: px2rem(50); border-bottom: #cdcdcd 1px solid;
-      b{display:block; flex: 1; text-align: left;}
-      span{display:block; flex: 1; text-align: right;}
-    }
 
-    p{color: #888888; font-size: px2rem(16);line-height: px2rem(40); text-align: left;}
-  }
 
 }
+
+.fapiao-bt{ padding: px2rem(50) px2rem(20) px2rem(10);
+  .text{display: flex; display: box; flex-direction: row; font-size: px2rem(22); color: #000000; font-weight: bold; line-height: px2rem(50); border-bottom: #cdcdcd 1px solid;
+    b{display:block; flex: 1; text-align: left;font-weight: bold;}
+    span{display:block; flex: 1; text-align: right; font-size: px2rem(50);
+      i{font-size: px2rem(18); vertical-align: baseline;}
+    }
+  }
+
+  p{color: #888888; font-size: px2rem(16);line-height: px2rem(40); text-align: left;}
+}
+

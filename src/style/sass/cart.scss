@@ -52,15 +52,16 @@
   .total-count{line-height: px2rem(40); margin-bottom: px2rem(20); color: #000; text-align: left; display: flex;; display: box;
     span{flex: 1; padding: 0 px2rem(20); font-size: px2rem(30);}
     .count-price{font-size: px2rem(50);
-      i{font-size: px2rem(26); font-style: normal;}
+      b{font-size: px2rem(18);}
+      i{font-size: px2rem(16); font-style: normal; vertical-align: baseline;}
     }
   }
-  .btns{ padding: 0 0 0 px2rem(10);
+  .btns{
     li{margin-right: px2rem(10);}
   }
 }
 
-.cartBottom{height: px2rem(150);}
+.cartBottom{height: px2rem(250);}
 
 /*弹窗*/
 .cart-line{ border-top: 1px solid #eaeaea;}

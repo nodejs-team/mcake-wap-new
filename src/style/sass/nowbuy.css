@@ -1,233 +1,400 @@
-.nowbuy ul.orderList {
-  background: #fff; }
-  .nowbuy ul.orderList li {
-    padding: 0.27778rem 0 0;
-    overflow: hidden;
-    width: 9.72222rem; }
-    .nowbuy ul.orderList li .pro-box {
-      margin: 0.27778rem 0.13889rem; }
-      .nowbuy ul.orderList li .pro-box .pro-img {
-        width: 2.72222rem;
-        flex: 1; }
-        .nowbuy ul.orderList li .pro-box .pro-img img {
-          border-radius: 0.09722rem; }
-      .nowbuy ul.orderList li .pro-box .content {
+@charset "UTF-8";
+.nowbuy {
+  /*鍗″埜*/ }
+  .nowbuy ul.orderList {
+    background: #fff; }
+    .nowbuy ul.orderList li {
+      padding: 0.27778rem 0 0;
+      overflow: hidden;
+      width: 9.72222rem; }
+      .nowbuy ul.orderList li .pro-box {
+        margin: 0.27778rem 0.13889rem; }
+        .nowbuy ul.orderList li .pro-box .pro-img {
+          width: 2.72222rem;
+          flex: 1; }
+          .nowbuy ul.orderList li .pro-box .pro-img img {
+            border-radius: 0.09722rem; }
+        .nowbuy ul.orderList li .pro-box .content {
+          position: relative;
+          flex: 1;
+          text-align: left;
+          padding: 0 0.13889rem 0 0.27778rem;
+          font-size: 0.22222rem;
+          color: #a2a2a2;
+          text-align: left; }
+          .nowbuy ul.orderList li .pro-box .content h2 {
+            display: inline-block;
+            font-size: 0.33333rem;
+            color: #3d3d3d;
+            margin-bottom: 0.04167rem; }
+          .nowbuy ul.orderList li .pro-box .content dl dd {
+            display: flex;
+            display: box; }
+            .nowbuy ul.orderList li .pro-box .content dl dd em {
+              display: block;
+              flex: 3; }
+            .nowbuy ul.orderList li .pro-box .content dl dd i {
+              display: block;
+              flex: 1;
+              text-align: right; }
+            .nowbuy ul.orderList li .pro-box .content dl dd span {
+              display: block;
+              flex: 3;
+              text-align: right; }
+          .nowbuy ul.orderList li .pro-box .content dl dd.line {
+            border-bottom: #e9e9e9 1px solid;
+            margin: 0.13889rem auto; }
+  .nowbuy dl.peijian {
+    background: #fff;
+    margin-top: 0.27778rem;
+    padding-bottom: 0.27778rem; }
+    .nowbuy dl.peijian dt {
+      display: flex;
+      display: box;
+      flex-direction: row;
+      padding: 0.13889rem 0.27778rem; }
+      .nowbuy dl.peijian dt i.pj-icon {
+        position: absolute;
+        left: -0.13889rem;
+        font-size: 0.41667rem;
+        color: #888888; }
+      .nowbuy dl.peijian dt h2 {
+        flex: 1;
+        display: block;
         position: relative;
-        flex: 1;
-        text-align: left;
-        padding: 0 0.13889rem 0 0.27778rem;
-        font-size: 0.22222rem;
-        color: #a2a2a2;
-        text-align: left; }
-        .nowbuy ul.orderList li .pro-box .content h2 {
-          display: inline-block;
-          font-size: 0.33333rem;
-          color: #3d3d3d;
-          margin-bottom: 0.04167rem; }
-        .nowbuy ul.orderList li .pro-box .content dl dd {
-          display: flex;
-          display: box; }
-          .nowbuy ul.orderList li .pro-box .content dl dd em {
-            display: block;
-            flex: 3; }
-          .nowbuy ul.orderList li .pro-box .content dl dd i {
-            display: block;
-            flex: 1;
-            text-align: right; }
-          .nowbuy ul.orderList li .pro-box .content dl dd span {
-            display: block;
-            flex: 3;
-            text-align: right; }
-        .nowbuy ul.orderList li .pro-box .content dl dd.line {
-          border-bottom: #e9e9e9 1px solid;
-          margin: 0.13889rem auto; }
-.nowbuy dl.peijian {
-  background: #fff;
-  margin-top: 0.27778rem;
-  padding-bottom: 0.27778rem; }
-  .nowbuy dl.peijian dt {
-    display: flex;
-    display: box;
-    flex-direction: row;
-    padding: 0.13889rem 0.27778rem; }
-    .nowbuy dl.peijian dt i.pj-icon {
-      position: absolute;
-      left: -0.13889rem;
-      font-size: 0.41667rem;
-      color: #888888; }
-    .nowbuy dl.peijian dt h2 {
-      flex: 1;
-      display: block;
-      position: relative;
-      line-height: 0.69444rem;
-      color: #000; }
-    .nowbuy dl.peijian dt span {
-      flex: 3;
-      display: block;
-      line-height: 0.69444rem;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis; }
-    .nowbuy dl.peijian dt i.acrows {
-      color: #ffcd20;
-      font-size: 0.69444rem; }
-  .nowbuy dl.peijian dd {
-    overflow: hidden;
-    display: flex;
-    display: box;
-    flex-direction: row;
-    margin-bottom: 0.27778rem;
-    padding-left: 0.13889rem; }
-    .nowbuy dl.peijian dd .in-line {
-      flex: 1;
-      background: #f9f9f9;
-      display: flex;
-      display: box;
-      margin-right: 0.13889rem;
-      line-height: 1.25rem;
-      border-radius: 0.13889rem;
-      overflow: hidden; }
-      .nowbuy dl.peijian dd .in-line .icon {
-        color: #fff; }
-      .nowbuy dl.peijian dd .in-line span {
-        display: block;
-        float: left;
-        flex: 1;
-        background: #ffcd20; }
-      .nowbuy dl.peijian dd .in-line p {
-        flex: 5;
-        color: #000;
-        font-size: 0.36111rem; }
-        .nowbuy dl.peijian dd .in-line p i {
-          font-size: 0.16667rem;
-          line-height: 0.34722rem;
-          display: block; }
-      .nowbuy dl.peijian dd .in-line p.ewai {
-        line-height: 0.83333rem; }
-  .nowbuy dl.peijian .birthday-card {
-    line-height: 0.97222rem;
-    width: 97%;
-    margin: 0 auto;
-    border-radius: 0.13889rem;
-    display: flex;
-    display: box; }
-    .nowbuy dl.peijian .birthday-card i {
-      font-size: 0.55556rem; }
-    .nowbuy dl.peijian .birthday-card input {
-      flex: 2; }
-.nowbuy .order-line {
-  background: #fff;
-  width: 9.72222rem;
-  margin: 0.27778rem auto 0;
-  border-radius: 0.13889rem; }
-  .nowbuy .order-line .content {
-    position: relative;
-    text-align: left;
-    padding: 0.27778rem;
-    font-size: 0.22222rem;
-    color: #a2a2a2;
-    text-align: left; }
-    .nowbuy .order-line .content dl h2 {
-      font-size: 0.36111rem;
-      line-height: 0.69444rem;
-      color: #000;
-      font-weight: bold; }
-      .nowbuy .order-line .content dl h2 i {
-        float: right;
-        display: block;
-        width: 0.55556rem;
-        height: 0.55556rem;
-        line-height: 0.55556rem;
-        text-align: center;
-        border-radius: 50%;
-        background: #c0c0c0;
-        color: #fff;
-        font-size: 0.27778rem; }
-    .nowbuy .order-line .content dl dd {
-      position: relative;
-      display: flex;
-      display: box;
-      line-height: 0.55556rem;
-      font-size: 0.27778rem; }
-      .nowbuy .order-line .content dl dd em {
-        display: block;
-        flex: 2; }
-      .nowbuy .order-line .content dl dd span {
-        display: block;
+        line-height: 0.69444rem;
+        color: #000; }
+      .nowbuy dl.peijian dt span {
         flex: 3;
-        text-align: right; }
-    .nowbuy .order-line .content dl dd.longRight em {
-      flex: 1; }
-    .nowbuy .order-line .content dl dd.longRight span {
-      flex: 5; }
-    .nowbuy .order-line .content dl .i-edit {
-      display: block;
-      position: absolute;
-      width: 0.97222rem;
-      height: 0.97222rem;
-      line-height: 0.97222rem;
-      background: #e6e6e6;
-      font-size: 0.69444rem;
-      top: 50%;
-      margin-top: -0.48611rem;
-      right: 0.41667rem;
-      text-align: center;
-      border-radius: 50%; }
-.nowbuy .pjSelect .content {
-  display: flex;
-  display: box;
-  flex-direction: row; }
-  .nowbuy .pjSelect .content .pj {
-    flex: 1;
-    margin-right: 0.27778rem;
-    text-align: center; }
-    .nowbuy .pjSelect .content .pj p {
-      line-height: 0.69444rem;
-      font-size: 0.27778rem; }
-  .nowbuy .pjSelect .content .pj:last-child {
-    margin-right: 0; }
-.nowbuy dl.xianjin {
-  background: #fff;
-  margin-top: 0.27778rem;
-  padding-bottom: 0.27778rem; }
-  .nowbuy dl.xianjin dt {
-    display: flex;
-    display: box;
-    flex-direction: row;
-    padding: 0.13889rem 0.27778rem; }
-    .nowbuy dl.xianjin dt i.pj-icon {
-      position: absolute;
-      left: -0.13889rem;
-      font-size: 0.41667rem;
-      color: #888888; }
-    .nowbuy dl.xianjin dt h2 {
-      flex: 1;
-      display: block;
-      position: relative;
-      line-height: 0.69444rem;
-      color: #000; }
-    .nowbuy dl.xianjin dt span {
-      flex: 3;
-      display: block;
-      line-height: 0.69444rem;
+        display: block;
+        line-height: 0.69444rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+      .nowbuy dl.peijian dt i.acrows {
+        color: #ffcd20;
+        font-size: 0.69444rem; }
+    .nowbuy dl.peijian dd {
       overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis; }
-    .nowbuy dl.xianjin dt i.acrows {
-      color: #ffcd20;
-      font-size: 0.69444rem; }
-  .nowbuy dl.xianjin dd {
-    overflow: hidden;
-    margin-bottom: 0.27778rem;
-    padding-left: 0.13889rem; }
-    .nowbuy dl.xianjin dd .card {
       display: flex;
       display: box;
-      flex-direction: row; }
-      .nowbuy dl.xianjin dd .card .card-item {
-        width: 4.84722rem;
-        float: left;
-        margin-right: 0.13889rem; }
+      flex-direction: row;
+      margin-bottom: 0.27778rem;
+      padding-left: 0.13889rem; }
+      .nowbuy dl.peijian dd .in-line {
+        flex: 1;
+        background: #f9f9f9;
+        display: flex;
+        display: box;
+        margin-right: 0.13889rem;
+        line-height: 1.25rem;
+        border-radius: 0.13889rem;
+        overflow: hidden; }
+        .nowbuy dl.peijian dd .in-line .icon {
+          color: #fff; }
+        .nowbuy dl.peijian dd .in-line span {
+          display: block;
+          float: left;
+          flex: 1;
+          background: #ffcd20; }
+        .nowbuy dl.peijian dd .in-line p {
+          flex: 5;
+          color: #000;
+          font-size: 0.36111rem; }
+          .nowbuy dl.peijian dd .in-line p i {
+            font-size: 0.16667rem;
+            line-height: 0.34722rem;
+            display: block; }
+        .nowbuy dl.peijian dd .in-line p.ewai {
+          line-height: 0.83333rem; }
+    .nowbuy dl.peijian .birthday-card {
+      line-height: 0.97222rem;
+      width: 97%;
+      margin: 0 auto;
+      border-radius: 0.13889rem;
+      display: flex;
+      display: box; }
+      .nowbuy dl.peijian .birthday-card i {
+        font-size: 0.55556rem; }
+      .nowbuy dl.peijian .birthday-card input {
+        flex: 2; }
+  .nowbuy .order-line {
+    background: #fff;
+    width: 9.72222rem;
+    margin: 0.27778rem auto 0;
+    border-radius: 0.13889rem; }
+    .nowbuy .order-line .content {
+      position: relative;
+      text-align: left;
+      padding: 0.27778rem;
+      font-size: 0.22222rem;
+      color: #a2a2a2;
+      text-align: left; }
+      .nowbuy .order-line .content dl h2 {
+        font-size: 0.36111rem;
+        line-height: 0.69444rem;
+        color: #000;
+        font-weight: bold; }
+        .nowbuy .order-line .content dl h2 i {
+          float: right;
+          display: block;
+          width: 0.55556rem;
+          height: 0.55556rem;
+          line-height: 0.55556rem;
+          text-align: center;
+          border-radius: 50%;
+          background: #c0c0c0;
+          color: #fff;
+          font-size: 0.27778rem; }
+      .nowbuy .order-line .content dl dd {
+        position: relative;
+        display: flex;
+        display: box;
+        line-height: 0.55556rem;
+        font-size: 0.27778rem; }
+        .nowbuy .order-line .content dl dd em {
+          display: block;
+          flex: 2; }
+        .nowbuy .order-line .content dl dd span {
+          display: block;
+          flex: 3;
+          text-align: right; }
+      .nowbuy .order-line .content dl dd.longRight em {
+        flex: 1; }
+      .nowbuy .order-line .content dl dd.longRight span {
+        flex: 5; }
+      .nowbuy .order-line .content dl .i-edit {
+        display: block;
+        position: absolute;
+        width: 0.97222rem;
+        height: 0.97222rem;
+        line-height: 0.97222rem;
+        background: #e6e6e6;
+        font-size: 0.69444rem;
+        top: 50%;
+        margin-top: -0.48611rem;
+        right: 0.41667rem;
+        text-align: center;
+        border-radius: 50%; }
+  .nowbuy .pjSelect .content {
+    display: flex;
+    display: box;
+    flex-direction: row; }
+    .nowbuy .pjSelect .content .pj {
+      flex: 1;
+      margin-right: 0.27778rem;
+      text-align: center; }
+      .nowbuy .pjSelect .content .pj p {
+        line-height: 0.69444rem;
+        font-size: 0.27778rem; }
+    .nowbuy .pjSelect .content .pj:last-child {
+      margin-right: 0; }
+  .nowbuy dl.ka-quan {
+    background: #fff;
+    padding-top: 0.27778rem;
+    padding-bottom: 0.27778rem;
+    border-bottom: #e9e9e9 1px solid; }
+    .nowbuy dl.ka-quan dt {
+      display: flex;
+      display: box;
+      flex-direction: row;
+      padding: 0.13889rem 0.27778rem; }
+      .nowbuy dl.ka-quan dt i.pj-icon {
+        position: absolute;
+        left: -0.13889rem;
+        font-size: 0.41667rem;
+        color: #888888; }
+      .nowbuy dl.ka-quan dt h2 {
+        flex: 1;
+        display: block;
+        position: relative;
+        line-height: 0.69444rem;
+        color: #000;
+        text-align: left;
+        padding-left: 0.41667rem; }
+      .nowbuy dl.ka-quan dt span {
+        flex: 3;
+        display: block;
+        line-height: 0.69444rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: right;
+        padding-right: 0.27778rem; }
+      .nowbuy dl.ka-quan dt i.acrows {
+        color: #ffcd20;
+        font-size: 0.69444rem; }
+    .nowbuy dl.ka-quan dd {
+      overflow: hidden;
+      margin-bottom: 0.27778rem;
+      padding-left: 0.13889rem;
+      display: none; }
+      .nowbuy dl.ka-quan dd .card {
+        display: flex;
+        display: box;
+        flex-direction: row; }
+        .nowbuy dl.ka-quan dd .card .card-item {
+          width: 4.54167rem;
+          height: 2.27778rem;
+          float: left;
+          margin-right: 0.48611rem;
+          background: url("../images/hongbao.png") center;
+          background-size: 100%;
+          font-size: 1.94444rem;
+          line-height: 1.94444rem;
+          color: #fff; }
+        .nowbuy dl.ka-quan dd .card .card-item:last-child {
+          margin-right: 0; }
+        .nowbuy dl.ka-quan dd .card .card-item.cash {
+          display: flex;
+          width: 9.86111rem;
+          height: 4.44444rem;
+          background: url("../images/card-bg.png") center;
+          background-size: 100%;
+          float: left;
+          margin-right: 0.13889rem;
+          color: #fff;
+          text-align: left; }
+          .nowbuy dl.ka-quan dd .card .card-item.cash .card-left {
+            flex: 1; }
+            .nowbuy dl.ka-quan dd .card .card-item.cash .card-left .card-con-top {
+              padding: 0.55556rem;
+              font-size: 0.41667rem;
+              line-height: 0.55556rem; }
+            .nowbuy dl.ka-quan dd .card .card-item.cash .card-left .card-con-bottom {
+              padding: 0.13889rem 0.55556rem;
+              font-size: 0.33333rem;
+              line-height: 0.55556rem; }
+              .nowbuy dl.ka-quan dd .card .card-item.cash .card-left .card-con-bottom h3 {
+                font-size: 0.27778rem;
+                line-height: 0.97222rem; }
+          .nowbuy dl.ka-quan dd .card .card-item.cash .card-right {
+            width: 3.88889rem;
+            float: right; }
+            .nowbuy dl.ka-quan dd .card .card-item.cash .card-right .card-con-top {
+              padding: 0.20833rem 0.55556rem;
+              font-size: 0.41667rem;
+              line-height: 0.55556rem; }
+              .nowbuy dl.ka-quan dd .card .card-item.cash .card-right .card-con-top span {
+                font-size: 0.27778rem;
+                color: #52ff9b; }
+            .nowbuy dl.ka-quan dd .card .card-item.cash .card-right .card-con-bottom {
+              padding: 0.13889rem 0.55556rem;
+              line-height: 0.55556rem; }
+              .nowbuy dl.ka-quan dd .card .card-item.cash .card-right .card-con-bottom h3 {
+                font-size: 0.27778rem;
+                line-height: 1.11111rem; }
+              .nowbuy dl.ka-quan dd .card .card-item.cash .card-right .card-con-bottom span {
+                font-size: 1.38889rem; }
+        .nowbuy dl.ka-quan dd .card .card-item.quan {
+          display: flex;
+          width: 9.86111rem;
+          height: 2.41667rem;
+          background: url("../images/quan.png") center;
+          background-size: 100%;
+          float: left;
+          margin-right: 0.13889rem;
+          color: #fff;
+          text-align: left; }
+          .nowbuy dl.ka-quan dd .card .card-item.quan .card-left {
+            float: left;
+            width: 3.25rem;
+            font-size: 2.08333rem;
+            text-align: center;
+            line-height: 2.41667rem; }
+          .nowbuy dl.ka-quan dd .card .card-item.quan .card-content {
+            flex: 1; }
+            .nowbuy dl.ka-quan dd .card .card-item.quan .card-content .card-con-top {
+              padding: 0.27778rem 0.13889rem 0 0.55556rem;
+              font-size: 0.41667rem;
+              line-height: 0.55556rem; }
+            .nowbuy dl.ka-quan dd .card .card-item.quan .card-content .card-con-bottom {
+              padding: 0 0.13889rem 0.13889rem 0.55556rem;
+              font-size: 0.33333rem;
+              line-height: 0.55556rem; }
+              .nowbuy dl.ka-quan dd .card .card-item.quan .card-content .card-con-bottom h3 {
+                font-size: 0.27778rem;
+                line-height: 0.55556rem; }
+              .nowbuy dl.ka-quan dd .card .card-item.quan .card-content .card-con-bottom span {
+                padding: 0.06944rem 0.27778rem;
+                margin-top: 0.13889rem;
+                line-height: 0.41667rem;
+                background: #ac2b1a;
+                border-radius: 0.27778rem; }
+          .nowbuy dl.ka-quan dd .card .card-item.quan .card-right {
+            width: 2.08333rem;
+            float: right;
+            text-align: right; }
+            .nowbuy dl.ka-quan dd .card .card-item.quan .card-right .card-con-top {
+              padding: 0.27778rem 0.27778rem;
+              font-size: 0.30556rem;
+              line-height: 0.55556rem; }
+            .nowbuy dl.ka-quan dd .card .card-item.quan .card-right .card-con-bottom {
+              padding: 0.27778rem 0.27778rem;
+              line-height: 0.55556rem; }
+              .nowbuy dl.ka-quan dd .card .card-item.quan .card-right .card-con-bottom span {
+                font-size: 0.27778rem; }
+      .nowbuy dl.ka-quan dd .quan-add {
+        display: flex;
+        padding: 0.27778rem 0.13889rem; }
+        .nowbuy dl.ka-quan dd .quan-add input {
+          flex: 1;
+          padding: 0 0.13889rem;
+          background: #f9f9f9; }
+        .nowbuy dl.ka-quan dd .quan-add .add {
+          width: 3.88889rem;
+          float: right;
+          line-height: 1.25rem;
+          background: #ffcd20;
+          display: block;
+          border-radius: 0.13889rem;
+          color: #000; }
+      .nowbuy dl.ka-quan dd .text {
+        text-align: left;
+        padding-left: 0.27778rem; }
+      .nowbuy dl.ka-quan dd .piao-line {
+        display: flex;
+        padding: 0.27778rem 0.55556rem;
+        line-height: 0.55556rem;
+        background: #f9f9f9;
+        margin-bottom: 0.13889rem; }
+        .nowbuy dl.ka-quan dd .piao-line select {
+          flex: 1; }
+        .nowbuy dl.ka-quan dd .piao-line .piao-text {
+          width: 100%;
+          border: none;
+          background: #f9f9f9; }
+      .nowbuy dl.ka-quan dd .payfor ul {
+        width: 9.44444rem;
+        margin: 0 auto;
+        padding-top: 0.27778rem; }
+        .nowbuy dl.ka-quan dd .payfor ul li {
+          float: left;
+          background: #fff;
+          margin-right: 0.27778rem;
+          flex-wrap: wrap;
+          width: 4.58333rem;
+          margin-bottom: 0.27778rem;
+          padding: 0.27778rem 0;
+          height: 4.16667rem;
+          border-radius: 0.13889rem; }
+          .nowbuy dl.ka-quan dd .payfor ul li i {
+            font-size: 2.08333rem;
+            color: #9e9e9e; }
+          .nowbuy dl.ka-quan dd .payfor ul li b {
+            color: #000;
+            font-size: 0.41667rem; }
+          .nowbuy dl.ka-quan dd .payfor ul li span {
+            font-size: 0.27778rem; }
+        .nowbuy dl.ka-quan dd .payfor ul li:nth-of-type(2n) {
+          margin-right: 0; }
+        .nowbuy dl.ka-quan dd .payfor ul li.on {
+          background: #ffcd20;
+          color: #fff; }
+          .nowbuy dl.ka-quan dd .payfor ul li.on i {
+            color: #fff; }
+          .nowbuy dl.ka-quan dd .payfor ul li.on b {
+            color: #fff; }
 
 .textLeft {
   text-align: left; }
@@ -365,9 +532,10 @@
         padding-right: 0.27778rem; }
     .edit-fapiao .list_box ul .pwd {
       padding-left: 0.27778rem; }
-.edit-fapiao .fapiao-bt {
-  padding-top: 1.38889rem; }
-  .edit-fapiao .fapiao-bt .text {
+
+.fapiao-bt {
+  padding: 0.69444rem 0.27778rem 0.13889rem; }
+  .fapiao-bt .text {
     display: flex;
     display: box;
     flex-direction: row;
@@ -376,15 +544,20 @@
     font-weight: bold;
     line-height: 0.69444rem;
     border-bottom: #cdcdcd 1px solid; }
-    .edit-fapiao .fapiao-bt .text b {
+    .fapiao-bt .text b {
       display: block;
       flex: 1;
-      text-align: left; }
-    .edit-fapiao .fapiao-bt .text span {
+      text-align: left;
+      font-weight: bold; }
+    .fapiao-bt .text span {
       display: block;
       flex: 1;
-      text-align: right; }
-  .edit-fapiao .fapiao-bt p {
+      text-align: right;
+      font-size: 0.69444rem; }
+      .fapiao-bt .text span i {
+        font-size: 0.25rem;
+        vertical-align: baseline; }
+  .fapiao-bt p {
     color: #888888;
     font-size: 0.22222rem;
     line-height: 0.55556rem;

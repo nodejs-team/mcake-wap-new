@@ -359,7 +359,6 @@
           var self = $(this);
           $(this).find(".quan-head li").click(function () {
             var idx = $(this).index();
-            console.log(idx);
             $(this).addClass("on").siblings().removeClass("on");
             self.find(".quan-content .items").eq(idx).fadeIn(200).siblings().fadeOut(10);
           });
@@ -378,12 +377,12 @@
             slidesPerView : 1,
             on:{
               slideChangeTransitionStart: function() {
-                // hongbaoPage1.slideTo(hongbao1.activeIndex);
+                 /*hongbaoPage1.slideTo(hongbao1.activeIndex);*/
               }
             }
           });
           var card2 = new Swiper('.card2', {
-            autoplay: true,//可选选项，自动滑动
+            autoplay: true,
             slidesPerView : 1
           });
 

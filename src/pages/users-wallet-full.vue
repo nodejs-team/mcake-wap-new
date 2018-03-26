@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: 'users',
+  name: 'full',
   props: [],
   components: {
   },

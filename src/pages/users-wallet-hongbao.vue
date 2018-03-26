@@ -264,7 +264,7 @@
 import Swiper from '../../static/js/swiper.min.js'
 
 export default {
-  name: 'quan',
+  name: 'hongbao',
   props: [],
   components: {
   },

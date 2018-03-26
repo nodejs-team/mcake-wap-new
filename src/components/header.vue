@@ -3,9 +3,7 @@
     <ul class="nav">
 
       <router-link :to="{ name: 'city'}" tag="li" class="search icon iconsfont icons-map">上海</router-link>
-
       <li class="center"><router-link :to="{ name: 'home'}" tag="div" class="logo"><img src="../style/images/icon-logo.png" alt=""></router-link></li>
-
       <li class="search" @click="goFirst" v-if="isSearch" ><span>取消</span></li>
 
       <router-link :to="{ name: 'search'}" tag="li" class="search icon iconsfont icons-search1" @click.native="isSearch = !isSearch" v-else></router-link><em></em>
@@ -20,7 +18,9 @@
             <i class="icon iconsfont">&#xe61a;</i><div class="title">活动</div>
           </mt-tab-item>
           <mt-tab-item id="订单">
+            <router-link :to="{ name: 'usersIndex'}" tag="span">
             <i class="icon iconsfont">&#xe625;</i><div class="title">个人中心</div>
+            </router-link>
           </mt-tab-item>
           <mt-tab-item id="发现">
             <i class="icon iconsfont">&#xe64c;</i><div class="title">关于我们</div>

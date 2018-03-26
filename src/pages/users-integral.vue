@@ -70,7 +70,7 @@
 
 <script>
 export default {
-  name: 'users',
+  name: 'integral',
   props: [],
   components: {
   },

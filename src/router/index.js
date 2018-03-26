@@ -10,7 +10,6 @@ import search from '@/pages/search'
 import login from '@/pages/login'
 import register from '@/pages/register'
 import getPwd from '@/pages/getPwd'
-import orders from '@/pages/orders'
 import fastMail from '@/pages/fast-mail'
 import order from '@/pages/order'
 import nowbuy from '@/pages/nowbuy'
@@ -18,13 +17,14 @@ import address from '@/pages/address'
 import pay from '@/pages/pay'
 import users from '@/pages/users'
 import usersIndex from '@/pages/users-index'
+import usersOrders from '@/pages/users-orders'
 import usersIntegral from '@/pages/users-integral'
 import integralHow from '@/pages/users-integral-how'
 import integralUse from '@/pages/users-integral-use'
 import integralMessage from '@/pages/users-integral-message'
 import usersWallet from '@/pages/users-wallet'
 import walletFull from '@/pages/users-wallet-full'
-import walletCharge from '@/pages/users-wallet-charge'
+import walletPay from '@/pages/users-wallet-pay'
 import walletHongbao from '@/pages/users-wallet-hongbao'
 import walletCash from '@/pages/users-wallet-cash'
 import userLevel from '@/pages/users-level'
@@ -36,9 +36,8 @@ import $ from 'jquery'
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  /*mode: 'history',*/
   routes: [
-
     {
       path: '/',
       redirect: '/home'
@@ -117,7 +116,7 @@ export default new Router({
         {
           path: '/users/orders',
           name: 'orders',
-          component: orders
+          component: usersOrders
         },
         {
           path: '/users/fastMail',
@@ -126,52 +125,52 @@ export default new Router({
         },
         {
           path: '/users/integral',
-          name: 'usersIntegral',
+          name: 'integral',
           component: usersIntegral
         },
         {
           path: '/users/how',
-          name: 'integralHow',
+          name: 'how',
           component: integralHow
         },
         {
           path: '/users/use',
-          name: 'integralUse',
+          name: 'use',
           component: integralUse
         },
         {
           path: '/users/message',
-          name: 'integralMessage',
+          name: 'message',
           component: integralMessage
         },
         {
           path: '/users/wallet',
-          name: 'usersWallet',
+          name: 'wallet',
           component: usersWallet
         },
         {
           path: '/users/full',
-          name: 'walletFull',
+          name: 'full',
           component: walletFull
         },
         {
-          path: '/users/charge',
-          name: 'walletCharge',
-          component: walletCharge
+          path: '/users/pay',
+          name: 'pay',
+          component: walletPay
         },
         {
           path: '/users/hongbao',
-          name: 'walletHongbao',
+          name: 'hongbao',
           component: walletHongbao
         },
         {
           path: '/users/cash',
-          name: 'walletCash',
+          name: 'cash',
           component: walletCash
         },
         {
           path: '/users/level',
-          name: 'userLevel',
+          name: 'level',
           component: userLevel
         }
 

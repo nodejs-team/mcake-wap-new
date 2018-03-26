@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'users',
+  name: 'wallet',
   props: [],
   components: {
   },

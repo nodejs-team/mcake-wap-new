@@ -22,7 +22,7 @@
 
 <script>
   export default {
-    name: 'users',
+    name: 'use',
     props: [],
     components: {
     },

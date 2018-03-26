@@ -23,16 +23,15 @@
       <li @click="isNavShow = !isNavShow"><span>精选</span></li><em></em>
       <li @click="isNavShow = false"><router-link :to="{ name: 'list'}" tag="span">蛋糕</router-link></li><em></em>
       <li @click="isNavShow = false"><router-link :to="{ name: 'list'}" tag="span">小食</router-link></li><em></em>
-      <li @click="isNavShow = false"><router-link :to="{ name: 'cart'}" tag="span">购物车<i class="icon-badge"><b>0</b></i></router-link></li>
-      <li @click="isNavShow = false"><router-link :to="{ name: 'usersIndex'}" tag="span">我<i class="icon-badge"><b>0</b></i></router-link></li>
-      <li @click="isNavShow = false"><router-link :to="{ name: 'demo'}" tag="span">demo</router-link></li>
+      <li @click="isNavShow = false"><router-link :to="{ name: 'cart'}" tag="span">购物车<i class="icon-badge"><b>50</b></i></router-link></li>
+
+     <!-- <li @click="isNavShow = false">
+        <router-link :to="{ name: 'usersIndex'}" tag="span">我<i class="icon-badge"><b>332</b></i></router-link>
+     </li> -->
+      <!--<li @click="isNavShow = false"><router-link :to="{ name: 'demo'}" tag="span">demo</router-link></li>-->
 
     </ul>
 
-    <!-- <router-link :to="{ name: 'home'}" tag="li"><span>首页</span></router-link>
-    <router-link :to="{ name: 'list'}" tag="li"><span>蛋糕</span></router-link>
-    <router-link :to="{ name: 'list'}" tag="li"><span>小食</span></router-link>
-    <router-link :to="{ name: 'list'}" tag="li"><span>购物车</span></router-link> -->
   </div>
 </div>
 

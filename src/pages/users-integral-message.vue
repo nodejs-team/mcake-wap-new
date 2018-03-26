@@ -24,7 +24,7 @@
 
 <script>
   export default {
-    name: 'users',
+    name: 'message',
     props: [],
     components: {
     },
