@@ -5,7 +5,7 @@
   "author": "shimilygood <1356300819@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "start sass-watch.bat && node build/dev-server.js",
+    "dev": "node build/dev-server.js",
     "start": "npm run dev",
     "build": "call sass-compile.bat && node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
@@ -16,6 +16,7 @@
   "dependencies": {
     "fastclick": "^1.0.6",
     "jquery": "^3.2.1",
+    "lib-flexible": "^0.3.2",
     "mint-ui": "^2.2.10",
     "vue": "^2.5.2",
     "vue-resource": "^1.4.0",

@@ -12,7 +12,7 @@ import config from './lib/config/config.js'
 
 import API from './lib/api/API.js'
 import login from './lib/controllers/login.js'
-
+import flexible from 'lib-flexible'
 
 
 Vue.use(MintUI);
