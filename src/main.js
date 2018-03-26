@@ -9,6 +9,7 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import '../static/icons/iconfont.css'
 import config from './lib/config/config.js'
+
 import API from './lib/api/API.js'
 import login from './lib/controllers/login.js'
 
