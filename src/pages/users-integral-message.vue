@@ -2,7 +2,7 @@
   <div class="users integral message">
     <div class="integral-message">
       <ul>
-        <div class="message-header"><span><i class="icon iconsfont icons-nav-ms"></i>未读消息</span></div>
+        <div class="message-header"><span><i class="icon iconsfont icons-nav-ms"></i><span>未读消息</span></span></div>
         <li>
           <div class="head-image" style="background: url('../static/images/img-1.jpg') center center; background-size: 100%;"></div>
           <div class="content">
@@ -49,4 +49,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   @import '../style/css/user.css';
+  .icons-nav-ms:before{
+    vertical-align: middle;
+  }
 </style>

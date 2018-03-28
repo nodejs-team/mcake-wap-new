@@ -37,19 +37,19 @@ export default {
   },
   methods: {
     init:function () {
-      var that = this;
-      that.$http({  //调用接口
-        method:'GET',
-        url:this.baseUrl+'/goods'  //this指data
-      }).then(function(response){  //接口返回数据
-        this.data=response.data;
-        this.goodsList=this.data.data.goodsList;
-        console.log(this.goodsList);
-      },function(error){  //失败
-        console.log(error);
-      });
+      // var that = this;
+      // that.$http({  //调用接口
+      //   method:'GET',
+      //   url:this.baseUrl+'/goods'  //this指data
+      // }).then(function(response){  //接口返回数据
+      //   this.data=response.data;
+      //   this.goodsList=this.data.data.goodsList;
+      //   console.log(this.goodsList);
+      // },function(error){  //失败
+      //   console.log(error);
+      // });
 
-      console.log(this.API.news);
+      // console.log(this.API.news);
 
     },
     greet: function (event) {

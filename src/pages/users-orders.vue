@@ -3,13 +3,13 @@
       <div class="orders" v-show="!isPing">
          <div class="order-top">
            <ul>
-             <li>全部</li>
-             <li class="on">已完成</li>
-             <li>待付款 <i class="icon iconsfont icons-yuanjiao1">1</i></li>
-             <li>待收货</li>
+             <li :class='{on:orderStatus==1}' @click='orderStatus=1'>全部</li>
+             <li :class='{on:orderStatus==2}' @click='orderStatus=2'>已完成</li>
+             <li :class='{on:orderStatus==3}' @click='orderStatus=3'>待付款 <span>1</span></li>
+             <li :class='{on:orderStatus==4}' @click='orderStatus=4'>待收货 <span>16</span></li>
            </ul>
          </div>
-         <div class="order-box">
+         <div class="order-box" v-show='orderStatus==1'>
           <div class="pro-list">
             <ul>
               <li class="flex-w">
@@ -20,19 +20,19 @@
                     <p>cookies au beurre <br>
                       云顶小花曲奇（抹茶味）1111</p>
                     <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i>下单时间：2017-07-14 18:14:46</p>
+                      <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
                     </div>
                   </div>
                   <div class="edit">
-                    <p><i class="icon iconsfont icons-lajixiang"></i>删除</p>
+                    <p><i class="icon iconsfont icons-lajixiang"></i><span>删除</span></p>
                     <p class="price"><em>￥</em>299</p>
                   </div>
                 </div>
                 <div class="pro-btns">
                   <ul>
-                    <li><i class="icon iconsfont icons-test"></i>订单详情</li><em></em>
-                    <li @click="goComment"><i class="icon iconsfont icons-pop"></i>去评价</li><em></em>
-                    <li class="share"><i class="icon iconsfont icons-money1"></i>分享优惠券</li>
+                    <li><i class="icon iconsfont icons-test"></i><span>订单详情</span></li><em></em>
+                    <li @click="goComment"><i class="icon iconsfont icons-pop"></i><span>去评价</span></li><em></em>
+                    <li class="share"><i class="icon iconsfont icons-money1"></i><span>分享优惠券</span></li>
                   </ul>
                 </div>
               </li>
@@ -44,7 +44,7 @@
                     <p>cookies au beurre <br>
                       云顶小花曲奇（抹茶味）</p>
                     <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i>下单时间：2017-07-14 18:14:46</p>
+                      <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
                     </div>
                   </div>
                   <div class="edit">
@@ -54,8 +54,8 @@
                 </div>
                 <div class="pro-btns2">
                   <dl>
-                    <dd class="cancel"><span><i class="icon iconsfont icons-test"></i>订单详情</span></dd>
-                    <dd><span><i class="icon iconsfont icons-pop"></i>去支付</span></dd>
+                    <dd class="cancel"><span><i class="icon iconsfont icons-test"></i><span>订单详情</span></span></dd>
+                    <dd><span><i class="icon iconsfont icons-pop"></i><span>去支付</span></span></dd>
                   </dl>
                 </div>
               </li>
@@ -63,7 +63,7 @@
             </ul>
           </div>
         </div>
-         <div class="order-box" style="display: block;">
+         <div class="order-box" v-show='orderStatus==2'>
            <div class="pro-list">
              <ul>
                <li class="flex-w">
@@ -74,19 +74,19 @@
                        <p>cookies au beurre <br>
                          云顶小花曲奇（抹茶味）</p>
                        <div class="o-time">
-                         <p><i class="icon iconsfont icons-clock"></i>下单时间：2017-07-14 18:14:46</p>
+                         <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
                        </div>
                      </div>
                      <div class="edit">
-                       <p><i class="icon iconsfont icons-lajixiang"></i>删除</p>
+                       <p><i class="icon iconsfont icons-lajixiang"></i><span>删除</span></p>
                        <p class="price"><em>￥</em>299</p>
                      </div>
                  </div>
                   <div class="pro-btns">
                     <ul>
-                      <li><i class="icon iconsfont icons-test"></i>订单详情</li><em></em>
-                      <li><i class="icon iconsfont icons-pop"></i>去评价</li><em></em>
-                      <li class="share"><i class="icon iconsfont icons-money1"></i>分享优惠券</li>
+                      <li><i class="icon iconsfont icons-test"></i><span>订单详情</span></li><em></em>
+                      <li><i class="icon iconsfont icons-pop"></i><span>去评价</span></li><em></em>
+                      <li class="share"><i class="icon iconsfont icons-money1"></i><span>分享优惠券</span></li>
                     </ul>
                   </div>
                </li>
@@ -102,15 +102,15 @@
                      </div>
                    </div>
                    <div class="edit">
-                     <p><i class="icon iconsfont icons-lajixiang"></i>删除</p>
+                     <p><i class="icon iconsfont icons-lajixiang"></i><span>删除</span></p>
                      <p class="price"><em>￥</em>299</p>
                    </div>
                  </div>
                  <div class="pro-btns">
                    <ul>
-                     <li><i class="icon iconsfont icons-test"></i>订单详情</li><em></em>
-                     <li><i class="icon iconsfont icons-pop"></i>去评价</li><em></em>
-                     <li class="share"><i class="icon iconsfont icons-money1"></i>分享优惠券</li>
+                     <li><i class="icon iconsfont icons-test"></i><span>订单详情</span></li><em></em>
+                     <li><i class="icon iconsfont icons-pop"></i><span>去评价</span></li><em></em>
+                     <li class="share"><i class="icon iconsfont icons-money1"></i><span>分享优惠券</span></li>
                    </ul>
                  </div>
                </li>
@@ -118,7 +118,7 @@
              </ul>
            </div>
          </div>
-         <div class="order-box">
+         <div class="order-box" v-show='orderStatus==3'>
           <div class="pro-list">
             <ul>
               <li class="flex-w">
@@ -129,7 +129,7 @@
                     <p>cookies au beurre <br>
                       云顶小花曲奇（抹茶味）</p>
                     <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i>下单时间：2017-07-14 18:14:46</p>
+                      <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
                     </div>
                   </div>
                   <div class="edit">
@@ -139,8 +139,8 @@
                 </div>
                 <div class="pro-btns2">
                   <dl>
-                    <dd class="cancel"><span><i class="icon iconsfont icons-test"></i>订单详情</span></dd>
-                    <dd><span><i class="icon iconsfont icons-pop"></i>去支付</span></dd>
+                    <dd class="cancel"><span><i class="icon iconsfont icons-test"></i><span>订单详情</span></span></dd>
+                    <dd><span><i class="icon iconsfont icons-pop"></i><span>去支付</span></span></dd>
                   </dl>
                 </div>
               </li>
@@ -152,7 +152,7 @@
                     <p>cookies au beurre <br>
                       云顶小花曲奇（抹茶味）</p>
                     <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i>下单时间：2017-07-14 18:14:46</p>
+                      <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
                     </div>
                   </div>
                   <div class="edit">
@@ -162,15 +162,15 @@
                 </div>
                 <div class="pro-btns2">
                   <dl>
-                    <dd class="cancel"><span><i class="icon iconsfont icons-test"></i>订单详情</span></dd>
-                    <dd><span><i class="icon iconsfont icons-pop"></i>去支付</span></dd>
+                    <dd class="cancel"><span><i class="icon iconsfont icons-test"></i><span>订单详情</span></span></dd>
+                    <dd><span><i class="icon iconsfont icons-pop"></i><span>去支付</span></span></dd>
                   </dl>
                 </div>
               </li>
             </ul>
           </div>
         </div>
-         <div class="order-box">
+         <div class="order-box" v-show='orderStatus==4'>
           <div class="pro-list">
             <ul>
               <li class="flex-w">
@@ -182,7 +182,7 @@
                       云顶小花曲奇（抹茶味）</p>
                     <div class="luyin"><i class="icon iconsfont icons-luyin1"></i><span>录音传情</span></div>
                     <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i>下单时间：2017-07-14 18:14:46</p>
+                      <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
                     </div>
                   </div>
                   <div class="edit">
@@ -191,8 +191,8 @@
                 </div>
                 <div class="pro-btns">
                   <ul>
-                    <li class="cancel"><span><i class="icon iconsfont icons-test"></i>订单详情</span></li><em></em>
-                    <li><span><i class="icon iconsfont icons-pop"></i>查看配送信息</span></li>
+                    <li class="cancel"><span><i class="icon iconsfont icons-test"></i><span>订单详情</span></span></li><em></em>
+                    <li><span><i class="icon iconsfont icons-pop"></i><span>查看配送信息</span></span></li>
                   </ul>
                 </div>
               </li>
@@ -205,7 +205,7 @@
                       云顶小花曲奇（抹茶味）</p>
                     <div class="luyin"><i class="icon iconsfont icons-luyin1"></i><span>录音传情</span></div>
                     <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i>下单时间：2017-07-14 18:14:46</p>
+                      <p><i class="icon iconsfont icons-clock"></i><span><span>下单时间：2017-07-14 18:14:46</span></span></p>
                     </div>
                   </div>
                   <div class="edit">
@@ -214,8 +214,8 @@
                 </div>
                 <div class="pro-btns">
                   <ul>
-                    <li class="cancel"><span><i class="icon iconsfont icons-test"></i>订单详情</span></li><em></em>
-                    <li><span><i class="icon iconsfont icons-pop"></i>查看配送信息</span></li>
+                    <li class="cancel"><span><i class="icon iconsfont icons-test"></i><span>订单详情</span></span></li><em></em>
+                    <li><span><i class="icon iconsfont icons-pop"></i><span>查看配送信息</span></span></li>
                   </ul>
                 </div>
               </li>
@@ -384,11 +384,18 @@ export default {
       msg: '我的订单',
       isPing:false,
       isEdit:false,
-      isShowDialog:false
+      isShowDialog:false,
+      orderStatus:1
     }
   },
   mounted(){
-    this.tabSlide();
+    //this.tabSlide();
+    this.orderStatus=this.$route.query.orderStatus
+  },
+  watch:{
+    '$route':function(){
+      this.orderStatus=this.$route.query.orderStatus
+    }
   },
   methods:{
     tabSlide: function (event) {
@@ -423,4 +430,41 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   @import '../style/css/orders.css';
+
+  .pro-list .pro-box .edit i{
+    background-color: transparent;
+  }
+  .pro-list .pro-btns ul li i{
+    color: #888888;
+    vertical-align: middle;
+  }
+  .pro-list .pro-btns ul li i+span,.pro-list .pro-btns2 dl dd i+span{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .orders .order-top{
+    background-color: #ebebeb;
+    padding: 0 0.2rem;
+  }
+  .orders .order-top li{
+    position: relative;
+    background-color: #ebebeb;
+  }
+  .orders .order-top li span{
+    position: absolute;
+    top: .16rem;
+    right: .12rem;
+    display: inline-block;
+    width: .4rem;
+    height: .4rem;
+    background-color: #ffcd20;
+    border-radius: 50%;
+    line-height: .42rem;
+    text-align: center;
+    font-size: .24rem;
+    color: #000;
+  }
+  .orders .order-box{
+    display: block;
+  }
 </style>

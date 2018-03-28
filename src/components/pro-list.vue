@@ -35,7 +35,7 @@
 
     <my-footer></my-footer>
 
-    <my-dialog :is-show="isShowDialog" @on-close="closeDialog">
+    <my-dialog :is-show="isShowDialog" @on-close="closeDialog" class='home_addcart'>
 
       <div class="cart-dialog">
          <div class="cart-content">
@@ -65,16 +65,26 @@
            <div class="cart-line">
              <div class="items">
                <h3>数量选择</h3>
-               <div class="nums">
+              <!--  <div class="nums">
                  <i class="icon iconsfont icons-minus"></i>
                  <span>1</span>
                  <i class="icon iconsfont icons-add"></i>
+               </div> -->
+               <div class="nums">
+                 <van-stepper
+                 @plus='plus'
+  v-model="value"
+  :min="5"
+  :max="40"
+  :step="2"
+  :default-value="9"
+/>
                </div>
              </div>
            </div>
           <div class="btns2">
             <ul>
-              <li class="cancel btn-cancel"><span>取消</span></li>
+              <li class="cancel btn-cancel" @click='closeDialog'><span>取消</span></li>
               <li class="btn-ok"><span>确认</span></li>
             </ul>
           </div>
@@ -102,13 +112,18 @@ export default {
       isblur:false,
       showChildMsg:'ddddd',
       isShowDialog:false,
-      prolist:[]
+      prolist:[],
+      data:'',
+      value:9
     }
   },
   mounted(){
     this.init();
   },
   methods:{
+    plus(){
+      
+    },
     loadMore(){
       this.loading = true;
       setTimeout(() => {
@@ -127,13 +142,16 @@ export default {
       this.isblur = this.isShowDialog = false;
     },
     init:function () {
-      this.$http({
+      console.log(11111)
+      var self = this
+      self.$http({
         method:'GET',
         url:this.API.goods
       }).then(function(response){  //接口返回数据
-        this.data=response.data;
-        this.prolist=this.data.data.goodsList;
-        console.log(this.prolist);
+        //this.data=response.data;
+        // this.prolist=this.data.goodsList;
+        console.log(response.data.goodsList);
+        self.prolist = response.data.goodsList
       },function(error){  //失败
         console.log(error);
       });
@@ -145,5 +163,5 @@ export default {
 </script>
 
 <style scoped>
- 
+
 </style>

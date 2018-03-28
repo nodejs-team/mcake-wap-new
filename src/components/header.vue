@@ -2,27 +2,28 @@
   <div class="navTab">
     <ul class="nav">
 
-      <router-link :to="{ name: 'city'}" tag="li" class="search icon iconsfont icons-map">上海</router-link>
+      <li class="search icon iconsfont icons-map" @click='city_select=!city_select'><span>{{cityname}}</span></li-link>
       <li class="center"><router-link :to="{ name: 'home'}" tag="div" class="logo"><img src="../style/images/icon-logo.png" alt=""></router-link></li>
-      <li class="search" @click="goFirst" v-if="isSearch" ><span>取消</span></li>
 
-      <router-link :to="{ name: 'search'}" tag="li" class="search icon iconsfont icons-search1" @click.native="isSearch = !isSearch" v-else></router-link><em></em>
+      <li class="search cancel_search" @click="isSearch = !isSearch" v-if="isSearch" ><span>取消</span></li>
 
+      <!-- <router-link :to="{ name: 'search'}" tag="li" class="search icon iconsfont icons-search1" @click.native="isSearch = !isSearch" v-else></router-link><em></em> -->
+      <li class="search icon iconsfont icons-search1" @click="isSearch = !isSearch" v-else></li><em></em>
       <li class="more icon iconsfont icons-menu" @click="subNavShow = !subNavShow"></li>
     </ul>
     <!--子导航-->
     <transition name="slide-down" :duration="{ enter: 500, leave: 200 }">
       <div class="subNav" v-if="subNavShow">
         <mt-tabbar v-model="selected">
-          <mt-tab-item id="外卖">
+          <mt-tab-item id="活动" @click='subNavShow=false'>
             <i class="icon iconsfont">&#xe61a;</i><div class="title">活动</div>
           </mt-tab-item>
-          <mt-tab-item id="订单">
+          <mt-tab-item id="个人中心" @click='subNavShow=false'>
             <router-link :to="{ name: 'usersIndex'}" tag="span">
             <i class="icon iconsfont">&#xe625;</i><div class="title">个人中心</div>
             </router-link>
           </mt-tab-item>
-          <mt-tab-item id="发现">
+          <mt-tab-item id="关于我们" @click='subNavShow=false'>
             <i class="icon iconsfont">&#xe64c;</i><div class="title">关于我们</div>
           </mt-tab-item>
         </mt-tabbar>
@@ -35,20 +36,55 @@
 </template>
 
 <script>
+
 export default {
   name: 'header',
+
   data () {
     return {
       msg: '头部导航',
       selected: true,
       subNavShow: false,
-      isSearch: false
+      isSearch: false,
+      city_select:false,
+      minHeight:''
     }
   },
+  props:['citySelect','cityname','showsearchs'],
+  watch:{
+    'selected':function(){
+      this.subNavShow=false
+    },
+    'city_select':function(){
+      this.uptoparent()
+    },
+    'citySelect':function(){
+      this.city_select=this.citySelect
+      // console.log(this.citySelect)
+    },
+    'showsearchs':function(){
+      // alert(11)
+      this.isSearch=this.showsearchs
+    },
+    'isSearch':function(){
+      this.searchEvent()
+    }
+  },
+  mounted(){
+    this.minHeight = window.document.body.offsetHeight+'px';
+    //alert(this.minHeight)
+  },
   methods:{
+    searchEvent(){
+      this.$emit('searchEvent',this.isSearch)
+    },
     goFirst:function () {
       this.isSearch = !this.isSearch;
       this.$router.push({ name: 'home'});
+    },
+    uptoparent(){
+      let self = this
+      this.$emit('showwrap',self.city_select)
     }
   }
 }
@@ -62,5 +98,36 @@ export default {
   .slide-down-enter, .slide-down-leave-active {
     transform: translate3d(0, -1%, 0); opacity: 0;
   }
-
+  .nav .icons-map{
+    font-size: .4rem;
+    flex: 3;
+  }
+  .nav .icons-map span{
+    color: #8d8d8d;
+    display: inline-block;
+    margin-left: .1rem;
+  }
+ 
+  .nav .icons-search1{
+    font-size: .5rem;
+    flex: 1.5;
+  }
+  .vue-header .navTab .cancel_search{
+    flex: 1.5;
+  }
+  .nav .icons-menu{
+    font-size: .6rem;
+    flex: 1.5;
+  }
+  .selectCity{
+    position: absolute;
+    width: 100%;
+    /*height: 200000px;*/
+    z-index: 9999;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav .icon.iconsfont{
+    color:#c6c6c6;
+  }
 </style>

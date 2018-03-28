@@ -129,12 +129,12 @@ export default new Router({
           component: usersIntegral
         },
         {
-          path: '/users/how',
+          path: '/users/integral/how',
           name: 'how',
           component: integralHow
         },
         {
-          path: '/users/use',
+          path: '/users/integral/use',
           name: 'use',
           component: integralUse
         },
@@ -149,7 +149,7 @@ export default new Router({
           component: usersWallet
         },
         {
-          path: '/users/full',
+          path: '/users/wallet/full',
           name: 'full',
           component: walletFull
         },

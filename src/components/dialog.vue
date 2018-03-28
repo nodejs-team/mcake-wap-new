@@ -74,17 +74,18 @@ export default {
   background: #fff;
   top: 20%;
   left: 50%;
-  margin-left: -45%;
+  transform: translateX(-50%);
   z-index: 999;
   box-shadow: 0 10px 40px #888888;
   padding:0;
   line-height: 1.6;
   border-radius: 5px;
 }
+
 .dialog-close {
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: 20px;
+  top: 12px;
   width: 20px;
   height: 20px;
   text-align: center;
@@ -93,7 +94,7 @@ export default {
 .dialog-close:hover {
   color: #59575b;
 }
-
-
-
+.icons-guanbi{
+  font-size: .3rem;
+}
 </style>

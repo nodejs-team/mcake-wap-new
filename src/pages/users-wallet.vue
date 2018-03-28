@@ -4,11 +4,13 @@
 
         <div class="now-money">
           <h3>当前余额（元）</h3>
-          <i>￥</i><span>210.00</span>
+          <i class="money_icon">￥</i><span>210.00</span>
         </div>
         <div class="btns">
           <ul >
-            <li><span>充值</span></li>
+            <router-link to="/users/wallet/full" tag="li">
+            <span>充值</span>
+            </router-link>
           </ul>
         </div>
     </div>
@@ -52,4 +54,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   @import '../style/css/user.css';
+  .money_icon{
+    position: relative;
+    top: .3rem;
+    font-weight: bold;
+  }
 </style>

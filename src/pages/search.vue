@@ -37,5 +37,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .search{
+    position: fixed;
+    width:100%;
+    height: 100%;
+    background-color: #f5f5f5;
+    z-index: 999;
+    top: 1.6rem;
+  }
+  .search .content{
+    background-color: #fff;
+    padding: .6rem 0;
+  }
+  .search .input_style{
+    text-align: center;
+  }
 </style>
