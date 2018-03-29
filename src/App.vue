@@ -189,7 +189,7 @@ export default {
   .cart-list .mint-cell-value{
     width: 100%;
     line-height: .36rem;
-    padding-right: .4rem;
+    padding-right: .2rem;
   }
   .cart-list{
     padding: .2rem;

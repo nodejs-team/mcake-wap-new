@@ -25,10 +25,10 @@
         </ul>
       </div>
       <div class="yuedu">
-        <p>密码必须是6-30位字符，可使用字母、数字。</p>
-        <p><span><i class="icon iconsfont icons-yuan2"></i>同意《Mcake购物协议》</span></p>
+        <p class="pwd_waring">密码必须是6-30位字符，可使用字母、数字。</p>
+        <p class="mcake_agree"><span><span :class="{icon_agree:true,ischecked:ischecked}" @click='ischecked=!ischecked'></span><span>同意《Mcake购物协议》</span></span></p>
       </div>
-      <div class="tips"><span class="textRight">立即注册</span> <i>|</i> <span class="textLeft">立即登录</span></div>
+      <div class="tips"><span class="textRight">立即注册</span> <i>|</i> <router-link to="/login" tag="span" class='textLeft'>立即登陆</router-link></div>
       <div class="btns fixed">
         <ul >
           <li><span>立即注册</span></li>
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-//import '../style/css/login.css'
+import '../style/css/login.css'
 export default {
   name: 'login',
   props: [],
@@ -49,7 +49,8 @@ export default {
   data () {
     return {
       msg: '登录',
-      isSearch: false
+      isSearch: false,
+      ischecked:false
     }
   },
   methods:{
@@ -60,5 +61,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  @import '../style/css/login.css'
+  /*@import '../style/css/login.css'*/
+  
 </style>

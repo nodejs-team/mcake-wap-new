@@ -189,10 +189,14 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    background-image: url(/static/images/checked.png);
+    background-size: .3rem;
+    background-position: center;
+    background-color: #b7b7b7;
+    border-radius: 0.01rem;
   }
   .checkbox_wrap.ischecked{
-    background-image: url(/static/images/checked.png);
-    background-size: contain;
-    background-position: center;
+    
+    background-color: #ffcd20;
   }
 </style>

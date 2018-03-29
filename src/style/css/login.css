@@ -62,5 +62,60 @@
       vertical-align: middle; }
     .login .yuedu span .icon.on {
       color: #888888; }
-
+.login .content{
+    padding: .2rem;
+  }
+  .btns.fixed{
+    background-color: transparent;
+  }
+  .login .login_box ul li .icon.iconsfont.icons-mima{
+    font-size: .6rem;
+    margin-left: .15rem;
+  }
+  .icon.iconsfont.icons-shoujihao{
+    margin-left: .1rem;
+  }
+  .login .login_box ul li.pwd{
+    background-color: transparent;
+    padding-left: 0;
+  }
+  .login .login_box ul li .input_short{
+    width: 5.6rem;
+    border-radius: 0 0.13889rem 0.13889rem 0;
+    padding-left: .46rem;
+  }
+  .login .login_box ul li input{
+    background-color: #fff;
+  }
+  .pwd_waring{
+    font-size: .26rem;
+    padding: .3rem 0 .6rem;
+  }
+  .mcake_agree{
+    margin-bottom: .6rem;
+  }
+  .login .yuedu{
+    line-height: 100%;
+  }
+  .icon_agree{
+    width: .4rem;
+    height: .4rem;
+    background-color: #e7e7e7;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: .2rem;
+    position: relative;
+  }
+  .icon_agree.ischecked:after{
+    content: '';
+    display: inline-block;
+    width: .2rem;
+    height: .2rem;
+    background-color: #ffcd20;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+  }
 /*# sourceMappingURL=login.css.map */

@@ -25,7 +25,7 @@
         </ul>
       </div>
 
-      <div class="tips"><span class="textRight">立即注册</span> <i>|</i> <span class="textLeft">立即登录</span></div>
+      <div class="tips"><span class="textRight">立即注册</span> <i>|</i> <router-link to="/login" tag="span" class='textLeft'>立即登陆</router-link></div>
       <div class="btns fixed">
         <ul >
           <li><span>立即注册</span></li>
