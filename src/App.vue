@@ -219,4 +219,7 @@ export default {
     content: "\E645";
     margin-right: .1rem;
   }
+  .slideDown{
+    transform: rotate(180deg);
+  }
 </style>

@@ -17,6 +17,9 @@ import axios from './axios'
 import VueAxios from 'vue-axios'
 import Vant from 'vant';
 import 'vant/lib/vant-css/index.css';
+import 'vue2-animate/dist/vue2-animate.min.css';
+// require('animate.css/animate.min.css');
+// require('vue2-animate/dist/vue2-animate.min.css')
 // import { CellSwipe } from 'mint-ui';
 
 // Vue.component(CellSwipe.name, CellSwipe);

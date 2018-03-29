@@ -35,7 +35,7 @@
 
     <my-footer></my-footer>
 
-    <my-dialog :is-show="isShowDialog" @on-close="closeDialog" class='home_addcart'>
+    <my-dialog :is-show="isShowDialog" @on-close="closeDialog" class='home_addcart' v-show='isShowDialog'>
 
       <div class="cart-dialog">
          <div class="cart-content">
@@ -44,6 +44,7 @@
              <div class="content">
                <p>cookies au beurre </p>
                <p><h2>云顶小花曲奇</h2>（抹茶味）</p>
+               <h2>单价：¥298.00</h2>
                <div class="fittings">
                  <h2>配件</h2>
                  <p>蜡烛：1</p>

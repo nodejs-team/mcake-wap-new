@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="dialog-wrap">
-      <div class="dialog-cover"  v-if="isShow" @click="closeMyself"></div>
+      <div class="dialog-cover"   @click="closeMyself"></div>
       <transition name="fade">
-        <div class="dialog-content"  v-if="isShow">
+        <div class="dialog-content" >
           <p class="dialog-close" @click="closeMyself"> <i class="icon iconsfont icons-guanbi"></i></p>
           <slot>empty</slot>
         </div>

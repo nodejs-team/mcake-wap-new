@@ -14,6 +14,8 @@ import fastMail from '@/pages/fast-mail'
 import order from '@/pages/order'
 import nowbuy from '@/pages/nowbuy'
 import address from '@/pages/address'
+import newAddress from '@/pages/new-address'
+import ziti from '@/pages/ziti'
 import pay from '@/pages/pay'
 import users from '@/pages/users'
 import usersIndex from '@/pages/users-index'
@@ -180,6 +182,16 @@ export default new Router({
       path: '/address',
       name: 'address',
       component: address
+    },
+    {
+      path: '/address/new',
+      name: 'newAddress',
+      component: newAddress
+    },
+    {
+      path: '/address/ziti',
+      name: 'ziti',
+      component: ziti
     }
 
 

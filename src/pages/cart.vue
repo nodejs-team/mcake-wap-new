@@ -72,7 +72,9 @@
           <span class="count-price textRight"><i>￥</i>{{total | toDecimal2}}</span></div>
         <ul>
           <li class="kankan"><span>再逛逛</span></li>
-          <li class="btn-count"><span>结算</span></li>
+          <router-link tag='li' class='btn-count' to='/nowBuy'>
+            <span>结算</span>
+          </router-link>
         </ul>
       </div>
     </div>
