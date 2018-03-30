@@ -2,7 +2,7 @@
   <div class="pro-list">
     <div class="products"  :class="{'blur':isblur}">
       <ul class="clearfix" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="2">
-        <li class="pro-li" v-for="item in prolist">
+        <li class="pro-li" v-for="item in prolist" v-if='prolist.length>0'>
           <div class="pro-liimg">
             <router-link :to="{ name: 'detail'}">
               <img v-lazy='item.goodsImageUrl' v-if='item.goodsImageUrl'>
@@ -116,7 +116,8 @@ export default {
       isShowDialog:false,
       prolist:[],
       data:'',
-      value:9
+      value:9,
+      isload:false
     }
   },
   mounted(){
@@ -127,15 +128,19 @@ export default {
       
     },
     loadMore(){
+      if(!this.isload){
+        return false
+      }
       this.loading = true;
-      setTimeout(() => {
-        let last = this.prolist.length - 1;
-        for (let i = 1; i <= 2; i++) {
-          this.prolist.push(this.prolist[0]);
-          //console.log(this.prolist);
-        }
-        this.loading = false;
-      }, 500);
+      // setTimeout(() => {
+      //   let last = this.prolist.length - 1;
+      //   for (let i = 1; i <= 2; i++) {
+      //     this.prolist.push(this.prolist[0]);
+      //     //console.log(this.prolist);
+      //   }
+      //   this.loading = false;
+      // }, 500);
+      this.init()
     },
     cartDialog(){
       this.isblur = this.isShowDialog = true;
@@ -144,7 +149,7 @@ export default {
       this.isblur = this.isShowDialog = false;
     },
     init:function () {
-      console.log(11111)
+      // console.log(11111)
       var self = this
       self.$http({
         method:'GET',
@@ -152,8 +157,14 @@ export default {
       }).then(function(response){  //接口返回数据
         //this.data=response.data;
         // this.prolist=this.data.goodsList;
+        self.loading = false;
         console.log(response.data.goodsList);
-        self.prolist = response.data.goodsList
+        let prolist = response.data.goodsList
+        for(let i=0;i<prolist.length;i++){
+          self.prolist.push(prolist[i])
+        }
+        self.isload=true
+
       },function(error){  //失败
         console.log(error);
       });
