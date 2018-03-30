@@ -98,7 +98,8 @@ export default {
     return {
       msg: '结算页',
       showPj:false,
-
+      isEditFapiao:false,
+      isEdit:false
     }
   },
   mounted(){

@@ -4,132 +4,12 @@
         <ul>
           <li>
             <div class="order-num"><span>订单编号: 10700234230</span>   <span class="textRight">交易完成</span></div>
-            <div class="ping-box">
-                  <div class="ping-top flex-h">
-                    <div class="pro-img">
-                      <img src="../style/images/car-img.jpg" alt="" >
-                      <p>Napoléon vanille <br> 经典香草拿破仑</p>
-                      <div class="bangshu">2磅</div>
-                    </div>
-                    <div class="content">
-                        <div class="textbox">
-                          <textarea rows="3" cols="20" class="ping-text" v-show="isEdit"></textarea>
-                        </div>
-                        <p>
-                          <span class="on">好吃</span>
-                          <span>口感细腻</span>
-                          <span>配送快</span>
-                          <span>服务好</span>
-                        </p>
-                        <div class="edit" v-show="!isEdit">
-                          <i class="icon iconsfont icons-gaixie" @click="edit"></i>
-                        </div>
-                    </div>
-                  </div>
-            </div>
-            <div class="ping-box">
-              <div class="ping-top flex-h">
-                <div class="pro-img">
-                  <img src="../style/images/car-img.jpg" alt="" >
-                  <p>Napoléon vanille <br> 经典香草拿破仑</p>
-                  <div class="bangshu">2磅</div>
-                </div>
-                <div class="content">
-                  <div class="textbox">
-                    <textarea rows="3" cols="20" class="ping-text" v-show="isEdit"></textarea>
-                  </div>
-
-                  <p>
-                    <span>好吃</span>
-                    <span>口感细腻</span>
-                    <span>配送快</span>
-                    <span>服务好</span>
-                  </p>
-                  <div class="edit" v-show="!isEdit">
-                    <i class="icon iconsfont icons-gaixie" @click="edit"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="ping-box">
-              <div class="ping-top flex-h">
-                <div class="pro-img">
-                  <img src="../style/images/car-img.jpg" alt="" >
-                  <p>Napoléon vanille <br> 经典香草拿破仑</p>
-                  <div class="bangshu">2磅</div>
-                </div>
-                <div class="content">
-                  <div class="textbox">
-                    <textarea rows="3" cols="20" class="ping-text" v-show="isEdit"></textarea>
-                  </div>
-
-                  <p>
-                    <span>好吃</span>
-                    <span>口感细腻</span>
-                    <span>配送快</span>
-                    <span>服务好</span>
-                  </p>
-                  <div class="edit" v-show="!isEdit">
-                    <i class="icon iconsfont icons-gaixie" @click="edit"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="ping-box">
-              <div class="ping-top flex-h">
-                <div class="pro-img">
-                  <img src="../style/images/car-img.jpg" alt="" >
-                  <p>Napoléon vanille <br> 经典香草拿破仑</p>
-                  <div class="bangshu">2磅</div>
-                </div>
-                <div class="content">
-                  <div class="textbox">
-                    <textarea rows="3" cols="20" class="ping-text" v-show="isEdit"></textarea>
-                  </div>
-
-                  <p>
-                    <span>好吃</span>
-                    <span>口感细腻</span>
-                    <span>配送快</span>
-                    <span>服务好</span>
-                  </p>
-                  <div class="edit" v-show="!isEdit">
-                    <i class="icon iconsfont icons-gaixie" @click="edit"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="order-num"><span>订单编号: 10700234230</span>   <span class="textRight">交易完成</span></div>
-            <div class="ping-box">
-              <div class="ping-top flex-h">
-                <div class="pro-img">
-                  <img src="../style/images/car-img.jpg" alt="" >
-                  <p>Napoléon vanille <br> 经典香草拿破仑</p>
-                  <div class="bangshu">2磅</div>
-                </div>
-                <div class="content">
-                  <div class="textbox">
-                    <textarea rows="3" cols="20" class="ping-text" v-show="isEdit"></textarea>
-                  </div>
-
-                  <p>
-                    <span>好吃</span>
-                    <span>口感细腻</span>
-                    <span>配送快</span>
-                    <span>服务好</span>
-                  </p>
-                  <div class="edit" v-show="!isEdit">
-                    <i class="icon iconsfont icons-gaixie" @click="edit"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <item></item>
+            <item></item>
           </li>
         </ul>
       </div>
-    <div class="btns fixed">
+    <div class="btns fixed" v-show='!isShowDialog'>
       <ul >
         <li @click="comment"><span>提交评价</span></li>
 
@@ -149,11 +29,13 @@
 
 <script>
   import dialogTips from '../components/dialog-tips'
+  import item from '../components/evaluation-item'
 export default {
   name: 'orders',
   props: [],
   components: {
-    myDialog: dialogTips
+    myDialog: dialogTips,
+    item
   },
   data () {
     return {
@@ -180,9 +62,11 @@ export default {
     },
     comment: function (event) {
      this.isShowDialog = true;
+
      var self = this;
      setTimeout(function () {
        self.isShowDialog = false;
+       self.$router.go(-1)
      },2000);
     }
   }
@@ -231,5 +115,15 @@ export default {
   }
   .orders .order-box{
     display: block;
+  }
+  .pinglun{
+    padding-bottom: 1rem;
+  }
+  .pinglun ul li .ping-box .content .textbox{
+    height: 3rem;
+    margin-bottom: .1rem;
+  }
+  .btns.fixed{
+    z-index: 99999;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="home-banner">
-      <img src="static/images/home-banner.png" alt="">
+      <img src="static/images/home-banner.png" alt="" >
     </div>
     <div class="home-prolist">
       <pro-list></pro-list>
@@ -15,9 +15,6 @@
 import $ from 'jquery'
 import footer from '../components/footer'
 import proList from '../components/pro-list'
-import Vue from 'vue'
-import { Toast, MessageBox, Popup } from 'mint-ui'
-Vue.component(Popup.name, Popup)
 export default {
   name: 'home',
   components: {
@@ -34,6 +31,11 @@ export default {
   },
   mounted(){
     this.init();
+    // //this.alert()
+    // let self = this
+    // self.MessageBox.confirm('确定执行此操作?').then(action => {
+    //     self.Toast('确定')
+    // });
   },
   methods: {
     init:function () {
@@ -54,7 +56,7 @@ export default {
     },
     greet: function (event) {
       Toast({
-        message: '提示',
+        message: '提示信息',
         position: 'middle',
         duration: 1000
       });

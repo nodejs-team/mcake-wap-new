@@ -2,29 +2,31 @@
   <div class="navTab">
     <ul class="nav">
 
-      <li class="search icon iconsfont icons-map" @click='city_select=!city_select'><span>{{cityname}}</span></li-link>
+      <li class="search icon iconsfont icons-map" @click='city_select=!city_select;subNavShow=false'><span>{{cityname}}</span></li-link>
       <li class="center"><router-link :to="{ name: 'home'}" tag="div" class="logo"><img src="../style/images/icon-logo.png" alt=""></router-link></li>
 
       <li class="search cancel_search" @click="isSearch = !isSearch" v-if="isSearch" ><span>取消</span></li>
 
       <!-- <router-link :to="{ name: 'search'}" tag="li" class="search icon iconsfont icons-search1" @click.native="isSearch = !isSearch" v-else></router-link><em></em> -->
-      <li class="search icon iconsfont icons-search1" @click="isSearch = !isSearch" v-else></li><em></em>
+      <li class="search icon iconsfont icons-search1" @click="isSearch = !isSearch;subNavShow=false" v-else></li><em></em>
       <li class="more icon iconsfont icons-menu" @click="subNavShow = !subNavShow"></li>
     </ul>
     <!--子导航-->
     <transition name="slide-down" :duration="{ enter: 500, leave: 200 }">
       <div class="subNav" v-if="subNavShow">
         <mt-tabbar v-model="selected">
-          <mt-tab-item id="活动" @click='subNavShow=false'>
-            <i class="icon iconsfont">&#xe61a;</i><div class="title">活动</div>
+          <mt-tab-item id="活动">
+            <i class="icon iconsfont"  @click='subNavShow=false'>&#xe61a;</i><div class="title">活动</div>
           </mt-tab-item>
-          <mt-tab-item id="个人中心" @click='subNavShow=false'>
+          <mt-tab-item id="个人中心">
             <router-link :to="{ name: 'usersIndex'}" tag="span">
-            <i class="icon iconsfont">&#xe625;</i><div class="title">个人中心</div>
+              <div @click='subNavShow=false'>
+                <i class="icon iconsfont">&#xe625;</i><div class="title">个人中心</div>
+              </div>
             </router-link>
           </mt-tab-item>
-          <mt-tab-item id="关于我们" @click='subNavShow=false'>
-            <i class="icon iconsfont">&#xe64c;</i><div class="title">关于我们</div>
+          <mt-tab-item id="关于我们" >
+            <i class="icon iconsfont" @click='subNavShow=false'>&#xe64c;</i><div class="title">关于我们</div>
           </mt-tab-item>
         </mt-tabbar>
 
@@ -38,7 +40,7 @@
 <script>
 
 export default {
-  name: 'header',
+  name: 'top',
 
   data () {
     return {

@@ -20,6 +20,7 @@ import pay from '@/pages/pay'
 import users from '@/pages/users'
 import usersIndex from '@/pages/users-index'
 import usersOrders from '@/pages/users-orders'
+import evaluation from '@/pages/evaluation'
 import usersIntegral from '@/pages/users-integral'
 import integralHow from '@/pages/users-integral-how'
 import integralUse from '@/pages/users-integral-use'
@@ -174,8 +175,12 @@ export default new Router({
           path: '/users/level',
           name: 'level',
           component: userLevel
+        },
+        {
+          path: '/users/evaluation',
+          name: 'evaluation',
+          component: evaluation
         }
-
       ]
     },
     {

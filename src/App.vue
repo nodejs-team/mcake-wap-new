@@ -222,4 +222,49 @@ export default {
   .slideDown{
     transform: rotate(180deg);
   }
+
+  /*重新编写提示信息样式*/
+  .mint-toast-text{
+    font-size: .4rem;
+  }
+  .mint-msgbox-header{
+    padding:.4rem .2rem 0;
+
+    
+  }
+  .mint-msgbox-header .mint-msgbox-title{
+    font-size: .4rem;
+    text-align: left;
+  }
+  .mint-msgbox-message{
+    font-size: .4rem;
+    line-height: 180%;
+    padding-bottom: .2rem;
+  }
+  .mint-msgbox-btns{
+    height: 1rem;
+
+  }
+  .mint-msgbox-btn{
+    font-size: .4rem;
+    line-height: 
+  }
+/*左边筛选*/
+    .navBar .mintui-navIcon{
+      font-size: .7rem;
+    }
+    .navBar .mintui-navIcon.icons-nav-kafa{
+      font-size: .5rem;
+      margin-left: .6rem;
+      margin-right: .1rem;
+    }
+    .navBar .mint-cell-title{
+      line-height: .8rem;
+    }
+    .navBar .mint-cell-text{
+      margin-left: .2rem;
+      color: #000;
+      font-size: .32rem;
+      font-weight: bold;
+    }
 </style>

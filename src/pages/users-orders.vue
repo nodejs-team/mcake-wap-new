@@ -1,6 +1,6 @@
 <template>
   <div class="container-wrap">
-      <div class="orders" v-show="!isPing">
+      <div class="orders">
          <div class="order-top">
            <ul>
              <li :class='{on:orderStatus==1}' @click='orderStatus=1'>全部</li>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="pro-btns">
                   <ul>
-                    <li><i class="icon iconsfont icons-test"></i><span>订单详情</span></li><em></em>
+                    <li @click='orderDetail'><i class="icon iconsfont icons-test"></i><span>订单详情</span></li><em></em>
                     <li @click="goComment"><i class="icon iconsfont icons-pop"></i><span>去评价</span></li><em></em>
                     <li class="share"><i class="icon iconsfont icons-money1"></i><span>分享优惠券</span></li>
                   </ul>
@@ -224,7 +224,7 @@
 
         </div>
       </div>
-      <div class="pinglun" v-show="isPing">
+     <!--  <div class="pinglun" v-show="isPing">
         <ul>
           <li>
             <div class="order-num"><span>订单编号: 10700234230</span>   <span class="textRight">交易完成</span></div>
@@ -358,14 +358,14 @@
         <li @click="comment"><span>提交评价</span></li>
 
       </ul>
-    </div>
-    <my-dialog :is-show="isShowDialog">
-      <!--<p class="dialog-close" @click="closeDialog"  slot="close"> <i class="icon iconsfont icons-guanbi"></i></p>-->
+    </div> -->
+    <!-- <my-dialog :is-show="isShowDialog">
+      
       <div class="tip-txt">
         <i class="icon iconsfont icons-dui"></i>
         <p>评价提交成功</p>
       </div>
-    </my-dialog>
+    </my-dialog> -->
     <div class="marginBottom"></div>
   </div>
 
@@ -398,6 +398,9 @@ export default {
     }
   },
   methods:{
+    orderDetail(){
+      this.$router.push('/order')
+    },
     tabSlide: function (event) {
         $(".orders").find(".order-top li").click(function () {
             $(this).addClass("on").siblings().removeClass("on");
@@ -412,6 +415,7 @@ export default {
     },
     goComment:function () {
       this.isPing = true;
+      this.$router.push('/users/evaluation')
     },
     comment: function (event) {
      this.isShowDialog = true;

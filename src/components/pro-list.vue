@@ -5,8 +5,9 @@
         <li class="pro-li" v-for="item in prolist">
           <div class="pro-liimg">
             <router-link :to="{ name: 'detail'}">
-              <div class="liImg" :style="{backgroundImage: 'url(' + item.goodsImageUrl + ')'}" >
-              </div>
+              <img v-lazy='item.goodsImageUrl' v-if='item.goodsImageUrl'>
+              <!-- <div class="liImg" :style="{backgroundImage: 'url(' + item.goodsImageUrl + ')'}" > -->
+              <!-- </div> -->
             </router-link>
             <div class="cart-icon" @click="cartDialog"></div>
           </div>

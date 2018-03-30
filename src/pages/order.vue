@@ -94,7 +94,7 @@
         <div class="btns">
           <ul >
             <li class="chuanqing"><span>去录音传情</span></li>
-            <li><span>去付款</span></li>
+            <li @click='goPay'><span>去付款</span></li>
 
           </ul>
         </div>
@@ -123,7 +123,7 @@
         <div class="order-line orderTime">
           <div class="content">
             <dl>
-              <h2>收货信息 <i class="icon iconsfont icons-jiantouyou"></i></h2>
+              <h2>收货信息 <i class="icon iconsfont icons-jiantouyou" @click='goFastMall'></i></h2>
               <dd><em>您的订单未确认：</em> <span>2017-07-14 18:14:46</span></dd>
               <dd><em>您的订单已付款：</em> <span>2017-07-14 18:14:46</span></dd>
               <dd><em>您的订单已确认：</em> <span>2017-07-14 18:14:46</span></dd>
@@ -141,13 +141,13 @@
     </div>
 
 
-    <my-dialog :is-show="isShowDialog">
+    <dialogTips2 :is-show="isShowDialog">
       <!--<p class="dialog-close" @click="closeDialog"  slot="close"> <i class="icon iconsfont icons-guanbi"></i></p>-->
       <div class="tip-txt">
         <i class="icon iconsfont icons-dui"></i>
         <p>订单提交成功</p>
       </div>
-    </my-dialog>
+    </dialogTips2>
     <div class="marginBottom"></div>
   </div>
 
@@ -155,11 +155,13 @@
 
 <script>
   import dialogTips from '../components/dialog-tips'
+  import dialogTips2 from '../components/dialog-tips2'
 export default {
   name: 'orders',
   props: [],
   components: {
-    myDialog: dialogTips
+    myDialog: dialogTips,
+    dialogTips2
   },
   data () {
     return {
@@ -172,6 +174,13 @@ export default {
     this.init();
   },
   methods:{
+    goFastMall(){
+      
+      this.$router.push('/users/fastMail')
+    },
+    goPay(){
+      this.$router.push('/users/pay')
+    },
     init:function () {
         $(".orderList li:gt(1)").hide();
     },
@@ -193,5 +202,12 @@ export default {
 
   .order-line .content dl dd{
     padding: 0;
+  }
+
+  .tip-txt{
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    transform: translateY(-50%);
   }
 </style>
