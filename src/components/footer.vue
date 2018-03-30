@@ -6,15 +6,15 @@
 
     <div class="navBar">
       <div class="marginTop"></div>
-      <mt-cell title="全部商品" icon="navIcon icon iconsfont icons-wxbdingwei" is-link></mt-cell>
-      <mt-cell title="拿破仑" icon="navIcon icon iconsfont icons-wxbdingwei" is-link></mt-cell>
-      <mt-cell title="鲜奶" icon="navIcon icon iconsfont icons-wxbdingwei" is-link></mt-cell>
-      <mt-cell title="慕斯" icon="navIcon icon iconsfont icons-wxbdingwei" is-link></mt-cell>
-      <mt-cell title="芝士" icon="navIcon icon iconsfont icons-wxbdingwei" is-link></mt-cell>
-      <mt-cell title="咖啡" icon="navIcon icon iconsfont icons-wxbdingwei" is-link></mt-cell>
-      <mt-cell title="坚果" icon="navIcon icon iconsfont icons-wxbdingwei" is-link></mt-cell>
-      <mt-cell title="水果" icon="navIcon icon iconsfont icons-wxbdingwei" is-link></mt-cell>
-      <mt-cell title="冰激凌" icon="navIcon icon iconsfont icons-wxbdingwei" is-link></mt-cell>
+      <mt-cell title="全部商品" icon="navIcon icon iconsfont icons-navall" is-link></mt-cell>
+      <mt-cell title="拿破仑" icon="navIcon icon iconsfont icons-nav-napolun" is-link></mt-cell>
+      <mt-cell title="鲜奶" icon="navIcon icon iconsfont icons-nav-nai" is-link></mt-cell>
+      <mt-cell title="慕斯" icon="navIcon icon iconsfont icons-nav-ms" is-link></mt-cell>
+      <mt-cell title="芝士" icon="navIcon icon iconsfont icons-nav-zs" is-link></mt-cell>
+      <mt-cell title="咖啡" icon="navIcon icon iconsfont icons-nav-kafa" is-link></mt-cell>
+      <mt-cell title="坚果" icon="navIcon icon iconsfont icons-nav-jiaguo" is-link></mt-cell>
+      <mt-cell title="水果" icon="navIcon icon iconsfont icons-nav-food" is-link></mt-cell>
+      <mt-cell title="冰激凌" icon="navIcon icon iconsfont icons-nav-bjl" is-link></mt-cell>
     </div>
   </mt-popup>
 
