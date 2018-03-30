@@ -251,11 +251,12 @@ export default {
   }
 /*左边筛选*/
     .navBar .mintui-navIcon{
-      font-size: .7rem;
+      font-size: 1rem;
+      margin-left: .4rem;
     }
     .navBar .mintui-navIcon.icons-nav-kafa{
-      font-size: .5rem;
-      margin-left: .6rem;
+      font-size: .8rem;
+      margin-left: .5rem;
       margin-right: .1rem;
     }
     .navBar .mint-cell-title{
