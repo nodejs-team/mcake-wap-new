@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Qs from 'qs'
-
+import md5 from 'js-md5'
 var instance = axios.create({
   baseURL: '',
   timeout: 60000,
@@ -17,8 +17,17 @@ var instance = axios.create({
 instance.interceptors.request.use(function(config) {
   // debugger;
   // 添加权限验证
-  // const Authorization = localStorage.getItem("access_token")
-  // config.headers.Authorization = Authorization
+  
+  //根据请求链接判断是否需要登入，如果需要登入，判断是否已经登录成功
+  console.log(config.url.includes('goods'))
+  if(config.url.includes('goods')){
+
+  }
+  const appId='asdasdkahdpojaspj'
+  const Authorization = localStorage.getItem("access_token")
+  var  timestamp=new Date().getTime()
+  config.headers.Authorization = Authorization
+  config.headers.Timestamp = md5(timestamp+'')
   // 处理非get data
   if (config.method != 'get' && 'string' != typeof config.data && config.data) {
      let ContentType=config.headers['Content-Type'];

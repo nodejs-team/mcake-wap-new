@@ -76,10 +76,7 @@
                  <van-stepper
                  @plus='plus'
   v-model="value"
-  :min="5"
-  :max="40"
-  :step="2"
-  :default-value="9"
+  :step="1"
 />
                </div>
              </div>
@@ -116,12 +113,16 @@ export default {
       isShowDialog:false,
       prolist:[],
       data:'',
-      value:9,
+      value:1,
       isload:false
     }
   },
-  mounted(){
+  //缓存了组件后需要调用该方法
+  activated(){
     this.init();
+  },
+  mounted(){
+    // this.init();
   },
   methods:{
     plus(){
@@ -151,12 +152,14 @@ export default {
     init:function () {
       // console.log(11111)
       var self = this
+      self.Loading.open()
       self.$http({
         method:'GET',
         url:this.API.goods
       }).then(function(response){  //接口返回数据
         //this.data=response.data;
         // this.prolist=this.data.goodsList;
+        self.Loading.close()
         self.loading = false;
         console.log(response.data.goodsList);
         let prolist = response.data.goodsList

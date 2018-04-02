@@ -38,8 +38,8 @@
             <div v-show="isShowPj">
 
               <dd>
-                <div class="in-line" @click='data.qklp=!data.qklp'><span :class="{uncheck:data.qklp}"><i class="icon iconsfont icons-dui"></i></span><p>赠送巧克力牌</p></div>
-                <div class="in-line" @click='data.srlz=!data.srlz'><span :class="{uncheck:data.srlz}"><i class="icon iconsfont icons-dui"></i></span><p>赠送生日蜡烛</p></div>
+                <div class="in-line" ><span :class="{uncheck:data.qklp}" @click='data.qklp=!data.qklp'><i class="icon iconsfont icons-dui"></i></span><p>赠送巧克力牌</p></div>
+                <div class="in-line" ><span :class="{uncheck:data.srlz}" @click='data.srlz=!data.srlz'><i class="icon iconsfont icons-dui"></i></span><p>赠送生日蜡烛</p></div>
               </dd>
 
               <dd class="birthday-card" v-show='!data.qklp'><i class="icon iconsfont icons-gaixie"></i><input type="text" placeholder="点击填写巧克力牌文字"><span>（happy birthday）</span></dd>
@@ -49,14 +49,29 @@
               </dt>
 
               <dd >
-                <div class="in-line" @click='data.ewcj=!data.ewcj'><span :class="{uncheck:data.ewcj}"><i class="icon iconsfont icons-dui"></i></span>
+                <div class="in-line"><span :class="{uncheck:data.ewcj}"  @click='data.ewcj=!data.ewcj'><i class="icon iconsfont icons-dui"></i></span>
                   <p class="ewai">额外餐具
                     <i>￥5.00/包(5个餐盘 5个餐勺)</i>
-                  </p></div>
-                <div class="in-line" @click='data.ewlz=!data.ewlz'><span :class="{uncheck:data.ewlz}"><i class="icon iconsfont icons-dui"></i></span>
+                    <span class="nums">
+                     <van-stepper
+                     @plus='plus'
+                      v-model="num"
+                      :default-value="num"
+                      />
+                   </span>
+                  </p>
+                </div>
+                <div class="in-line" ><span :class="{uncheck:data.ewlz}" @click='data.ewlz=!data.ewlz'><i class="icon iconsfont icons-dui"></i></span>
                   <p class="ewai">
                   额外生日蜡烛
                   <i>￥2.00/套</i>
+                  <span class="nums">
+                     <van-stepper
+                     @plus='plus'
+                      v-model="num2"
+                      :default-value="num2"
+                      />
+                   </span>
                   </p>
                 </div>
               </dd>
@@ -83,6 +98,8 @@ export default {
       isShowPj:false,
       isEditFapiao:false,
       isEdit:true,
+      num:0,
+      num2:0,
       data:{
         qklp:true,
         srlz:true,
@@ -112,6 +129,9 @@ export default {
       });
   },
   methods:{
+    plus(){
+
+    },
       init:function () {
        // $(".peijian dd").hide();
 
@@ -160,5 +180,21 @@ export default {
   }
   .slideDown{
     transform: rotate(180deg);
+  }
+  .nums{
+    display: block;
+  }
+  .nowbuy dl.peijian dd .in-line span.nums{
+    background-color: transparent;
+    margin-left: .4rem;
+  }
+  .nowbuy dl.peijian dd .in-line span{
+    position: relative;
+  }
+  .nowbuy dl.peijian dd .in-line span i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
   }
 </style>

@@ -178,8 +178,8 @@
 
       <div class="btns fixed">
         <ul>
-          <li class="kankan"><span>加入购物车</span></li>
-          <li><span>立即购买</span></li>
+          <li class="kankan" @click='addcart'><span>加入购物车</span></li>
+          <li @click='nowbuy'><span>立即购买</span></li>
         </ul>
       </div>
     <div class="marginBottom"></div>
@@ -239,6 +239,12 @@ export default {
     },0);
   },
   methods:{
+    addcart(){
+      this.Toast('成功加入购物车')
+    },
+    nowbuy(){
+      this.$router.push('/nowbuy')
+    },
     tabs:function () {
 
       $(".pro-tab").each(function () {

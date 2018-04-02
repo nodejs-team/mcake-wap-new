@@ -20,6 +20,7 @@ import 'vant/lib/vant-css/index.css';
 import 'vue2-animate/dist/vue2-animate.min.css';
 
 import { Toast, MessageBox, Popup } from 'mint-ui'
+import { Indicator } from 'mint-ui';
 Vue.component(Popup.name, Popup)
 // require('animate.css/animate.min.css');
 // require('vue2-animate/dist/vue2-animate.min.css')
@@ -36,7 +37,7 @@ Vue.use(config);
 Vue.prototype.Toast=Toast;
 Vue.prototype.MessageBox=MessageBox;
 Vue.prototype.Popup=Popup;
-
+Vue.prototype.Loading=Indicator
 // Vue.use(API);
 Vue.prototype.baseUrl = 'https://www.easy-mock.com/mock/59fdce0e6b54331215b44a24/mcake';
 

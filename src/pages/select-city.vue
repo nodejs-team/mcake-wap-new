@@ -39,6 +39,7 @@ export default {
   },
   mounted(){
     this.init();
+    // this.getcity()
     this.height=document.documentElement.clientHeight-200+'px'
   },
   methods: {
@@ -87,6 +88,7 @@ export default {
   }
   .city .content{
     padding: .8rem .3rem 0;
+    height: 100%;
     overflow:scroll;
     -webkit-overflow-scrolling: touch;
   }
@@ -102,12 +104,13 @@ export default {
   }
   .city_more{
     margin-top: .2rem;
+    font-size: .24rem;
   }
   .city_more img{
     width: .2rem;
     margin-top: .2rem;
   }
-
+  
 
 
 </style>

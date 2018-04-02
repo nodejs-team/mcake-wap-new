@@ -39,11 +39,19 @@ import $ from 'jquery'
 Vue.use(Router);
 
 export default new Router({
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {  
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  },
   /*mode: 'history',*/
   routes: [
     {
       path: '/',
       redirect: '/home'
+
     },
     {
       path: '/demo',
@@ -110,6 +118,11 @@ export default new Router({
       path: '/users',
       name: 'users',
       component:users,
+      // beforeEnter: (to, from, next) => {
+        
+      //   next('/login')
+      // },
+
       children: [
         {
           path: '/users/index',

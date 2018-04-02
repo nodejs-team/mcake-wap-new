@@ -48,6 +48,7 @@ export default {
   .search .content{
     background-color: #fff;
     padding: .6rem 0;
+    font-size: .3rem;
   }
   .search .input_style{
     text-align: center;

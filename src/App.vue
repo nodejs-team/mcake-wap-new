@@ -8,9 +8,9 @@
       </div>
       <!-- <div class="marginTop"></div> -->
       <div class="vue-container">
-        <!-- <keep-alive> -->
+        <keep-alive>
           <router-view/>
-        <!-- </keep-alive> -->
+        </keep-alive>
       </div>
     </div>
     <!--<img src="./assets/logo.png">-->
@@ -267,5 +267,10 @@ export default {
       color: #000;
       font-size: .32rem;
       font-weight: bold;
+    }
+
+    /*记载等待*/
+    .mint-indicator-wrapper{
+      padding: .6rem !important;
     }
 </style>

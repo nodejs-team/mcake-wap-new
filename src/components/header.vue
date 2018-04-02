@@ -3,7 +3,7 @@
     <ul class="nav">
 
       <li class="search icon iconsfont icons-map" @click='city_select=!city_select;subNavShow=false'><span>{{cityname}}</span></li-link>
-      <li class="center"><router-link :to="{ name: 'home'}" tag="div" class="logo"><img src="../style/images/icon-logo.png" alt=""></router-link></li>
+      <li class="center"><div class="logo" @click='gohome'><img src="../style/images/icon-logo.png" alt=""></div></li>
 
       <li class="search cancel_search" @click="isSearch = !isSearch" v-if="isSearch" ><span>取消</span></li>
 
@@ -73,10 +73,18 @@ export default {
     }
   },
   mounted(){
+    this.cityname = remote_ip_info.city;
+    console.log(remote_ip_info.city)
     this.minHeight = window.document.body.offsetHeight+'px';
     //alert(this.minHeight)
   },
   methods:{
+    gohome(){
+      this.city_select=false;
+      this.isSearch=false;
+      this.subNavShow=false;
+      this.$router.push({ name: 'home'});
+    },
     searchEvent(){
       this.$emit('searchEvent',this.isSearch)
     },
@@ -131,5 +139,9 @@ export default {
   }
   .nav .icon.iconsfont{
     color:#c6c6c6;
+  }
+  .vue-header .subNav{
+    position: relative;
+    top: -1px;
   }
 </style>
