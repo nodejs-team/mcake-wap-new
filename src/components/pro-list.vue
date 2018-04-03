@@ -119,10 +119,16 @@ export default {
   },
   //缓存了组件后需要调用该方法
   activated(){
+    this.loading=false;
     this.init();
+
   },
   mounted(){
-    // this.init();
+    this.init();
+  },
+  deactivated: function () {
+      console.log(4)
+      this.loading=true;
   },
   methods:{
     plus(){
