@@ -1,15 +1,15 @@
 <template>
-  <div class="pro-list">
-    <div class="products"  :class="{'blur':isblur}">
-      <ul class="clearfix" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="2">
-        <li class="pro-li" v-for="item in prolist" v-if='prolist.length>0'>
+  <div class="pro-list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="2" >
+    <div :class="{blur:isblur,products:true}" @click='cartDialog($event)'>
+      <ul class="clearfix" >
+        <li class="pro-li" v-for="(item,index) in prolist" >
           <div class="pro-liimg">
             <router-link :to="{ name: 'detail'}">
               <img v-lazy='item.goodsImageUrl' v-if='item.goodsImageUrl'>
               <!-- <div class="liImg" :style="{backgroundImage: 'url(' + item.goodsImageUrl + ')'}" > -->
               <!-- </div> -->
             </router-link>
-            <div class="cart-icon" @click="cartDialog"></div>
+            <div class="cart-icon" data-target='1' :data-item='index'></div>
           </div>
 
           <div class="pro-content">
@@ -22,7 +22,7 @@
               <span class="fl"><b>￥</b><span class="price" data-price="298">
                 {{item.defaultPrice}}
               </span> <b>.00</b></span>
-              <div class="btn-gobuy"><span @click="cartDialog">立即订购</span></div>
+              <div class="btn-gobuy" data-target='2' :data-item='index'><span data-target='2' :data-item='index'>立即订购</span></div>
             </div>
           </div>
         </li>
@@ -35,75 +35,21 @@
     </div>
 
     <my-footer></my-footer>
-
-    <my-dialog :is-show="isShowDialog" @on-close="closeDialog" class='home_addcart' v-show='isShowDialog'>
-
-      <div class="cart-dialog">
-         <div class="cart-content">
-           <div class="cart-pro flex-h flex-hw">
-             <div class="pro-img"><img src="../style/images/car-img.jpg" alt="" ></div>
-             <div class="content">
-               <p>cookies au beurre </p>
-               <p><h2>云顶小花曲奇</h2>（抹茶味）</p>
-               <h2>单价：¥298.00</h2>
-               <div class="fittings">
-                 <h2>配件</h2>
-                 <p>蜡烛：1</p>
-                 <p>巧克力牌：2</p>
-               </div>
-             </div>
-           </div>
-           <div class="cart-line">
-              <div class="items">
-                <h3>大小选择</h3>
-                <select>
-                  <option value="1" selected = "selected">1磅-适合1-3人食用</option>
-                  <option value="2">1磅-适合3-5人食用</option>
-                  <option value="3">1磅-适合5-7人食用</option>
-                </select>
-                <i class="icon iconsfont icons-jiantouxia"></i>
-              </div>
-            </div>
-           <div class="cart-line">
-             <div class="items">
-               <h3>数量选择</h3>
-              <!--  <div class="nums">
-                 <i class="icon iconsfont icons-minus"></i>
-                 <span>1</span>
-                 <i class="icon iconsfont icons-add"></i>
-               </div> -->
-               <div class="nums">
-                 <van-stepper
-                 @plus='plus'
-  v-model="value"
-  :step="1"
-/>
-               </div>
-             </div>
-           </div>
-          <div class="btns2">
-            <ul>
-              <li class="cancel btn-cancel" @click='closeDialog'><span>取消</span></li>
-              <li class="btn-ok"><span>确认</span></li>
-            </ul>
-          </div>
-         </div>
-      </div>
-
-
-    </my-dialog>
+    <cartDialog v-on:closeDialog='closeDialog' v-show='isShowDialog'  :item='cartItem' :showCart='isShowDialog'></cartDialog>
   </div>
 </template>
 
 <script>
 import footer from '../components/footer'
 import dialog from '../components/dialog'
+import cartDialog from '../components/cart-dialog'
 import '../style/css/cart.css'
 export default {
   name: 'list',
   components: {
     myFooter: footer,
-    myDialog: dialog
+    myDialog: dialog,
+    cartDialog
   },
   data () {
     return {
@@ -114,23 +60,46 @@ export default {
       prolist:[],
       data:'',
       value:1,
-      isload:false
+      isload:false,
+      addtype:1,//1加入购物车。2立刻购买
+      cartItem:''
+    }
+  },
+  props:['id'],
+  watch:{
+    'id':function(){
+      this.prolist=[];
+      // alert(1)
+      this.init()
     }
   },
   //缓存了组件后需要调用该方法
   activated(){
+    console.log(this.id)
     this.loading=false;
     this.init();
 
   },
   mounted(){
+    console.log(this.id)
+
     this.init();
+
   },
   deactivated: function () {
       console.log(4)
       this.loading=true;
   },
   methods:{
+    insure(){
+      if(this.addtype==1){
+        this.MessageBox('提示','加入购物车成功')
+        this.isblur = this.isShowDialog = false;
+      }else{
+        this.isblur = this.isShowDialog = false;
+        this.$router.push('/nowbuy')
+      }
+    },
     plus(){
       
     },
@@ -149,8 +118,16 @@ export default {
       // }, 500);
       this.init()
     },
-    cartDialog(){
-      this.isblur = this.isShowDialog = true;
+    cartDialog(e){
+      let index = e.target.dataset.item
+      this.cartItem = this.prolist[index]
+      this.addtype= e.target.dataset.target
+      if(this.addtype){
+        
+        this.isShowDialog = true;
+        this.isblur = true
+      }
+      // this.addtype=type
     },
     closeDialog(){
       this.isblur = this.isShowDialog = false;

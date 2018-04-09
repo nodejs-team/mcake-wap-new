@@ -1,5 +1,7 @@
 <template>
-  <pro-list></pro-list>
+  <div>
+    <pro-list :id='id'></pro-list>
+  </div>
 </template>
 
 <script>
@@ -13,11 +15,21 @@ export default {
   },
   data () {
     return {
+      id:'',
       prolist:[
 
       ]
     }
-  }
+  },
+  watch:{
+    '$route':function(to,from){
+      if(to.params.id){
+        this.id=to.params.id
+      }
+      
+      // alert(this.id)
+    }
+  },
 }
 </script>
 

@@ -74,12 +74,13 @@ export default {
     }
   },
   watch:{
-    '$route':function(){
-      this.init()
-    }
+   
   },
   mounted(){
     //console.log(CountUp)
+    this.init()
+  },
+  activated(){
     this.init()
   },
   methods:{

@@ -1,9 +1,14 @@
 <template>
   <div>
     <div class="dialog-wrap">
-      <div class="dialog-cover"   @click="closeMyself"></div>
-      <transition name="fade">
-        <div class="dialog-content" >
+      <!-- <div class="dialog-cover"   @click="closeMyself"></div> -->
+      <div class="dialog-cover"></div>
+      <transition
+  name="slide"
+  enter-active-class="slideInDown"
+  leave-active-class="slideOutRight"
+>
+        <div class="dialog-content" v-show='show'>
           <p class="dialog-close" @click="closeMyself"> <i class="icon iconsfont icons-guanbi"></i></p>
           <slot>empty</slot>
         </div>
@@ -22,11 +27,22 @@ export default {
   },
   data () {
     return {
-
+      show:false
     }
+  },
+  props:['isShow'],
+  watch:{
+    'isShow':function(){
+      this.show=this.isShow
+    }
+  },  
+  mounted(){
+    
+    this.show=this.isShow
   },
   methods: {
     closeMyself () {
+      this.show=false;
       this.$emit('on-close')
     }
   }
@@ -84,8 +100,8 @@ export default {
 
 .dialog-close {
   position: absolute;
-  right: 20px;
-  top: 12px;
+  right: .4rem;
+  top: .2rem;
   width: 20px;
   height: 20px;
   text-align: center;
@@ -96,5 +112,8 @@ export default {
 }
 .icons-guanbi{
   font-size: .3rem;
+}
+.dialog-content.slideInDown{
+  left: 5%;
 }
 </style>

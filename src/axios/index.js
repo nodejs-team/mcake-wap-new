@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Qs from 'qs'
 import md5 from 'js-md5'
+import Vue from 'vue'
 var instance = axios.create({
   baseURL: '',
   timeout: 60000,
@@ -23,11 +24,13 @@ instance.interceptors.request.use(function(config) {
   if(config.url.includes('goods')){
 
   }
-  const appId='asdasdkahdpojaspj'
-  const Authorization = localStorage.getItem("access_token")
-  var  timestamp=new Date().getTime()
-  config.headers.Authorization = Authorization
-  config.headers.Timestamp = md5(timestamp+'')
+  if(localStorage.mcake_is_login){
+    const Authorization = localStorage.mcake_is_login.access_token
+    // var  timestamp=new Date().getTime()
+    config.headers['access-token'] = Authorization
+  }
+  // config.headers['version'] = 'v1.0'
+  config.headers.common['version']='v1.0'
   // 处理非get data
   if (config.method != 'get' && 'string' != typeof config.data && config.data) {
      let ContentType=config.headers['Content-Type'];

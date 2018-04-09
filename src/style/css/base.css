@@ -319,12 +319,13 @@ em, i, b {
   max-width: 10rem; }
 
 .blur {
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
+  /*filter: blur(5px);*/
+  /*-webkit-filter: blur(5px);*/
+/*  -moz-filter: blur(5px);
   -ms-filter: blur(5px);
   filter: blur(5px);
-  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=5, MakeShadow=false); }
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=5, MakeShadow=false); */
+}
 
 /*涓讳綋閮ㄥ垎*/
 .marginTop {

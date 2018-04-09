@@ -148,7 +148,7 @@
         <p>订单提交成功</p>
       </div>
     </dialogTips2>
-    <div class="marginBottom"></div>
+    <!-- <div class="marginBottom"></div> -->
   </div>
 
 </template>
@@ -209,5 +209,8 @@ export default {
     width: 100%;
     top: 40%;
     transform: translateY(-50%);
+  }
+  .order-line .content dl dd .iconsfont{
+    font-size: .6rem;
   }
 </style>

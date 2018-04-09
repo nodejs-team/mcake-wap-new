@@ -12,7 +12,7 @@
             </div>
 
            <h2>雨中潇洒走一回</h2>
-           <p><i class="icon iconsfont">&#xe626;</i>切换账号</p>
+           <p><span @click='logout'><i class="icon iconsfont">&#xe626;</i>切换账号</span></p>
         </div>
        </div>
       <div class="user-main">
@@ -85,7 +85,11 @@ export default {
 
   },
   methods:{
-
+    logout(){
+      this.MessageBox.confirm('确定要退出账号吗？').then(action => {
+        this.$router.push('/login')
+      });
+    }
   }
 }
 

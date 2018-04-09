@@ -21,6 +21,7 @@ import 'vue2-animate/dist/vue2-animate.min.css';
 
 import { Toast, MessageBox, Popup } from 'mint-ui'
 import { Indicator } from 'mint-ui';
+import store from './store'
 Vue.component(Popup.name, Popup)
 // require('animate.css/animate.min.css');
 // require('vue2-animate/dist/vue2-animate.min.css')
@@ -52,6 +53,7 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

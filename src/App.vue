@@ -224,6 +224,15 @@ export default {
   }
 
   /*重新编写提示信息样式*/
+  .mint-indicator{
+        position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+    background-color: rgba(0,0,0,0.5);
+  }
   .mint-toast-text{
     font-size: .4rem;
   }
@@ -240,6 +249,7 @@ export default {
     font-size: .4rem;
     line-height: 180%;
     padding-bottom: .2rem;
+    padding: 0.3rem 0 0.5rem;
   }
   .mint-msgbox-btns{
     height: 1rem;
@@ -273,4 +283,13 @@ export default {
     .mint-indicator-wrapper{
       padding: .6rem !important;
     }
+
+    /*添加购物车弹层*/
+    .dialog-wrap{
+      z-index: 9999999;
+    }
+   /* .dialog-cover{
+      background-image: url('/static/images/ms.png') !important;
+      background-repeat: repeat !important;
+    }*/
 </style>

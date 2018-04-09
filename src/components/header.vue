@@ -143,5 +143,15 @@ export default {
   .vue-header .subNav{
     position: relative;
     top: -1px;
+    z-index: 2;
+  }
+  .bgCover{
+    opacity: .5;
+    background-color: #000;
+    top: 0;
+  }
+  .vue-header .navTab ul.nav{
+    position: relative;
+    background-color: #fff;
   }
 </style>

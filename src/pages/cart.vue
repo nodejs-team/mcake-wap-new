@@ -32,8 +32,9 @@
                   </div>
                 </div>
                 <div class="edit">
-                  <i class="icon iconsfont icons-gaixie" @click='edit(item)'></i>
+                  <i class="icon iconsfont icons-gaixie" @click='edit(item.item)'></i>
                   <p class="price">￥{{item.price | toDecimal2}}</p>
+                  <p class="itemNum">数量：{{item.num}}</p>
                 </div>
               </li>
             </mt-cell-swipe>
@@ -79,7 +80,7 @@
       </div>
     </div>
     <div class="cartBottom"></div>
-    <cartDialog v-on:closeDialog='closeDialog' v-show='showDialog'  :item='cartItem'></cartDialog>
+    <cartDialog v-on:closeDialog='closeDialog' v-show='showDialog'  :item='cartItem' :showCart='showDialog'></cartDialog>
   </div>
 </template>
 
@@ -131,6 +132,7 @@ export default {
     }
   },
   mounted(){
+    this.init();
     this.$nextTick(function(){
       this.cartList=[{
         num:1,
@@ -144,6 +146,31 @@ export default {
     })
   },
   methods:{
+     init:function () {
+      // console.log(11111)
+      var self = this
+      self.Loading.open()
+      self.$http({
+        method:'GET',
+        url:this.API.goods
+      }).then(function(response){  //接口返回数据
+        //this.data=response.data;
+        // this.prolist=this.data.goodsList;
+        self.Loading.close()
+        self.loading = false;
+        // console.log(response.data.goodsList);
+        let prolist = response.data.goodsList
+        for(let i=0;i<2;i++){
+          self.cartList[i]['item']=prolist[i]
+        }
+        self.isload=true
+
+      },function(error){  //失败
+        console.log(error);
+      });
+
+
+    },
     check(item){
       item.ischecked=!item.ischecked
     },
@@ -200,5 +227,9 @@ export default {
   .checkbox_wrap.ischecked{
     
     background-color: #ffcd20;
+  }
+  .itemNum{
+    font-size: .24rem;
+    text-align: right;
   }
 </style>

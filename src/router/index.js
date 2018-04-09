@@ -35,10 +35,12 @@ import userLevel from '@/pages/users-level'
 
 import $ from 'jquery'
 
-
+import md5 from 'js-md5'
 Vue.use(Router);
 
-export default new Router({
+
+
+const router = new Router({
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {  
       return savedPosition
@@ -70,7 +72,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/list',
+      path: '/list/:id',
       name: 'list',
       component: productList
     },
@@ -216,3 +218,61 @@ export default new Router({
 
   ]
 })
+//页面加载前先获取到access_token
+router.beforeEach((to, from, next) => {
+  
+  //生成随机字符串
+  let rand_str = function(len) {
+　　len = len || 32;
+　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+　　var maxPos = $chars.length;
+　　var pwd = '';
+　　for (let i = 0; i < len; i++) {
+　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+　　}
+　　return pwd;
+  }
+  let timestamp = new Date().getTime();
+  let randstr = rand_str(32);
+  let device_id = rand_str(16)
+  // app_id=服务器颁发的应用ID&app_secret=服务器颁发的应用秘钥&device_id=设备唯一ID&rand_str=随机字符串&timestamp=当前系统时间戳
+  let signature_str = 'app_id=68097352&app_secret=ZrrSreqlBfNvcHGPWwYURXzUHzgIpqQR&device_id='+device_id+'&rand_str='+randstr+'&timestamp='+timestamp
+  
+  let signature = md5(signature_str)
+  console.log(signature)
+  if(localStorage.mcake_is_login&&(new Date().getTime()-(localStorage.mcake_is_login.time+localStorage.mcake_is_login.expires_in)>1000*20)){
+    next()
+  }else{
+    next()
+    let self = new Vue();
+
+    self.$http.get('http://dev.mcake.api/api/027ae5bd6a9940da',{
+      params:{
+          "app_id":"68097352",
+          "signature":signature,   //请注意，此字段只是在计算加密串的时候在被加入，API请求请勿传递此字段值
+          "device_id":device_id,
+          "rand_str":randstr,
+          "timestamp":timestamp
+      }
+    }
+    ).then(function(response){  //接口返回数据
+      console.log(response)
+      if(response.code==1){
+        localStorage.mcake_is_login = {
+          token:response.data.access_token,
+          time:new Date().getTime(),
+          expires_in:response.data.expires_in
+        }
+        next()
+      }else{
+        self.Toast(response.msg)
+      }
+    },function(error){  //失败
+      console.log(error);
+      self.Toast(error)
+    });
+  }
+
+  
+})
+export default router
