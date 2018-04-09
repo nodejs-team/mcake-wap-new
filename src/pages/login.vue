@@ -10,6 +10,10 @@
             <input type="password" class="input_txt" placeholder="请输入密码" v-model='password'>
           </li>
           <li class="pwd" v-if='!ispwd'><i class="icon iconsfont icons-mima"></i>
+            <input type="text" class="input_txt input_short" placeholder="图片验证码" v-model='vcode'>
+            <div class="yzm"><img :src="imgurl" alt="" @click='refresh'></div>
+          </li>
+          <li class="pwd" v-if='!ispwd'><i class="icon iconsfont icons-mima"></i>
             <input type="text" class="input_txt input_short" placeholder="请输入验证码" v-model='code'>
             <div :class="{send:true,issend:issend}" @click='sendMsg'><span>{{countText}}</span></div>
           </li>
@@ -41,17 +45,22 @@ export default {
     return {
       msg: '登录',
       isSearch: false,
+      vcode:'',
       code:'',
       mobile:'',
       ispwd:true,
       password:'',
       count:60,
       issend:false,
-      countText:'点击发送验证码'
-
+      countText:'点击发送验证码',
+      imgurl:'/api/7ba4aed89d17966a?type=login',
+      apiurl:''
     }
   },
   methods:{
+    refresh(){
+      this.imgurl = '/api/7ba4aed89d17966a?type=login&t='+new Date().getTime()
+    },
     login(){
       let self = this
       if(!/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/.test(self.mobile)){
@@ -65,9 +74,11 @@ export default {
           return false;
         }
         data={
-          mobile:this.mobile,
-          password:this.password
+          uname:this.mobile,
+          password:this.password,
+          client:2
         }
+        self.apiurl='/api/44faba4b9157fab1'
       }else{
         if(self.code==''||!self.code){
           self.Toast('请填写验证码');
@@ -75,19 +86,25 @@ export default {
         }
         data={
           mobile:this.mobile,
-          code:this.code
+          sign:this.code,
+          vcode:this.vcode,
+          client:2
         }
+        self.apiurl='/api/f024e387afc49466'
       }
 
       self.Loading.open()
-      self.$http.post("/api/admin/login",data)
+      self.$http.post(self.apiurl,data)
         .then(function(res){
             console.log(res);
             self.Loading.close();
             if(res.code==0){
-              self.$message('登录成功');
+              self.MessageBox('提示','登录成功');
             }else{
-              self.$message.error('用户名或密码错误');
+              self.MessageBox('提示','用户名或密码错误');
+              self.refresh()
+              self.vcode = '';
+              self.code = '';
             }            
         })
     },
@@ -98,37 +115,45 @@ export default {
         }
         
         if(!/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/.test(self.mobile)){
-          self.Toast('请填写手机号码');
+          self.Toast('请填写准确的手机号码');
           return false;
         }
-        self.time=setInterval(function(){
-          self.issend=true
-          self.count--
-          if(self.count<=0){
-            clearInterval(self.time)
-            self.issend=false
-            self.countText='再次发送'
-            self.count=60
-          }else{
-            self.countText=self.count+'S后再试'
-          }
-          
-        },1000)
-        // self.Loading.open()
-        // self.$http.get("/api/admin/shop/all",{
-        //   params:{
-        //     mobile:this.mobile,
-        //   }
-        // })
-        // .then(function(res){
-        //     console.log(res);
-        //     self.Loading.close();
-        //     if(res.code==99||res.code==90){
-        //       self.$router.push('/login')
-        //       return false
-        //     }  
-        // })
+        if(self.vcode==''||!self.vcode){
+          self.Toast('请填图形验证码');
+          return false;
+        }
+        self.Loading.open()
+        self.$http.post("/api/3bcce139cf5325bd",{
+            mobile:this.mobile,
+            type:'login',
+            vcode:this.imgCode
+        })
+        .then(function(res){
+            console.log(res);
+            self.Loading.close();
+            if(res.code==1){
+              self.Toast('短信发送成功');
+              self.sign = res.data.sign;
+              self.time=setInterval(function(){
+                self.issend=true
+                self.count--
+                if(self.count<=0){
+                  clearInterval(self.time)
+                  self.issend=false
+                  self.countText='再次发送'
+                  self.count=60
+                }else{
+                  self.countText=self.count+'S后再试'
+                }
+                
+              },1000)
+            }else{
+              self.Toast(res.msg);
+              self.refresh()
+            }  
+        })
     }
+  
   }
 }
 </script>

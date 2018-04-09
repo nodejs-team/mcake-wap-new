@@ -8,7 +8,7 @@
           </li>
           <li class="pwd">
             <input type="text" class="input_txt input_short" placeholder="图片验证码" v-model='data.imgCode'>
-            <div class="yzm"><img src="../../static/images/yzm.png" alt=""></div>
+            <div class="yzm"><img :src="imgurl" alt="" @click='refresh'></div>
           </li>
 
           <li class="pwd">
@@ -17,10 +17,10 @@
           </li>
 
           <li><i class="icon iconsfont icons-mima"></i>
-            <input type="text" class="input_txt " placeholder="密码" v-model='data.password'>
+            <input type="password" class="input_txt " placeholder="密码" v-model='data.password'>
           </li>
           <li><i class="icon iconsfont icons-mima"></i>
-            <input type="text" class="input_txt " placeholder="密码确认" v-model='data.confirm_password'>
+            <input type="password" class="input_txt " placeholder="密码确认" v-model='data.confirm_password'>
           </li>
         </ul>
       </div>
@@ -60,10 +60,18 @@ export default {
         code:'',
         password:'',
         confirm_password:''
-      }
+      },
+      imgurl:'/api/7ba4aed89d17966a?type=register',
+      sign:''
     }
   },
+  mounted(){
+    // this.getVcode()
+  },
   methods:{
+    refresh(){
+      this.imgurl = '/api/7ba4aed89d17966a?type=register&t='+new Date().getTime()
+    },
     register(){
       let self = this
       if(!/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/.test(self.data.mobile)){
@@ -91,14 +99,23 @@ export default {
           return false;
       }
       self.Loading.open()
-      self.$http.post("/api/admin/login",self.data)
+      self.$http.post("/api/3c84535adacd944e",{
+        mobile:self.data.mobile,
+        // vcode:self.data.code,
+        password:self.data.password,
+        client:2,
+        sign:self.sign
+      })
         .then(function(res){
             console.log(res);
             self.Loading.close();
             if(res.code==0){
-              self.$message('注册成功');
+              self.Toast('注册成功');
+              setTimeout(function(){
+                self.$router.push('/login')
+              },2000)
             }else{
-              self.$message.error('用户名或密码错误');
+              self.Toast(res.msg);
             }            
         })
     },
@@ -112,33 +129,40 @@ export default {
           self.Toast('请填写准确的手机号码');
           return false;
         }
-        self.time=setInterval(function(){
-          self.issend=true
-          self.count--
-          if(self.count<=0){
-            clearInterval(self.time)
-            self.issend=false
-            self.countText='再次发送'
-            self.count=60
-          }else{
-            self.countText=self.count+'S后再试'
-          }
-          
-        },1000)
-        // self.Loading.open()
-        // self.$http.get("/api/admin/shop/all",{
-        //   params:{
-        //     mobile:this.mobile,
-        //   }
-        // })
-        // .then(function(res){
-        //     console.log(res);
-        //     self.Loading.close();
-        //     if(res.code==99||res.code==90){
-        //       self.$router.push('/login')
-        //       return false
-        //     }  
-        // })
+        if(self.data.imgCode==''||!self.data.imgCode){
+          self.Toast('请填图形验证码');
+          return false;
+        }
+        self.Loading.open()
+        self.$http.post("/api/3bcce139cf5325bd",{
+            mobile:this.data.mobile,
+            type:'register',
+            vcode:this.data.imgCode
+        })
+        .then(function(res){
+            console.log(res);
+            self.Loading.close();
+            if(res.code==1){
+              self.Toast('短信发送成功');
+              self.sign = res.data.sign;
+              self.time=setInterval(function(){
+                self.issend=true
+                self.count--
+                if(self.count<=0){
+                  clearInterval(self.time)
+                  self.issend=false
+                  self.countText='再次发送'
+                  self.count=60
+                }else{
+                  self.countText=self.count+'S后再试'
+                }
+                
+              },1000)
+            }else{
+              self.Toast(res.msg);
+              self.refresh()
+            }  
+        })
     }
   }
 }

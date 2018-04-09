@@ -236,19 +236,20 @@ router.beforeEach((to, from, next) => {
   let randstr = rand_str(32);
   let device_id = rand_str(16)
   // app_id=服务器颁发的应用ID&app_secret=服务器颁发的应用秘钥&device_id=设备唯一ID&rand_str=随机字符串&timestamp=当前系统时间戳
-  let signature_str = 'app_id=68097352&app_secret=ZrrSreqlBfNvcHGPWwYURXzUHzgIpqQR&device_id='+device_id+'&rand_str='+randstr+'&timestamp='+timestamp
+  let signature_str = 'app_id=92239814&app_secret=RHtzKIFRWweTAquYVSGJKwpeSMChMuXx&device_id='+device_id+'&rand_str='+randstr+'&timestamp='+timestamp
   
   let signature = md5(signature_str)
-  console.log(signature)
-  if(localStorage.mcake_is_login&&(new Date().getTime()-(localStorage.mcake_is_login.time+localStorage.mcake_is_login.expires_in)>1000*20)){
+  // console.log(signature)
+  let mcake_is_login = JSON.parse(localStorage.mcake_is_login)
+  if(mcake_is_login&&((mcake_is_login.time+mcake_is_login.expires_in*1000-new Date().getTime())>200*1000)){
     next()
   }else{
     next()
     let self = new Vue();
 
-    self.$http.get('http://dev.mcake.api/api/027ae5bd6a9940da',{
+    self.$http.get('/api/027ae5bd6a9940da',{
       params:{
-          "app_id":"68097352",
+          "app_id":"92239814",
           "signature":signature,   //请注意，此字段只是在计算加密串的时候在被加入，API请求请勿传递此字段值
           "device_id":device_id,
           "rand_str":randstr,
@@ -258,11 +259,13 @@ router.beforeEach((to, from, next) => {
     ).then(function(response){  //接口返回数据
       console.log(response)
       if(response.code==1){
-        localStorage.mcake_is_login = {
+        let obj = {
           token:response.data.access_token,
           time:new Date().getTime(),
           expires_in:response.data.expires_in
         }
+
+        localStorage.mcake_is_login = JSON.stringify(obj)
         next()
       }else{
         self.Toast(response.msg)

@@ -33,7 +33,7 @@ module.exports = {
     assetsPublicPath: '/',  // 原来是/
     proxyTable: {
        '/api': {
-        target: 'http://dev.mcake.api',
+        target: 'http://test.openapi.mcake.com',
         changeOrigin: true,
         // pathRewrite: {  //需要rewrite重写的, 如果在服务器端做了处理则可以不要这段
         //   '^/api': ''

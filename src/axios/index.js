@@ -20,17 +20,16 @@ instance.interceptors.request.use(function(config) {
   // 添加权限验证
   
   //根据请求链接判断是否需要登入，如果需要登入，判断是否已经登录成功
-  console.log(config.url.includes('goods'))
-  if(config.url.includes('goods')){
-
-  }
-  if(localStorage.mcake_is_login){
-    const Authorization = localStorage.mcake_is_login.access_token
+  console.log(localStorage.mcake_is_login)
+  const mcake_is_login = JSON.parse(localStorage.mcake_is_login)
+  if(mcake_is_login){
+    const Authorization = mcake_is_login.token
+    console.log(Authorization)
     // var  timestamp=new Date().getTime()
     config.headers['access-token'] = Authorization
   }
-  // config.headers['version'] = 'v1.0'
-  config.headers.common['version']='v1.0'
+  config.headers['version'] = 'v1.0'
+  // config.headers.common['version']='v1.0' 
   // 处理非get data
   if (config.method != 'get' && 'string' != typeof config.data && config.data) {
      let ContentType=config.headers['Content-Type'];
