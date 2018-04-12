@@ -2,6 +2,12 @@ import axios from 'axios'
 import Qs from 'qs'
 import md5 from 'js-md5'
 import Vue from 'vue'
+
+
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+
+import { Toast, MessageBox, Popup } from 'mint-ui'
 var instance = axios.create({
   baseURL: '',
   timeout: 60000,
@@ -19,16 +25,47 @@ instance.interceptors.request.use(function(config) {
   // debugger;
   // 添加权限验证
   
+   //设置user_token
+
+  const user_token = localStorage.mcake_user_token
+  const mcake_user_token_time = localStorage.mcake_user_token_time
+  // console.log(user_token)
+  // console.log(mcake_user_token_time)
+  if(mcake_user_token_time-new Date().getTime()>0){
+    console.log('user_token没有失效')
+    localStorage.mcake_user_token_time = new Date().getTime()+60*24*24*1000
+    config.headers['user-token'] = user_token
+  }else{
+    console.log('user-token登入失效')
+    localStorage.removeItem('mcake_user_token');
+    localStorage.removeItem('mcake_user_token_time');
+  }
+
+
   //根据请求链接判断是否需要登入，如果需要登入，判断是否已经登录成功
-  console.log(localStorage.mcake_is_login)
-  const mcake_is_login = JSON.parse(localStorage.mcake_is_login)
+  // console.log(localStorage.mcake_is_login)
+  let userArr=['07399bea14647979','0a726336d3a19773','5e49d89248023811','b2d339c92168c794','b34ce2c4f51281f9','c300195f519eeeac','c5cc50070b5c48db']
+  let mustlogin=userArr.includes(config.url.replace('/api/',''))
+  if(mustlogin&&!localStorage.mcake_user_token){
+    console.log('用户需要登陆')
+    MessageBox.alert('请先登录后再进行操作').then(action => {
+      window.location.href='#/login?isback=1'
+    });
+    
+   //设置assess_token
+  }
+  const mcake_is_login = localStorage.mcake_is_login?JSON.parse(localStorage.mcake_is_login):''
+  // console.log(mcake_is_login)
   if(mcake_is_login){
     const Authorization = mcake_is_login.token
-    console.log(Authorization)
+    // console.log(Authorization)
     // var  timestamp=new Date().getTime()
     config.headers['access-token'] = Authorization
   }
+  // 设置版本号
   config.headers['version'] = 'v1.0'
+
+ 
   // config.headers.common['version']='v1.0' 
   // 处理非get data
   if (config.method != 'get' && 'string' != typeof config.data && config.data) {

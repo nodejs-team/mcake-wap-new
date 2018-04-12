@@ -98,11 +98,19 @@ export default {
         .then(function(res){
             console.log(res);
             self.Loading.close();
-            if(res.code==0){
-              self.MessageBox('提示','登录成功');
+            if(res.code==1){
+              self.Toast('登录成功');
+              localStorage.mcake_user_token = res.data.token;
+              localStorage.mcake_user_token_time = new Date().getTime()+60*60*24*1000;
+              let isback = self.$route.query.isback
+              if(isback){
+                self.$router.go(-1);
+              }else{
+                self.$router.push('/home')
+              }
             }else{
               self.MessageBox('提示','用户名或密码错误');
-              self.refresh()
+              self.refresh();
               self.vcode = '';
               self.code = '';
             }            

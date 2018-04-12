@@ -72,12 +72,12 @@ const router = new Router({
       component: Home
     },
     {
-      path: '/list/:id',
+      path: '/list/:listid',
       name: 'list',
       component: productList
     },
     {
-      path: '/detail',
+      path: '/detail/:detailid',
       name: 'detail',
       component: productDetail
     },
@@ -240,11 +240,14 @@ router.beforeEach((to, from, next) => {
   
   let signature = md5(signature_str)
   // console.log(signature)
-  let mcake_is_login = JSON.parse(localStorage.mcake_is_login)
+  // console.log(localStorage.mcake_is_login)
+  let mcake_is_login = localStorage.mcake_is_login?JSON.parse(localStorage.mcake_is_login):''
+  // console.log(mcake_is_login)
   if(mcake_is_login&&((mcake_is_login.time+mcake_is_login.expires_in*1000-new Date().getTime())>200*1000)){
     next()
   }else{
     next()
+    localStorage.removeItem('mcake_is_login');
     let self = new Vue();
 
     self.$http.get('/api/027ae5bd6a9940da',{

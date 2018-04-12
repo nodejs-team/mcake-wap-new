@@ -14,7 +14,7 @@
       </div>
     </div>
     <!--<img src="./assets/logo.png">-->
-    <selectCity  v-show='showcity' :style='{height:minHeight}'  v-on:selectCity='selectCity'></selectCity>
+    <selectCity  :show='showcity' :style='{height:minHeight}'  v-on:selectCity='selectCity'></selectCity>
     <search  v-show='showsearch'   ></search>
   </div>
 </template>
@@ -40,14 +40,17 @@ export default {
       isfixed:false,
       minHeight:'',
       showcity:false,
-      city_name:'上海',
+      city_name:'',
       search:false,
-      showsearch:false
+      showsearch:false,
+
     }
   },
   mounted(){
     this.init()
     this.minHeight=document.documentElement.clientHeight+'px'
+    
+    // this.cityMatch(this.city_name)
   },
   methods: {
     searchEvent(data){
@@ -137,11 +140,12 @@ export default {
   }
   .van-pagination li{
     border-radius: .1rem;
-    padding: 0.13333rem 0.26667rem;
+    padding: 0.1rem 0.26667rem !important;
     font-size: .32rem;
     color: #8d8d8d;
     background-color: transparent;
     border-bottom: none;
+    margin-right: .1rem;
   }
   .van-pagination{
     display: inline-block;
@@ -164,7 +168,7 @@ export default {
     border-width: 0;
   }
   .vue-header{
-    z-index: 3014;
+    z-index: 1998;
   }
   .isfixed{
     /*position: fixed;*/
@@ -286,10 +290,41 @@ export default {
 
     /*添加购物车弹层*/
     .dialog-wrap{
-      z-index: 9999999;
+      z-index: 1999;
     }
    /* .dialog-cover{
       background-image: url('/static/images/ms.png') !important;
       background-repeat: repeat !important;
     }*/
+
+
+    /*图片预览*/
+    body.van-overflow-hidden{
+      overflow: visible !important;
+    }
+    .van-button--large{
+      height: 1rem;
+      line-height: 1rem;
+    }
+    .van-button{
+      font-size: .5rem;
+    }
+    .city_select{
+      display: flex;
+    }
+    .city_select span{
+      flex: 2
+    }
+    .city_select select{
+      flex: 3;
+      /*border:1px solid #ccc;*/
+    }
+    .select_city_wrap{
+      font-size: .4rem;
+      padding: .4rem;
+      border-bottom: 1px solid #ccc;
+    }
+    .select_city_wrap p{
+      margin-bottom: .3rem;
+    }
 </style>

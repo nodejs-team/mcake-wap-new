@@ -21,10 +21,10 @@
                  <!-- <i class="icon iconsfont icons-guanbi"></i> -->
                  <span :class="{checkbox_wrap:true,ischecked:item.ischecked}" @click='check(item)'></span>
                 </div>
-                <div class="pro-img"><img src="../style/images/car-img.jpg" alt="" ></div>
+                <div class="pro-img"><img :src="item.img" alt="" ></div>
                 <div class="content">
-                  <p>cookies au beurre </p>
-                  <p><h2>云顶小花曲奇</h2>（抹茶味）</p>
+                  <p>{{item.french}}</p>
+                  <p><h2>{{item.name}}</h2><!-- （抹茶味） --></p>
                   <div class="fittings">
                     <h2>配件</h2>
                     <p>蜡烛：1</p>
@@ -32,7 +32,7 @@
                   </div>
                 </div>
                 <div class="edit">
-                  <i class="icon iconsfont icons-gaixie" @click='edit(item.item)'></i>
+                  <i class="icon iconsfont icons-gaixie" @click='edit(item)'></i>
                   <p class="price">￥{{item.price | toDecimal2}}</p>
                   <p class="itemNum">数量：{{item.num}}</p>
                 </div>
@@ -95,11 +95,16 @@ export default {
   computed:{
     total:function(){
       let t=0
-      for(let i=0;i<this.cartList.length;i++){
-        if(this.cartList[i].ischecked){
-          t+=this.cartList[i].price*this.cartList[i].num
+      for(let item in this.cartList){
+        if(this.cartList[item].ischecked){
+          t+=this.cartList[item].price*this.cartList[item].num
         }
       }
+      // for(let i=0;i<this.cartList.length;i++){
+      //   if(this.cartList[i].ischecked){
+      //     t+=this.cartList[i].price*this.cartList[i].num
+      //   }
+      // }
       return t;
     }
   },
@@ -128,48 +133,48 @@ export default {
       isSearch: false,
       cartList:[],
       showDialog:false,
-      cartItem:''
+      cartItem:'',
+      ismounted:false
     }
   },
   mounted(){
-    this.init();
-    this.$nextTick(function(){
-      this.cartList=[{
-        num:1,
-        price:298,
-        ischecked:true
-      },{
-        num:1,
-        price:398,
-        ischecked:true
-      }]
-    })
+    this.ismounted=true
+    this.getCartList();
   },
-  methods:{
-     init:function () {
-      // console.log(11111)
-      var self = this
-      self.Loading.open()
-      self.$http({
-        method:'GET',
-        url:this.API.goods
-      }).then(function(response){  //接口返回数据
-        //this.data=response.data;
-        // this.prolist=this.data.goodsList;
-        self.Loading.close()
-        self.loading = false;
-        // console.log(response.data.goodsList);
-        let prolist = response.data.goodsList
-        for(let i=0;i<2;i++){
-          self.cartList[i]['item']=prolist[i]
-        }
-        self.isload=true
+  activated(){
 
+    if(this.ismounted){
+      return false;
+    }
+    this.getCartList();
+  },
+
+  methods:{
+    getCartList(){
+      let self = this;
+      self.cartList=[]
+      self.Loading.open()
+      self.detailData=''
+      self.$http.get('/api/5e49d89248023811',{
+
+      }).then(function(res){  //接口返回数据
+        self.Loading.close()
+        self.ismounted=false
+        console.log(res);
+        if(res.code==1){
+          self.$nextTick(function(){
+            // self.cartList = res.data;
+             for(let key in res.data){
+              // alert(key)
+              res.data[key].ischecked=true
+              self.cartList.push(res.data[key])
+             }
+          })
+         
+        }
       },function(error){  //失败
         console.log(error);
       });
-
-
     },
     check(item){
       item.ischecked=!item.ischecked
@@ -181,9 +186,25 @@ export default {
     closeDialog(){
       this.showDialog=false;
     },
-    Delete(data){
-      //alert(data)
-      this.cartList.splice(data,1)
+    Delete(index){
+      let self = this;
+      self.Loading.open()
+      self.detailData=''
+      self.$http.post('/api/c5cc50070b5c48db',{
+          id:self.cartList[index].id
+      }).then(function(res){  //接口返回数据
+        self.Loading.close()
+        console.log(res);
+        if(res.code==1){
+          self.cartList.splice(index,1)
+        }
+      },function(error){  //失败
+        console.log(error);
+      });
+
+      
+
+      
     },
     onClose(clickPosition, instance) {
       switch (clickPosition) {

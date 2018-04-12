@@ -23,8 +23,8 @@ export default {
   },
   watch:{
     '$route':function(to,from){
-      if(to.params.id){
-        this.id=to.params.id
+      if(to.params.listid){
+        this.id=to.params.listid
       }
       
       // alert(this.id)

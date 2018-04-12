@@ -4,10 +4,10 @@
       <img src="static/images/home-banner.png" alt="" >
     </div>
     <div class="home-prolist">
-      <pro-list></pro-list>
+      <pro-list :id='-1'></pro-list>
     </div>
 
-   <my-footer></my-footer>
+   <!-- <my-footer></my-footer> -->
   </div>
 </template>
 
@@ -30,30 +30,9 @@ export default {
     }
   },
   mounted(){
-    this.init();
-    // //this.alert()
-    // let self = this
-    // self.MessageBox.confirm('确定执行此操作?').then(action => {
-    //     self.Toast('确定')
-    // });
+
   },
   methods: {
-    init:function () {
-      // var that = this;
-      // that.$http({  //调用接口
-      //   method:'GET',
-      //   url:this.baseUrl+'/goods'  //this指data
-      // }).then(function(response){  //接口返回数据
-      //   this.data=response.data;
-      //   this.goodsList=this.data.data.goodsList;
-      //   console.log(this.goodsList);
-      // },function(error){  //失败
-      //   console.log(error);
-      // });
-
-      // console.log(this.API.news);
-
-    },
     greet: function (event) {
       Toast({
         message: '提示信息',

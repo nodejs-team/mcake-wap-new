@@ -67,6 +67,7 @@ export default {
   },
   mounted(){
     // this.getVcode()
+    let self=this
   },
   methods:{
     refresh(){
@@ -101,7 +102,7 @@ export default {
       self.Loading.open()
       self.$http.post("/api/3c84535adacd944e",{
         mobile:self.data.mobile,
-        // vcode:self.data.code,
+        vcode:self.data.code,
         password:self.data.password,
         client:2,
         sign:self.sign

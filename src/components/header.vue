@@ -2,14 +2,14 @@
   <div class="navTab">
     <ul class="nav">
 
-      <li class="search icon iconsfont icons-map" @click='city_select=!city_select;subNavShow=false'><span>{{cityname}}</span></li-link>
+      <li class="search icon iconsfont icons-map" @click='city_select=!city_select;subNavShow=false'><span>{{cityname}}</span></li>
       <li class="center"><div class="logo" @click='gohome'><img src="../style/images/icon-logo.png" alt=""></div></li>
 
       <li class="search cancel_search" @click="isSearch = !isSearch" v-if="isSearch" ><span>取消</span></li>
 
       <!-- <router-link :to="{ name: 'search'}" tag="li" class="search icon iconsfont icons-search1" @click.native="isSearch = !isSearch" v-else></router-link><em></em> -->
       <li class="search icon iconsfont icons-search1" @click="isSearch = !isSearch;subNavShow=false" v-else></li><em></em>
-      <li class="more icon iconsfont icons-menu" @click="subNavShow = !subNavShow"></li>
+      <li class="more icon iconsfont icons-menu" @click="subNavShow = !subNavShow;isSearch=false"></li>
     </ul>
     <!--子导航-->
     <transition name="slide-down" :duration="{ enter: 500, leave: 200 }">
@@ -49,7 +49,8 @@ export default {
       subNavShow: false,
       isSearch: false,
       city_select:false,
-      minHeight:''
+      minHeight:'',
+      cityid:''
     }
   },
   props:['citySelect','cityname','showsearchs'],
@@ -73,9 +74,10 @@ export default {
     }
   },
   mounted(){
-    this.cityname = remote_ip_info.city;
-    console.log(remote_ip_info.city)
+    // this.cityname = remote_ip_info.city;
+    // console.log(remote_ip_info.city)
     this.minHeight = window.document.body.offsetHeight+'px';
+    //this.cityMatch()
     //alert(this.minHeight)
   },
   methods:{

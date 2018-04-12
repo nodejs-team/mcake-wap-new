@@ -66,7 +66,7 @@
     padding: .2rem;
   }
   .btns.fixed{
-    background-color: transparent;
+    /*background-color: transparent;*/
   }
   .login .login_box ul li .icon.iconsfont.icons-mima{
     font-size: .6rem;

@@ -8,7 +8,7 @@
           </li>
           <li class="pwd">
             <input type="text" class="input_txt input_short" placeholder="图片验证码" v-model='data.imgCode'>
-            <div class="yzm"><img :src="imgurl" alt=""></div>
+            <div class="yzm"><img :src="imgurl" alt="" @click='refresh'></div>
           </li>
 
           <li class="pwd">
@@ -25,10 +25,10 @@
         </ul>
       </div>
 
-      <div class="tips"><span class="textRight">立即注册</span> <i>|</i> <router-link to="/login" tag="span" class='textLeft'>立即登陆</router-link></div>
+      <div class="tips"><router-link to="/register" tag="span" class='textRight'>立即注册</router-link> <i>|</i> <router-link to="/login" tag="span" class='textLeft'>立即登陆</router-link></div>
       <div class="btns fixed">
         <ul >
-          <li @click='register'><span>立即注册</span></li>
+          <li @click='register'><span>确认修改</span></li>
         </ul>
       </div>
     </div>
