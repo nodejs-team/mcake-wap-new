@@ -2,227 +2,23 @@
   <div class="container-wrap">
       <div class="orders">
          <div class="order-top">
-           <ul>
-             <li :class='{on:orderStatus==1}' @click='orderStatus=1'>全部</li>
-             <li :class='{on:orderStatus==2}' @click='orderStatus=2'>已完成</li>
-             <li :class='{on:orderStatus==3}' @click='orderStatus=3'>待付款 <span>1</span></li>
-             <li :class='{on:orderStatus==4}' @click='orderStatus=4'>待收货 <span>16</span></li>
+           <ul class="clearfix">
+             <li :class='{on:componentName=="order_dsh"}' @click='componentName2("order_dsh")'>待收货<span>{{wraplist.waitConfirmCount}}</span></li>
+             <li :class='{on:componentName=="order_dfk"}' @click='componentName2("order_dfk")'>待付款<span>{{wraplist.unpaidCount}}</span></li>
+             <li :class='{on:componentName=="order_dshe"}' @click='componentName2("order_dshe")'>待审核</li>
+
+             <li :class='{on:componentName=="order_yqx"}' @click='componentName2("order_yqx")'>已取消</li>
+             <li :class='{on:componentName=="order_ywc"}' @click='componentName2("order_ywc")'>已完成</li>
+             <li :class='{on:componentName=="order_yth"}' @click='componentName2("order_yth")'>已退货</li>
            </ul>
          </div>
-         <div class="order-box" v-show='orderStatus==1'>
-          <div class="pro-list">
-            <ul>
-              <li class="flex-w">
-                <div class="pro-box flex-h">
-                  <div class="pro-img"><img src="../style/images/car-img.jpg" alt="" ></div>
-                  <div class="content">
-                    <p><h2>订单编号 10700234230</h2></p>
-                    <p>cookies au beurre <br>
-                      云顶小花曲奇（抹茶味）1111</p>
-                    <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
-                    </div>
-                  </div>
-                  <div class="edit">
-                    <p><i class="icon iconsfont icons-lajixiang"></i><span>删除</span></p>
-                    <p class="price"><em>￥</em>299</p>
-                  </div>
-                </div>
-                <div class="pro-btns">
-                  <ul>
-                    <li @click='orderDetail'><i class="icon iconsfont icons-test"></i><span>订单详情</span></li><em></em>
-                    <li @click="goComment"><i class="icon iconsfont icons-pop"></i><span>去评价</span></li><em></em>
-                    <li class="share"><i class="icon iconsfont icons-money1"></i><span>分享优惠券</span></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="flex-w">
-                <div class="pro-box flex-h">
-                  <div class="pro-img"><img src="../style/images/car-img.jpg" alt="" ></div>
-                  <div class="content">
-                    <p><h2>订单编号 10700234230</h2></p>
-                    <p>cookies au beurre <br>
-                      云顶小花曲奇（抹茶味）</p>
-                    <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
-                    </div>
-                  </div>
-                  <div class="edit">
-                    <p>取消</p>
-                    <p class="price"><em>￥</em>299</p>
-                  </div>
-                </div>
-                <div class="pro-btns2">
-                  <dl>
-                    <dd class="cancel"><span><i class="icon iconsfont icons-test"></i><span>订单详情</span></span></dd>
-                    <dd><span><i class="icon iconsfont icons-pop"></i><span>去支付</span></span></dd>
-                  </dl>
-                </div>
-              </li>
+         <keep-alive>
+            <component :is="componentName" :wraplist='wraplist' class='orders_wrap'></component>
+         </keep-alive>
 
-            </ul>
-          </div>
-        </div>
-         <div class="order-box" v-show='orderStatus==2'>
-           <div class="pro-list">
-             <ul>
-               <li class="flex-w">
-                 <div class="pro-box flex-h">
-                     <div class="pro-img"><img src="../style/images/car-img.jpg" alt="" ></div>
-                     <div class="content">
-                       <p><h2>订单编号 10700234230</h2></p>
-                       <p>cookies au beurre <br>
-                         云顶小花曲奇（抹茶味）</p>
-                       <div class="o-time">
-                         <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
-                       </div>
-                     </div>
-                     <div class="edit">
-                       <p><i class="icon iconsfont icons-lajixiang"></i><span>删除</span></p>
-                       <p class="price"><em>￥</em>299</p>
-                     </div>
-                 </div>
-                  <div class="pro-btns">
-                    <ul>
-                      <li><i class="icon iconsfont icons-test"></i><span>订单详情</span></li><em></em>
-                      <li><i class="icon iconsfont icons-pop"></i><span>去评价</span></li><em></em>
-                      <li class="share"><i class="icon iconsfont icons-money1"></i><span>分享优惠券</span></li>
-                    </ul>
-                  </div>
-               </li>
-               <li class="flex-w">
-                 <div class="pro-box flex-h">
-                   <div class="pro-img"><img src="../style/images/car-img.jpg" alt="" ></div>
-                   <div class="content">
-                     <p><h2>订单编号 10700234230</h2></p>
-                     <p>cookies au beurre <br>
-                       云顶小花曲奇（抹茶味）</p>
-                     <div class="o-time">
-                       <p><i class="icon iconsfont icons-clock"></i>下单时间：2017-07-14 18:14:46</p>
-                     </div>
-                   </div>
-                   <div class="edit">
-                     <p><i class="icon iconsfont icons-lajixiang"></i><span>删除</span></p>
-                     <p class="price"><em>￥</em>299</p>
-                   </div>
-                 </div>
-                 <div class="pro-btns">
-                   <ul>
-                     <li><i class="icon iconsfont icons-test"></i><span>订单详情</span></li><em></em>
-                     <li><i class="icon iconsfont icons-pop"></i><span>去评价</span></li><em></em>
-                     <li class="share"><i class="icon iconsfont icons-money1"></i><span>分享优惠券</span></li>
-                   </ul>
-                 </div>
-               </li>
 
-             </ul>
-           </div>
-         </div>
-         <div class="order-box" v-show='orderStatus==3'>
-          <div class="pro-list">
-            <ul>
-              <li class="flex-w">
-                <div class="pro-box flex-h">
-                  <div class="pro-img"><img src="../style/images/car-img.jpg" alt="" ></div>
-                  <div class="content">
-                    <p><h2>订单编号 10700234230</h2></p>
-                    <p>cookies au beurre <br>
-                      云顶小花曲奇（抹茶味）</p>
-                    <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
-                    </div>
-                  </div>
-                  <div class="edit">
-                    <p>取消</p>
-                    <p class="price"><em>￥</em>299</p>
-                  </div>
-                </div>
-                <div class="pro-btns2">
-                  <dl>
-                    <dd class="cancel"><span><i class="icon iconsfont icons-test"></i><span>订单详情</span></span></dd>
-                    <dd><span><i class="icon iconsfont icons-pop"></i><span>去支付</span></span></dd>
-                  </dl>
-                </div>
-              </li>
-              <li class="flex-w">
-                <div class="pro-box flex-h">
-                  <div class="pro-img"><img src="../style/images/car-img.jpg" alt="" ></div>
-                  <div class="content">
-                    <p><h2>订单编号 10700234230</h2></p>
-                    <p>cookies au beurre <br>
-                      云顶小花曲奇（抹茶味）</p>
-                    <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
-                    </div>
-                  </div>
-                  <div class="edit">
-                    <p>取消</p>
-                    <p class="price"><em>￥</em>299</p>
-                  </div>
-                </div>
-                <div class="pro-btns2">
-                  <dl>
-                    <dd class="cancel"><span><i class="icon iconsfont icons-test"></i><span>订单详情</span></span></dd>
-                    <dd><span><i class="icon iconsfont icons-pop"></i><span>去支付</span></span></dd>
-                  </dl>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-         <div class="order-box" v-show='orderStatus==4'>
-          <div class="pro-list">
-            <ul>
-              <li class="flex-w">
-                <div class="pro-box flex-h">
-                  <div class="pro-img"><img src="../style/images/car-img.jpg" alt="" ></div>
-                  <div class="content">
-                    <p><h2>订单编号 10700234230</h2></p>
-                    <p>cookies au beurre <br>
-                      云顶小花曲奇（抹茶味）</p>
-                    <div class="luyin"><i class="icon iconsfont icons-luyin1"></i><span>录音传情</span></div>
-                    <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i><span>下单时间：2017-07-14 18:14:46</span></p>
-                    </div>
-                  </div>
-                  <div class="edit">
-                    <p class="price"><em>￥</em>299</p>
-                  </div>
-                </div>
-                <div class="pro-btns">
-                  <ul>
-                    <li class="cancel"><span><i class="icon iconsfont icons-test"></i><span>订单详情</span></span></li><em></em>
-                    <li><span><i class="icon iconsfont icons-pop"></i><span>查看配送信息</span></span></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="flex-w">
-                <div class="pro-box flex-h">
-                  <div class="pro-img"><img src="../style/images/car-img.jpg" alt="" ></div>
-                  <div class="content">
-                    <p><h2>订单编号 10700234230</h2></p>
-                    <p>cookies au beurre <br>
-                      云顶小花曲奇（抹茶味）</p>
-                    <div class="luyin"><i class="icon iconsfont icons-luyin1"></i><span>录音传情</span></div>
-                    <div class="o-time">
-                      <p><i class="icon iconsfont icons-clock"></i><span><span>下单时间：2017-07-14 18:14:46</span></span></p>
-                    </div>
-                  </div>
-                  <div class="edit">
-                    <p class="price"><em>￥</em>299</p>
-                  </div>
-                </div>
-                <div class="pro-btns">
-                  <ul>
-                    <li class="cancel"><span><i class="icon iconsfont icons-test"></i><span>订单详情</span></span></li><em></em>
-                    <li><span><i class="icon iconsfont icons-pop"></i><span>查看配送信息</span></span></li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
 
-        </div>
+
       </div>
      <!--  <div class="pinglun" v-show="isPing">
         <ul>
@@ -372,12 +168,24 @@
 </template>
 
 <script>
-  import dialogTips from '../components/dialog-tips'
+import dialogTips from '../components/dialog-tips'
+import order_dshe from '../components/order_dshe'
+import order_dfk from '../components/order_dfk'
+import order_dsh from '../components/order_dsh'
+import order_ywc from '../components/order_ywc'
+import order_yqx from '../components/order_yqx'
+import order_yth from '../components/order_yth'
 export default {
   name: 'orders',
   props: [],
   components: {
-    myDialog: dialogTips
+    myDialog: dialogTips,
+    order_dshe,
+    order_dfk,
+    order_dsh,
+    order_ywc,
+    order_yqx,
+    order_yth
   },
   data () {
     return {
@@ -385,19 +193,36 @@ export default {
       isPing:false,
       isEdit:false,
       isShowDialog:false,
-      orderStatus:1
+      orderStatus:1,
+      componentName:'order_dsh',
+      wraplist:{
+          waitConfirmCount:0,
+          unpaidCount:0,
+      }
     }
   },
   mounted(){
     //this.tabSlide();
-    this.orderStatus=this.$route.query.orderStatus
+    if(this.$route.query.orderStatus){
+      this.componentName=this.$route.query.orderStatus
+    }else{
+      this.componentName='order_dsh'
+    }
+    
   },
   watch:{
     '$route':function(){
-      this.orderStatus=this.$route.query.orderStatus
+      if(this.$route.query.orderStatus){
+        this.componentName=this.$route.query.orderStatus
+      }else{
+        this.componentName='order_dsh'
+      }
     }
   },
   methods:{
+    componentName2(type){
+      this.componentName = type
+    },
     orderDetail(){
       this.$router.push('/order')
     },
@@ -449,6 +274,8 @@ export default {
   .orders .order-top{
     background-color: #ebebeb;
     padding: 0 0.2rem;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
   }
   .orders .order-top li{
     position: relative;
@@ -470,5 +297,76 @@ export default {
   }
   .orders .order-box{
     display: block;
+  }
+
+  .orders .order_no{
+    text-align: left;
+    display: flex;
+    font-size: .32rem;
+    padding: .3rem 0;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: .2rem;
+  }
+  .orders .order_no .order_no_left{
+    flex: 5;
+    display: flex;
+    color: #3d3d3d;
+  }
+  .orders .order_no .order_no_left .o-time{
+    margin-right: .2rem;
+    color: #000;
+  }
+  .orders .order_no .order_del{
+    flex: 1;
+    text-align: right;
+  }
+  .orders .order-box li{
+    padding: 0 0.27778rem;
+  }
+  .pro-list .pro-box {
+    margin: 0;
+    padding-bottom: 0.27778rem;
+    /*padding: 0 0.27778rem 0.27778rem;*/
+  }
+  .pro-list .pro-btns{
+    margin: 0;
+  }
+  .pro-list .pro-box .edit .price{
+    position: inherit;
+    font-size: .36111rem;
+  }
+  .pro-list .pro-box .edit p{
+    text-align: right;
+  }
+  .order_item_total{
+    text-align: right;
+    padding: .2rem 0;
+    border-top: 1px solid #ccc;
+  }
+  .icon.iconsfont.icons-lajixiang{
+    font-size: .4rem;
+  }
+  .orders .order-top{
+    position: fixed;
+    top: 1.6rem;
+    width: 100%;
+    z-index: 99;
+  }
+  .orders_wrap{
+    padding-top: 1rem;
+  }
+  .orders{
+    padding-bottom: 1rem;
+  }
+  .orders .order-top ul{
+    display: block;
+    width: 14.4rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .orders .order-top ul li{
+    float: left;
+    width: 2.4rem;
   }
 </style>

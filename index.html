@@ -2,11 +2,38 @@
 <html>
   <head>
     <meta charset="utf-8">
-     <!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> -->
+     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
      <script src="./static/js/flexible_css.js"></script>
      <script src="./static/js/flexible.js"></script>
      <!-- 新浪地址接口 -->
-     <script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+     <script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js" async></script>
+     <script type="text/javascript">
+       var remote_ip_info={}
+       remote_ip_info.city='上海市'
+       function loadScript(src, callback) {
+            var script = document.createElement('script'),
+                head = document.getElementsByTagName('head')[0];
+            script.type = 'text/javascript';
+            script.charset = 'UTF-8';
+            script.src = src;
+            if (script.addEventListener) {
+                script.addEventListener('load', function () {
+                    callback();
+                }, false);
+            } else if (script.attachEvent) {
+                script.attachEvent('onreadystatechange', function () {
+                    var target = window.event.srcElement;
+                    if (target.readyState == 'loaded') {
+                        callback();
+                    }
+                });
+            }
+            head.appendChild(script);
+        }
+        loadScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js',function(){
+            remote_ip_info=remote_ip_info
+        });
+     </script>
     <title>Mcake</title>
   </head>
   <body>

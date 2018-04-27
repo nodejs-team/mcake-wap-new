@@ -398,6 +398,9 @@
         .quan .quan-item .quan-content .youhuiquan .quan-left span {
           font-size: 2.08333rem;
           line-height: 2.41667rem; }
+          .quan .quan-item .quan-content .youhuiquan .quan-left span.small{
+            font-size: 1.5rem;
+          }
       .quan .quan-item .quan-content .youhuiquan .quan-center {
         flex: 1;
         padding: 0.27778rem 0.27778rem;
@@ -457,7 +460,7 @@
           padding: 0.13889rem 0 0.27778rem; }
       .quan .quan-item .quan-content .quan-list .c-right {
         float: right;
-        width: 3.61111rem;
+        width: 3.81111rem;
         text-align: left;
         padding: 0.34722rem 0.41667rem 0.20833rem; }
 

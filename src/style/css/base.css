@@ -12,7 +12,7 @@ html, body {
 
 #app {
   height: 100%;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Microsoft YaHei",'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -117,7 +117,7 @@ em, i, b {
   width: 100%;
   left: 50%;
   margin-left: -50% !important;
-  bottom: 0 !important;
+  bottom: 0;
   background: #fff;
   padding: 0.13333rem 0; }
 
@@ -167,7 +167,7 @@ em, i, b {
 /*鎸夐挳*/
 .btns {
   width: 100%;
-  bottom: 1.33333rem;
+  /*bottom: 1.33333rem;*/
   margin: 0.13333rem auto 0; }
   .btns ul {
     display: flex;
@@ -369,7 +369,7 @@ em, i, b {
   max-width: 10rem;
   height: 1.33333rem;
   background: #fff;
-  z-index: 1998; }
+  z-index: 1997; }
 
 .footer ul {
   display: flex;

@@ -17,10 +17,19 @@ import axios from './axios'
 import VueAxios from 'vue-axios'
 import Vant from 'vant';
 import 'vant/lib/vant-css/index.css';
+
+
 import 'vue2-animate/dist/vue2-animate.min.css';
 
 import { Toast, MessageBox, Popup } from 'mint-ui'
 import { Indicator } from 'mint-ui';
+
+import YDUI from 'vue-ydui'; /* 相当于import YDUI from 'vue-ydui/ydui.rem.js' */
+import 'vue-ydui/dist/ydui.rem.css';
+/* 使用px：import 'vue-ydui/dist/ydui.px.css'; */
+
+Vue.use(YDUI);
+
 import store from './store'
 Vue.component(Popup.name, Popup)
 // require('animate.css/animate.min.css');
@@ -48,6 +57,28 @@ Vue.prototype.baseUrl = 'https://www.easy-mock.com/mock/59fdce0e6b54331215b44a24
         };
 Vue.use(login);
 Vue.config.productionTip = false;
+
+Vue.filter('toDecimal2', function (x) {
+	var f = parseFloat(x); 
+    if (isNaN(f)) { 
+    return false; 
+    } 
+    var f = Math.round(x*100)/100; 
+    var s = f.toString(); 
+    var rs = s.indexOf('.'); 
+    if (rs < 0) { 
+    rs = s.length; 
+    s += '.'; 
+    } 
+    while (s.length <= rs + 2) { 
+    s += '0'; 
+    } 
+    return s; 
+  // 返回处理后的值
+})
+
+// getter，返回已注册的过滤器
+var toDecimal2 = Vue.filter('toDecimal2')
 // fastclick.attach(document.body);
 /* eslint-disable no-new */
 new Vue({
@@ -55,5 +86,8 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  filters:{
+      toDecimal2
+  },
 })

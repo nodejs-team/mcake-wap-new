@@ -8,16 +8,16 @@
                 <div class="pro-img"><img src="../style/images/car-img.jpg" alt="" ></div>
                 <div class="content">
                   <dl>
-                    <dt><h2>经典香草拿破仑111</h2><h2>Napoléon vanille</h2></dt>
-                    <dd><em>数量：</em> <span>1个</span></dd>
-                    <dd><em>小计：</em> <span>￥298</span></dd>
-                    <dd><em>食用：</em> <span>适合2-3人食用</span></dd>
-                    <dd><em>标配：</em> <span>2份标配餐具</span></dd>
+                    <dt><h2>{{item.name}}</h2><h2>{{item.french}}</h2></dt>
+                    <dd><em>数量：</em> <span>{{item.num}}个</span></dd>
+                    <dd><em>小计：</em> <span>￥{{item.price}}</span></dd>
+                    <dd><em>食用：</em> <span>{{item.spec}}<template v-if='item.edible'>-</template>{{item.edible}}</span></dd>
+                    <dd><em>标配：</em> <span>{{item.fittings['51'].num}}{{item.fittings['51'].uname}}{{item.fittings['51'].name}}</span></dd>
                     <dd class="line"></dd>
-                    <dd><em>付费餐具：</em> <i>1个</i> <span>5.00元</span></dd>
-                    <dd><em>付费蜡烛：</em> <i>2个</i> <span>5.00元</span></dd>
+                    <dd v-for='fit in item.fittings' v-if='fit.sale&&fit.num>0'><em>{{fit.name}}：</em> <i>{{fit.num}}{{fit.uname}}</i> <span>{{fit.price}}元</span></dd>
+                    <!-- <dd><em>付费蜡烛：</em> <i>2个</i> <span>5.00元</span></dd>
                     <dd><em>数字蜡烛：</em> <i>1个</i> <span>5.00元</span></dd>
-                    <dd><em>付费生日牌：</em> <i>1个</i> <span>5.00元</span></dd>
+                    <dd><em>付费生日牌：</em> <i>1个</i> <span>5.00元</span></dd> -->
                   </dl>
                 </div>
               </div>
@@ -49,27 +49,31 @@
               </dt>
 
               <dd >
-                <div class="in-line"><span :class="{uncheck:data.ewcj}"  @click='data.ewcj=!data.ewcj'><i class="icon iconsfont icons-dui"></i></span>
+                <div class="in-line"><span :class="{uncheck:data.ewcj}"  @click='change_ewcj'><i class="icon iconsfont icons-dui"></i></span>
                   <p class="ewai">额外餐具
                     <i>￥5.00/包(5个餐盘 5个餐勺)</i>
                     <span class="nums">
                      <van-stepper
                      @plus='plus'
+                      min='0'
                       v-model="num"
                       :default-value="num"
+                      @change='change1'
                       />
                    </span>
                   </p>
                 </div>
-                <div class="in-line" ><span :class="{uncheck:data.ewlz}" @click='data.ewlz=!data.ewlz'><i class="icon iconsfont icons-dui"></i></span>
+                <div class="in-line" ><span :class="{uncheck:data.ewlz}" @click='change_ewlz'><i class="icon iconsfont icons-dui"></i></span>
                   <p class="ewai">
                   额外生日蜡烛
                   <i>￥2.00/套</i>
                   <span class="nums">
                      <van-stepper
                      @plus='plus'
+                     min='0'
                       v-model="num2"
                       :default-value="num2"
+                      @change='change2'
                       />
                    </span>
                   </p>
@@ -88,7 +92,7 @@
 
 export default {
   name: 'orders',
-  props: [],
+  props: ['item'],
   components: {
 
   },
@@ -109,6 +113,15 @@ export default {
     }
   },
   mounted(){
+      console.log(this.item)
+      this.num=this.item.fittings['52'].num
+      if(this.num>0){
+        this.data.ewcj=false
+      }
+      this.num2=this.item.fittings['55'].num
+      if(this.num2>0){
+        this.data.ewlz=false
+      }
       this.init();
       $(".payfor li").click(function () {
         $(this).addClass("on").siblings().removeClass("on");
@@ -129,6 +142,42 @@ export default {
       });
   },
   methods:{
+    change_ewcj(){
+      this.data.ewcj=!this.data.ewcj
+      if(!this.data.ewcj){
+        this.num>0?this.num=this.num:this.num=1
+        this.item.fittings['52'].num=this.num
+      }else{
+        this.num=0;
+        this.item.fittings['52'].num=0
+      }
+    },
+    change1(data){
+      this.item.fittings['52'].num=data
+      if(data>0){
+        this.data.ewcj=false;
+      }else{
+        this.data.ewcj=true;
+      }
+    },
+    change_ewlz(){
+      this.data.ewlz=!this.data.ewlz
+      if(!this.data.ewlz){
+        this.num2>0?this.num2=this.num2:this.num2=1
+        this.item.fittings['55'].num=this.num2
+      }else{
+        this.num2=0;
+        this.item.fittings['55'].num=0
+      }
+    },
+    change2(data){
+      this.item.fittings['55'].num=data
+      if(data>0){
+        this.data.ewlz=false;
+      }else{
+        this.data.ewlz=true;
+      }
+    },
     plus(){
 
     },
@@ -196,5 +245,11 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+  }
+  .nowbuy ul.orderList li .pro-box .content dl dd i{
+    flex: 2;
+  }
+    .nowbuy ul.orderList li .pro-box .content{
+    flex: 1.5;
   }
 </style>

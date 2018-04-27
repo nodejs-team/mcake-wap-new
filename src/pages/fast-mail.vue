@@ -2,7 +2,20 @@
   <div class="container-wrap">
       <div class="fast-mail">
         <div class="mail-banner">
-          <div class="state"><span>配送中</span></div>
+          <div class="state">
+            <span v-if='data.billStatus==0'>已建立</span>
+            <span v-if='data.billStatus==1'>已审核</span>
+            <span v-if='data.billStatus==2'>已生产</span>
+            <span v-if='data.billStatus==3'>已入库</span>
+            <span v-if='data.billStatus==4'>已出库</span>
+            <span v-if='data.billStatus==5'>配送站收货</span>
+            <span v-if='data.billStatus==6'>已配送</span>
+            <span v-if='data.billStatus==7'>已完成</span>
+            <span v-if='data.billStatus==8'>部分退货</span>
+            <span v-if='data.billStatus==9'>全部退货</span>
+            <span v-if='data.billStatus==10'>已取消</span>
+            <span v-if='data.billStatus==11'>配送自购</span>
+          </div>
           <img src="../style/images/mail.jpg" alt="">
         </div>
         <div class="ziti-address">
@@ -12,11 +25,11 @@
                 <div class="person_info">
                   <li><i class="icon iconsfont icons-me"></i>
                     <b>派送员</b>
-                    <span>张东升</span>
+                    <span>{{data.distributionTechnicianName}}</span>
                   </li>
                   <li><i class="icon iconsfont icons-shoujihao"></i>
                     <b>联系方式</b>
-                    <span>135425544566</span>
+                    <span>{{data.mobile}}</span>
                   </li>
                 </div>
                 <li><i class="icon iconsfont icons-shoujihao"></i>
@@ -24,12 +37,7 @@
                 </li>
                 <div class="wulist">
                   <ul>
-                    <li><b>您的订单未确认</b><span>2018.2.16 15:00:00</span></li>
-                    <li><b>您的订单未确认</b><span>2018.2.16 15:00:00</span></li>
-                    <li><b>您的订单未确认</b><span>2018.2.16 15:00:00</span></li>
-                    <li><b>您的订单未确认</b><span>2018.2.16 15:00:00</span></li>
-                    <li><b>您的订单未确认</b><span>2018.2.16 15:00:00</span></li>
-
+                    <li v-for='item in data.billTrace'><b>{{item.content}}</b><span>{{item.createTime}}</span></li>
                   </ul>
                 </div>
               </ul>
@@ -57,14 +65,34 @@ export default {
   data () {
     return {
       msg: '结算页',
-      isShowPj:false
-
+      isShowPj:false,
+      data:''
     }
   },
   mounted(){
-      this.init();
+      
+  },
+  activated(){
+    this.getDetail();
   },
   methods:{
+    getDetail(){
+      let self = this;
+      self.Loading.open()
+      self.$http.get('/api/502de4fc8c30ecea',{
+        params:{
+          billNo:this.$route.query.billNo
+        }
+      }).then(function(res){  //接口返回数据
+        self.Loading.close()
+        console.log(res);
+        if(res.code==1){
+          self.data = res.data;
+        }
+      },function(error){  //失败
+        console.log(error);
+      });
+    },
       init:function () {
        // $(".peijian dd").hide();
       },

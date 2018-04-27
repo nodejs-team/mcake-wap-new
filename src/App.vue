@@ -2,19 +2,19 @@
   <div id="app" :class="{isfixed:isfixed}">
 
     <div id="evt_loading" style="display:none;">0%</div>
-    <div class="evt_content" style="display:none;">
+    <div class="evt_content" >
       <div class="vue-header">
         <my-header v-on:showwrap='fixed' :citySelect='showcity' :cityname='city_name' v-on:searchEvent='searchEvent' :showsearchs='showsearch'></my-header>
       </div>
       <!-- <div class="marginTop"></div> -->
       <div class="vue-container">
         <keep-alive>
-          <router-view/>
+          <router-view :ischchangeList='ischchangeList' :clear='clearCart'/>
         </keep-alive>
       </div>
     </div>
     <!--<img src="./assets/logo.png">-->
-    <selectCity  :show='showcity' :style='{height:minHeight}'  v-on:selectCity='selectCity'></selectCity>
+    <selectCity  :show='showcity'   v-on:selectCity='selectCity' v-on:clearCart='clearCartNum'></selectCity>
     <search  v-show='showsearch'   ></search>
   </div>
 </template>
@@ -24,6 +24,7 @@
 import './style/css/glob.css'
 import $ from 'jquery'
 import header from './components/header'
+// import myfooter from './components/footer'
 import navBar from './components/navBar'
 import search from '@/pages/search'
 import selectCity from '@/pages/select-city'
@@ -32,7 +33,8 @@ export default {
     myHeader: header,
     navBar: navBar,
     search,
-    selectCity
+    selectCity,
+    // myfooter
   },
   data () {
     return {
@@ -43,31 +45,40 @@ export default {
       city_name:'',
       search:false,
       showsearch:false,
-
+      ischchangeList:{
+        num:0,
+        ischange:false
+      },
+      clearCart:{
+        num:0
+      }
     }
   },
   mounted(){
     this.init()
     this.minHeight=document.documentElement.clientHeight+'px'
-    
-    // this.cityMatch(this.city_name)
   },
   methods: {
+    clearCartNum(){
+      this.clearCart.num++;
+    },
     searchEvent(data){
       this.showsearch = data
       if(this.showsearch){
         this.showcity=false
       }
-      //console.log(data)
     },
     selectCity(data){
-      this.showcity=false
-      this.city_name = data
-
-      // console.log(data)
+      this.showcity=false;
+      if(data!=1){
+        this.ischchangeList.num+=1;
+        this.clearCart.num+=1;
+        this.ischchangeList.ischange=true;
+        this.city_name = data
+      }
+      
     },
     fixed(data){
-      //alert(111)
       console.log(data)
       this.isfixed=data;
       this.showcity=data
@@ -282,7 +293,9 @@ export default {
       font-size: .32rem;
       font-weight: bold;
     }
-
+    .mint-cell-swipe-button{
+      padding: 0;
+    }
     /*记载等待*/
     .mint-indicator-wrapper{
       padding: .6rem !important;
@@ -327,4 +340,9 @@ export default {
     .select_city_wrap p{
       margin-bottom: .3rem;
     }
+    html{
+      -webkit-text-size-adjust:none;
+    }
+    
+    
 </style>

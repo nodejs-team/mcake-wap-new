@@ -15,37 +15,16 @@
     </div>
     <div class="integral-list">
       <ul>
-        <li>
+        <li v-for='item in list'>
           <div class="list-content">
-            <h2><i class="icon iconsfont icons-money2"></i><span>订单：10358034532804</span></h2>
-            <span>消费赠送</span>
-            <p><i class="icon iconsfont icons-money2"></i><span class="times">消费日期：2017.7.15</span></p>
+            <h2><i class="icon iconsfont icons-money2"></i><span>{{item.remark}}</span></h2>
+            <span v-if='item.changeType==1'>消费赠送</span>
+            <span v-if='item.changeType==2'>积分使用</span>
+            <p><i class="icon iconsfont icons-money2"></i><span class="times">消费日期：{{item.createTime}}</span></p>
           </div>
           <div class="pingjia">
-            <p>+99</p>
-            <span>评价获得积分</span>
-          </div>
-        </li>
-        <li>
-          <div class="list-content">
-            <h2><i class="icon iconsfont icons-money2"></i><span>订单：10358034532804</span></h2>
-            <span>消费赠送</span>
-            <p><i class="icon iconsfont icons-money2"></i><span class="times">消费日期：2017.7.15</span></p>
-          </div>
-          <div class="pingjia">
-            <p>+99</p>
-            <span>评价获得积分</span>
-          </div>
-        </li>
-        <li>
-          <div class="list-content">
-            <h2><i class="icon iconsfont icons-money2"></i><span>订单：10358034532804</span></h2>
-            <span>消费赠送</span>
-            <p><i class="icon iconsfont icons-money2"></i><span class="times">消费日期：2017.7.15</span></p>
-          </div>
-          <div class="pingjia">
-            <p>+99</p>
-            <span>评价获得积分</span>
+            <p>{{item.changeAccount}}</p>
+            <span v-if='item.changeType==1'>评价获得积分</span>
           </div>
         </li>
       </ul>
@@ -70,7 +49,8 @@ export default {
     return {
       msg: '用户中心',
       isSearch: false,
-      integral:249541
+      integral:0,
+      list:[]
     }
   },
   watch:{
@@ -78,12 +58,29 @@ export default {
   },
   mounted(){
     //console.log(CountUp)
-    this.init()
+    this.getIntegral()
   },
   activated(){
-    this.init()
+    this.getIntegral()
   },
   methods:{
+    getIntegral(){
+      let self = this;
+      self.Loading.open()
+      self.$http.get('/api/2e52b040c23f374c',{
+
+      }).then(function(res){  //接口返回数据
+        self.Loading.close()
+        console.log(res);
+        if(res.code==1){
+            self.integral = res.data.total;
+            self.list = res.data.list
+            self.init()
+        }
+      },function(error){  //失败
+        console.log(error);
+      });
+    },
     init(){
       let self = this
       var options = {
@@ -142,5 +139,17 @@ export default {
   }
   .users.integral .integral-list .list-content>p{
     padding-top: .12rem;
+  }
+  .users.integral .btns{
+    position: fixed;
+    bottom: 0rem;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    padding: .2rem 0;
+    background-color: #fff;
+  }
+  .integral .integral-list, .money .integral-list{
+    padding-bottom: 2rem;
   }
 </style>

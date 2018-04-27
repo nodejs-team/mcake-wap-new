@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <div class="city" v-show='show'>
-      <div class="content" :style='{height:height}' >
+  <div class="city_wrap" v-show='isshow'>
+    <div class="city"  :style='{height:height}' >
+      <div class="content" >
         <div class="city-icon">
           <div class="info icon iconsfont icons-dingwei"></div>
           <p>请选择您所在的城市</p>
         </div>
         <ul class="lists">
-          <li v-for='(item,index) in cityList' :class="{on:item.id==cityId}" @click='cityMatch(item.name)'><span>{{item.name}}</span><!-- <b>Shanghai</b> --> <i class="icon iconsfont icons-gengduo"></i></li>
+          <li v-for='(item,index) in cityList' :class="{on:item.id==cityId}" @click='onConfirm(item.name,item.id)'><span>{{item.name}}</span><!-- <b>Shanghai</b> --> <i class="icon iconsfont icons-gengduo"></i></li>
         </ul>
         <div class="city_more">
           <p>更多城市敬请期待</p>
@@ -35,7 +35,6 @@
 <script>
 // import $ from 'jquery'
 // import Vue from 'vue'
-
 export default {
   name: 'home',
   components: {
@@ -56,16 +55,27 @@ export default {
       cityList:'',
       cityId:'',
       cityname:'',
-      city_name:''
+      city_name:'上海市',
+      cartNum:''
     }
   },
   props:['show'],
   watch:{
 
   },
+  computed:{
+    isshow:{
+      
+      get(){
+          return this.show
+      },
+      set(){
+          // this.isshow = newValue; 
+      }
+    }
+  },
   mounted(){
-    // this.init();
-    this.city_name = remote_ip_info.city;
+    this.city_name = remote_ip_info?remote_ip_info.city:'上海市';
     // let cityId = sessionStorage.getItem('mcake_cityid')
     this.cityId = this.getCookie('mcake_cityid')
     if(!this.cityId){
@@ -73,7 +83,9 @@ export default {
     }
     this.getCityList(this.cityId)
     // this.cityMatch()
-    this.height=document.documentElement.clientHeight-200+'px'
+    this.$nextTick(function(){
+      this.height=document.documentElement.clientHeight+'px'
+    })
   },
   methods: {
     setCookie(name,value){
@@ -110,6 +122,7 @@ export default {
               }
               if(!cityId){
                 self.cityMatch();
+
               }else{
                 self.$emit('selectCity',self.city_name)
               }
@@ -120,7 +133,7 @@ export default {
             }            
         })
     },
-    cityMatch(name){
+    cityMatch(name,isclear){
       let self = this;
       self.Loading.open()
       self.$http.get('/api/03a8be5ea008cd26',{
@@ -134,33 +147,90 @@ export default {
             if(res.code==1){
               self.cityId=res.data.id
               self.cityname = res.data.name
+
               self.setCookie('mcake_cityid',self.cityId)
               // sessionStorage.setItem('mcake_cityid',self.cityId)
-              self.$emit('selectCity',res.data.name)
-              location.reload()
+              self.$emit('selectCity',self.cityname)
+              // if(name&&(self.$route.path.includes('/home')||self.$route.path.includes('/list'))){
+
+              //   // location.reload()
+              // }
+              // if(isclear&&self.$route.path.includes('/cart')){
+              //   self.$emit('clearCarts')
+              //   // location.reload()
+              // }
             }else{
               self.MessageBox('提示','匹配不上');
              
             }            
         })
     },
-    onConfirm(){
-      this.show=false;
-      // sessionStorage.setItem('mcake_cityid',this.cityId)
-      this.setCookie('mcake_cityid',self.cityId)
-      for(let i=0;i<this.cityList.length;i++){
-        if(this.cityList[i].id==this.cityId){
-          this.city_name=this.cityList[i].name
-        }
+    onConfirm(name,id){
+      if(id==this.cityId){
+        this.$emit('selectCity',1)
+        return false;
       }
-      this.cityMatch(this.city_name)
-      // this.changeCity()
-      // this.cityMatch()
-    },
-    // select_city(data){
+      if(id==this.cityId){
+        this.$emit('selectCity',name)
+        return false;
+      }
+      if(!localStorage.mcake_user_token){
+        this.cityMatch(name)
+        return false;
+      }
+      this.getCartList(name,id)
 
-      
-    // },
+    },
+    getCartList(name,id){
+      let self = this;
+      self.Loading.open()
+      self.$http.get('/api/5e49d89248023811',{
+
+      }).then(function(res){  //接口返回数据
+        self.Loading.close()
+        self.ismounted=false
+        console.log(res);
+        if(res.code==1){
+          self.cartNum = res.data.length
+          // alert(self.cartNum)
+          if(self.cartNum==undefined){
+            self.MessageBox.confirm('切换城市会清空购物车，确认要切换城市吗?').then(action => {
+              self.clearCart(name)
+            },function(){
+
+            });
+          }else{
+            self.isshow=false;
+            self.setCookie('mcake_cityid',self.cityId)
+            for(let i=0;i<self.cityList.length;i++){
+              if(self.cityList[i].id==self.cityId){
+                self.city_name=self.cityList[i].name
+              }
+            }
+            self.cityMatch(name)
+          }
+        }
+      },function(error){  //失败
+        console.log(error);
+      });
+    },
+    clearCart(name){
+      let self = this;
+      self.Loading.open()
+      self.$http.get('/api/c300195f519eeeac',{
+
+      })
+        .then(function(res){
+            // console.log(res);
+            self.Loading.close();
+            if(res.code==1){
+              // self.$emit('clearCart')
+              self.cityMatch(name,1)
+            }else{
+              self.Toast(res.msg)
+            }            
+        })
+    },
     greet: function (event) {
 
     },
@@ -202,20 +272,24 @@ export default {
     opacity: 0;
   }
   .city .content{
-    padding: .8rem .3rem 0;
+    padding: 3.2rem .3rem .6rem;
     height: 100%;
     overflow:scroll;
     -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
   }
-  .city{
+  .city_wrap{
     
     position: fixed;
     width: 100%;
     height: 100%;
     
-    z-index: 3001;
-    top: 1.6rem;
+    z-index: 1997;
+    top: 0rem;
+    left: 0;
     box-sizing: border-box;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
   }
   .city_more{
     margin-top: .2rem;

@@ -71,7 +71,7 @@ export default {
   width: 90%;
   position: fixed;
   max-height: 50%;
-  overflow: auto;
+  overflow: inherit;
   background: #fff;
   top: 35%;
   left: 50%;

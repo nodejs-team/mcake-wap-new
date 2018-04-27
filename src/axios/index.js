@@ -32,11 +32,11 @@ instance.interceptors.request.use(function(config) {
   // console.log(user_token)
   // console.log(mcake_user_token_time)
   if(mcake_user_token_time-new Date().getTime()>0){
-    console.log('user_token没有失效')
+    // console.log('user_token没有失效')
     localStorage.mcake_user_token_time = new Date().getTime()+60*24*24*1000
     config.headers['user-token'] = user_token
   }else{
-    console.log('user-token登入失效')
+    // console.log('user-token登入失效')
     localStorage.removeItem('mcake_user_token');
     localStorage.removeItem('mcake_user_token_time');
   }
@@ -44,10 +44,12 @@ instance.interceptors.request.use(function(config) {
 
   //根据请求链接判断是否需要登入，如果需要登入，判断是否已经登录成功
   // console.log(localStorage.mcake_is_login)
-  let userArr=['07399bea14647979','0a726336d3a19773','5e49d89248023811','b2d339c92168c794','b34ce2c4f51281f9','c300195f519eeeac','c5cc50070b5c48db']
+  let userArr=['07399bea14647979','0a726336d3a19773','5e49d89248023811','b2d339c92168c794',
+  'b34ce2c4f51281f9','c300195f519eeeac','c5cc50070b5c48db','2e52b040c23f374c','5ec350ef90d3f7d3',
+  '670ff0ae277f4cae','781fdd9d4eb4b628','7c670d1b5ed5bbef','51e4fce79ae6a9a0','ce140030bb774abe']
   let mustlogin=userArr.includes(config.url.replace('/api/',''))
   if(mustlogin&&!localStorage.mcake_user_token){
-    console.log('用户需要登陆')
+    // console.log('用户需要登陆')
     MessageBox.alert('请先登录后再进行操作').then(action => {
       window.location.href='#/login?isback=1'
     });
@@ -96,6 +98,9 @@ instance.interceptors.request.use(function(config) {
   return Promise.reject(error);
 });
 instance.interceptors.response.use(function(response) {
+  if(response.data.code==-14){
+    response.data.msg=''
+  }
   // 对返回的数据进行一些处理
   if (response.data.status == '40008201'   || response.data.status == '40009201') {
       setTimeout(() => {
@@ -108,7 +113,10 @@ instance.interceptors.response.use(function(response) {
   if (response.data.status && '2' != (response.data.status + '').charAt(0)) {
     //alert(response.data.message || response.data.msg || '结果返回异常')
   }
-
+  if(response.data.code==-14){
+    console.log(11111)
+  }
+  
   return response.data
 }, function(error) {
   // 对返回的错误进行一些处理

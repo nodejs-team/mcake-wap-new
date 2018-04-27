@@ -4,325 +4,16 @@
       <div class="quan-head">
         <h2>我的现金卡</h2>
         <ul>
-          <li><b>23</b><br><span>已使用</span></li>
-          <li class="on"><b>3</b><br><span>可使用</span></li>
-          <li><b>12</b><br><span>距离过期</span></li>
-          <li><b>23</b><br><span>已过期</span></li>
+          <li :class="{on:componentName=='cash_wsy'}" @click='changetabs("cash_wsy")'><b>{{wraplist.unusedCount}}</b><br><span>未使用</span></li>
+          <li :class="{on:componentName=='cash_ysy'}" @click='changetabs("cash_ysy")'><b>{{wraplist.usedCount}}</b><br><span>已使用</span></li>
+          <li :class="{on:componentName=='cash_jlgq'}" @click='changetabs("cash_jlgq")'><b>{{wraplist.fastExpireCount}}</b><br><span>距离过期</span></li>
+          <li :class="{on:componentName=='cash_ygq'}" @click='changetabs("cash_ygq")'><b>{{wraplist.expireCount}}</b><br><span>已过期</span></li>
         </ul>
       </div>
       <div class="quan-content">
-         <div class="items first">
-           <div class="swiper-container quanbao card1">
-             <div class="swiper-wrapper">
-               <div class="swiper-slide">
-                 <div class="quan-list">
-                   <div class="quan-box">
-                     <div class="quan-top">
-                       <div class="c-left"><h2>某类型现金卡</h2></div>
-                       <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                     </div>
-                     <div class="quan-main">
-                       <div class="c-left">
-                         <h2>使用条件：</h2>
-                         <p>限用于中秋专享活动 <br>
-                           不可与优惠券一同使用</p>
-                       </div>
-                       <div class="c-right">
-                         <b>额度：</b><br>
-                         <span class="num">299</span>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-               <div class="swiper-slide">
-                 <div class="quan-list">
-                   <div class="quan-box">
-                     <div class="quan-top">
-                       <div class="c-left"><h2>某类型现金卡</h2></div>
-                       <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                     </div>
-                     <div class="quan-main">
-                       <div class="c-left">
-                         <h2>使用条件：</h2>
-                         <p>限用于中秋专享活动 <br>
-                           不可与优惠券一同使用</p>
-                       </div>
-                       <div class="c-right">
-                         <b>额度：</b><br>
-                         <span class="num">299</span>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-               <div class="swiper-slide">
-                 <div class="quan-list">
-                   <div class="quan-box">
-                     <div class="quan-top">
-                       <div class="c-left"><h2>某类型现金卡</h2></div>
-                       <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                     </div>
-                     <div class="quan-main">
-                       <div class="c-left">
-                         <h2>使用条件：</h2>
-                         <p>限用于中秋专享活动 <br>
-                           不可与优惠券一同使用</p>
-                       </div>
-                       <div class="c-right">
-                         <b>额度：</b><br>
-                         <span class="num">299</span>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-           <div class="paging">
-             <ul>
-               <li>1</li>
-               <li class="thisclass"><a href="#">2</a></li>
-               <li><a href="#">3</a></li>
-               <li><a href="#">4</a></li>
-             </ul>
-             <!--<li><span class="pageinfo">共 <strong>4</strong>页<strong>20</strong>条</span></li>-->
-           </div>
-         </div>
-         <div class="items">
-          <div class="swiper-container quanbao card1">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="quan-list">
-                  <div class="quan-box">
-                    <div class="quan-top">
-                      <div class="c-left"><h2>某类型现金卡</h2></div>
-                      <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                    </div>
-                    <div class="quan-main">
-                      <div class="c-left">
-                        <h2>使用条件：</h2>
-                        <p>限用于中秋专享活动 <br>
-                          不可与优惠券一同使用</p>
-                      </div>
-                      <div class="c-right">
-                        <b>额度：</b><br>
-                        <span class="num">299</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="quan-list">
-                  <div class="quan-box">
-                    <div class="quan-top">
-                      <div class="c-left"><h2>某类型现金卡</h2></div>
-                      <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                    </div>
-                    <div class="quan-main">
-                      <div class="c-left">
-                        <h2>使用条件：</h2>
-                        <p>限用于中秋专享活动 <br>
-                          不可与优惠券一同使用</p>
-                      </div>
-                      <div class="c-right">
-                        <b>额度：</b><br>
-                        <span class="num">299</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="quan-list">
-                  <div class="quan-box">
-                    <div class="quan-top">
-                      <div class="c-left"><h2>某类型现金卡</h2></div>
-                      <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                    </div>
-                    <div class="quan-main">
-                      <div class="c-left">
-                        <h2>使用条件：</h2>
-                        <p>限用于中秋专享活动 <br>
-                          不可与优惠券一同使用</p>
-                      </div>
-                      <div class="c-right">
-                        <b>额度：</b><br>
-                        <span class="num">299</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="paging">
-            <ul>
-              <li>1</li>
-              <li class="thisclass"><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-            </ul>
-            <!--<li><span class="pageinfo">共 <strong>4</strong>页<strong>20</strong>条</span></li>-->
-          </div>
-         </div>
-        <div class="items">
-          <div class="swiper-container quanbao card1">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="quan-list">
-                  <div class="quan-box">
-                    <div class="quan-top">
-                      <div class="c-left"><h2>某类型现金卡</h2></div>
-                      <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                    </div>
-                    <div class="quan-main">
-                      <div class="c-left">
-                        <h2>使用条件：</h2>
-                        <p>限用于中秋专享活动 <br>
-                          不可与优惠券一同使用</p>
-                      </div>
-                      <div class="c-right">
-                        <b>额度：</b><br>
-                        <span class="num">299</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="quan-list">
-                  <div class="quan-box">
-                    <div class="quan-top">
-                      <div class="c-left"><h2>某类型现金卡</h2></div>
-                      <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                    </div>
-                    <div class="quan-main">
-                      <div class="c-left">
-                        <h2>使用条件：</h2>
-                        <p>限用于中秋专享活动 <br>
-                          不可与优惠券一同使用</p>
-                      </div>
-                      <div class="c-right">
-                        <b>额度：</b><br>
-                        <span class="num">299</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="quan-list">
-                  <div class="quan-box">
-                    <div class="quan-top">
-                      <div class="c-left"><h2>某类型现金卡</h2></div>
-                      <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                    </div>
-                    <div class="quan-main">
-                      <div class="c-left">
-                        <h2>使用条件：</h2>
-                        <p>限用于中秋专享活动 <br>
-                          不可与优惠券一同使用</p>
-                      </div>
-                      <div class="c-right">
-                        <b>额度：</b><br>
-                        <span class="num">299</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="paging">
-            <ul>
-              <li>1</li>
-              <li class="thisclass"><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-            </ul>
-            <!--<li><span class="pageinfo">共 <strong>4</strong>页<strong>20</strong>条</span></li>-->
-          </div>
-        </div>
-        <div class="items">
-          <div class="swiper-container quanbao card1">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="quan-list">
-                  <div class="quan-box">
-                    <div class="quan-top">
-                      <div class="c-left"><h2>某类型现金卡</h2></div>
-                      <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                    </div>
-                    <div class="quan-main">
-                      <div class="c-left">
-                        <h2>使用条件：</h2>
-                        <p>限用于中秋专享活动 <br>
-                          不可与优惠券一同使用</p>
-                      </div>
-                      <div class="c-right">
-                        <b>额度：</b><br>
-                        <span class="num">299</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="quan-list">
-                  <div class="quan-box">
-                    <div class="quan-top">
-                      <div class="c-left"><h2>某类型现金卡</h2></div>
-                      <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                    </div>
-                    <div class="quan-main">
-                      <div class="c-left">
-                        <h2>使用条件：</h2>
-                        <p>限用于中秋专享活动 <br>
-                          不可与优惠券一同使用</p>
-                      </div>
-                      <div class="c-right">
-                        <b>额度：</b><br>
-                        <span class="num">299</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="quan-list">
-                  <div class="quan-box">
-                    <div class="quan-top">
-                      <div class="c-left"><h2>某类型现金卡</h2></div>
-                      <div class="c-right"><p>使用日期： <br> <span class="color-green">2017.8.28之前</span> </p></div>
-                    </div>
-                    <div class="quan-main">
-                      <div class="c-left">
-                        <h2>使用条件：</h2>
-                        <p>限用于中秋专享活动 <br>
-                          不可与优惠券一同使用</p>
-                      </div>
-                      <div class="c-right">
-                        <b>额度：</b><br>
-                        <span class="num">299</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="paging">
-            <ul>
-              <li>1</li>
-              <li class="thisclass"><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-            </ul>
-            <!--<li><span class="pageinfo">共 <strong>4</strong>页<strong>20</strong>条</span></li>-->
-          </div>
-        </div>
+         <keep-alive>
+            <component :is="componentName" :wraplist='wraplist'></component>
+         </keep-alive>
       </div>
 
       <div class="btns">
@@ -335,59 +26,38 @@
 </template>
 
 <script>
-  import Swiper from '../../static/js/swiper.min.js'
-
+  import cash_ysy from '../components/cash_ysy'
+  import cash_wsy from '../components/cash_wsy'
+  import cash_jlgq from '../components/cash_jlgq'
+  import cash_ygq from '../components/cash_ygq'
   export default {
     name: 'quan',
     props: [],
     components: {
+      cash_ysy,
+      cash_wsy,
+      cash_jlgq,
+      cash_ygq
     },
     data () {
       return {
         msg: '用户中心',
-        isSearch: false
+        isSearch: false,
+        componentName:'cash_wsy',
+        wraplist:{
+          expireCount:0,
+          fastExpireCount:0,
+          unusedCount:0,
+          usedCount:0
+        }
       }
     },
     mounted(){
-      this.lunbo();
-      this.tab();
+      
     },
     methods:{
-      tab:function () {
-
-        $(".quan-item").each(function () {
-          var self = $(this);
-          $(this).find(".quan-head li").click(function () {
-            var idx = $(this).index();
-            $(this).addClass("on").siblings().removeClass("on");
-            self.find(".quan-content .items").eq(idx).fadeIn(200).siblings().fadeOut(10);
-          });
-        });
-
-
-        /* $(".quan-item .quan-head li").click(function () {
-         var idx = $(this).index();
-         console.log(idx);
-         });*/
-      },
-      lunbo: function (event) {
-        setTimeout(function () {
-          var card1 = new Swiper('.card1', {
-            autoplay: true,//可选选项，自动滑动
-            slidesPerView : 1,
-            on:{
-              slideChangeTransitionStart: function() {
-                 /*hongbaoPage1.slideTo(hongbao1.activeIndex);*/
-              }
-            }
-          });
-          var card2 = new Swiper('.card2', {
-            autoplay: true,
-            slidesPerView : 1
-          });
-
-          $(".items").not(".first").fadeOut(0);
-        },10);
+      changetabs(type){
+        this.componentName=type
       }
     }
   }
@@ -398,6 +68,60 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  @import '../../static/css/swiper.min.css';
+  /*@import '../../static/css/swiper.min.css';*/
   @import '../style/css/user.css';
+
+    .quan-head{
+    width: 100%;
+    position: fixed;
+    top: 1.6rem;
+    left: 0;
+    z-index: 100;
+    background-color: #fff;
+  }
+  .hb_head_wrap{
+    display: flex;
+  }
+  .hb_head_wrap h2{
+    flex: 1;
+    box-sizing: border-box;
+  }
+  .hb_head_wrap h2.active{
+    color: #fff;
+    background-color:#ffcd20;
+  }
+  .btns{
+    position: fixed;
+    bottom: 0rem;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    padding: .2rem 0;
+    background-color: #fff;
+  }
+  .quanbao{
+    margin: 0 auto;
+  }
+  .quan{
+    padding-top: 1.5rem;
+    box-sizing: border-box;
+    padding-bottom: 2rem;
+  }
+  .quan .quan-item .quan-content{
+    padding: 1rem 0;
+  }
+
+  .quan .quan-item .quan-head ul li{
+    padding: .3rem 0;
+    line-height: .3rem;
+  }
+  .hb_head_wrap{
+    border-top: #e9e9e9 1px solid
+  }
+  .quan .quan-item .quan-head h2{
+    line-height: 1.2rem;
+  }
+  .quan .quan-item .quan-content .youhuiquan .quan-center{
+    flex: 2
+  }
 </style>

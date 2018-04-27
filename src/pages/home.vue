@@ -4,7 +4,7 @@
       <img src="static/images/home-banner.png" alt="" >
     </div>
     <div class="home-prolist">
-      <pro-list :id='-1'></pro-list>
+      <pro-list :id='-1' :ischchangeList='ischchangeList' :clear='clear'></pro-list>
     </div>
 
    <!-- <my-footer></my-footer> -->
@@ -30,8 +30,9 @@ export default {
     }
   },
   mounted(){
-
+    
   },
+  props:['ischchangeList','clear'],
   methods: {
     greet: function (event) {
       Toast({

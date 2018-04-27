@@ -32,7 +32,9 @@ import walletHongbao from '@/pages/users-wallet-hongbao'
 import walletCash from '@/pages/users-wallet-cash'
 import userLevel from '@/pages/users-level'
 
-
+import nowbuyXjk from '@/components/nowBuy-xjk'
+import nowbuyYhq from '@/components/nowBuy-yhq'
+import nowbuyHb from '@/components/nowBuy-hb'
 import $ from 'jquery'
 
 import md5 from 'js-md5'
@@ -115,6 +117,21 @@ const router = new Router({
       path: '/nowbuy',
       name: 'nowbuy',
       component: nowbuy
+    },
+    {
+      path: '/nowbuy/nowbuyXjk',
+      name: 'nowbuyXjk',
+      component: nowbuyXjk
+    },
+    {
+      path: '/nowbuy/nowbuyYhq',
+      name: 'nowbuyYhq',
+      component: nowbuyYhq
+    },
+    {
+      path: '/nowbuy/nowbuyHb',
+      name: 'nowbuyHb',
+      component: nowbuyHb
     },
     {
       path: '/users',

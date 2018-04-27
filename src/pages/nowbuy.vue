@@ -2,8 +2,7 @@
   <div class="container-wrap">
       <div class="nowbuy" v-if="!isEditFapiao">
         <div class="order">
-          <nowbuyItem></nowbuyItem> 
-          <nowbuyItem></nowbuyItem> 
+          <nowbuyItem v-for='item in data.goods'   :item='item' :key="item.id"></nowbuyItem> 
         </div>
         <div class="order-line pjSelect">
           <div class="content">
@@ -33,13 +32,26 @@
         <div class="order-line peisong">
           <div class="in-line">
             <i class="icon iconsfont icons-metext"></i>
-            <select  id =  "sel">
+            <!-- <select  id =  "sel">
                <option  value = "请选择配送日期" selected >请选择配送日期</option >
                <option  value = "1" >1</option >
                <option  value = "2" >2</option >
                <option  value = "3" >3</option >
-            </select >
+            </select > -->
+            <yd-cell-group>
+              <yd-cell-item arrow>
+                  <span slot="left">Time：</span>
+                  <yd-datetime type="time" v-model="datetime1" slot="right"></yd-datetime>
+              </yd-cell-item>
+              <yd-cell-item arrow>
+                  <span slot="left">Day：</span>
+                  <yd-datetime type="day" v-model="datetime2" slot="right"></yd-datetime>
+              </yd-cell-item>
+            </yd-cell-group>
+            <!-- <input type="date" placeholder="请选择配送日期" min='2018-05-01'> -->
+            
             <i class="icon iconsfont icons-arrowdown down"></i>
+            
           </div>
           <div class="in-line">
             <i class="icon iconsfont clock icons-clock"></i>
@@ -58,12 +70,37 @@
             我们将优先根据您选择的时间配送，实际配送时间会有前后30分钟误差</p>
           </div>
         </div>
-        <nowbuyXjk></nowbuyXjk>
+        <!-- <nowbuyXjk></nowbuyXjk> -->
+        <dl class="ka-quan">
+          <dt @click="go('nowbuyXjk')">
+            <h2> <i class="icon iconsfont icons-shouye1 pj-icon"></i><i>现金卡</i></h2>
+            <span>暂无使用</span>
+            <!-- <i class="icon iconsfont icons-yuanshang acrows"></i> -->
+            <i :class="{icon:true, iconsfont:true, 'icons-yuanyou':true, acrows:true, slideDown:false}"></i>
+          </dt>
+          
+        </dl>
 
-        <nowbuyYhq></nowbuyYhq>
-
-        <nowbuyBb></nowbuyBb>
-
+        <!-- <nowbuyYhq></nowbuyYhq> -->
+        <dl class="ka-quan">
+          <dt @click="go('nowbuyYhq')">
+            <h2> <i class="icon iconsfont icons-shouye1 pj-icon"></i><i>优惠券</i></h2>
+            <span>暂无使用</span>
+            <!-- <i class="icon iconsfont icons-yuanshang acrows"></i> -->
+            <i :class="{icon:true, iconsfont:true, 'icons-yuanyou':true, acrows:true, slideDown:false}"></i>
+          </dt>
+          
+        </dl>
+        <!-- <nowbuyBb></nowbuyBb> -->
+        <dl class="ka-quan">
+          <dt @click="go('nowbuyHb')">
+            <h2> <i class="icon iconsfont icons-shouye1 pj-icon"></i><i>红包</i></h2>
+            <span>暂无使用</span>
+            <!-- <i class="icon iconsfont icons-yuanshang acrows"></i> -->
+            <i :class="{icon:true, iconsfont:true, 'icons-yuanyou':true, acrows:true, slideDown:false}"></i>
+          </dt>
+          
+        </dl>
         <nowbuySyye></nowbuySyye>
 
         <nowbuySyjf></nowbuySyjf>
@@ -130,7 +167,11 @@ export default {
       msg: '结算页',
       isShowPj:false,
       isEditFapiao:false,
-      isEdit:true
+      isEdit:true,
+      data:'',
+      pickerVisible:'',
+      datetime1:'',
+      datetime2:''
     }
   },
   mounted(){
@@ -152,8 +193,47 @@ export default {
             }
         });
       });
+      this.getList()
+      this.getDate()
   },
   methods:{
+    go(url){
+      this.$router.push('/nowbuy/'+url)
+    },
+    openPicker() {
+        this.$refs.picker.open();
+    },
+    getList(){
+      let self = this;
+      self.Loading.open()
+      self.$http.get('/api/594c5ce1b3db7d9e',{
+        params:{
+          cityId:'110'
+        }
+      }).then(function(res){  //接口返回数据
+        self.Loading.close()
+        console.log(res);
+        if(res.code==1){
+          self.data=res.data
+        }
+      },function(error){  //失败
+        console.log(error);
+      });
+    },
+    getDate(){
+      let self = this;
+      self.Loading.open()
+      self.$http.get('/api/43df3b8d469449bc',{
+      }).then(function(res){  //接口返回数据
+        self.Loading.close()
+        console.log(res);
+        if(res.code==1){
+         
+        }
+      },function(error){  //失败
+        console.log(error);
+      });
+    },
       init:function () {
        // $(".peijian dd").hide();
 
@@ -189,4 +269,8 @@ export default {
   .order-line .content dl dd{
     padding: 0;
   }
+  .datetime{
+    font-size: 20px;
+  }
+
 </style>

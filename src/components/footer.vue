@@ -17,7 +17,7 @@
       <li @click="isNavShow = !isNavShow"><span>精选</span></li><em></em>
       <li @click="isNavShow = false"><router-link to="/list/10" tag="span">蛋糕</router-link></li><em></em>
       <li @click="isNavShow = false"><router-link to="/list/11" tag="span">小食</router-link></li><em></em>
-      <li @click="isNavShow = false"><router-link :to="{ name: 'cart'}" tag="span">购物车<i class="icon-badge"><b>50</b></i></router-link></li>
+      <li @click="isNavShow = false"><router-link :to="{ name: 'cart'}" tag="span">购物车<i class="icon-badge"><b>{{cartNum}}</b></i></router-link></li>
     </ul>
   </div>
 </div>
@@ -33,13 +33,63 @@ export default {
       msg: '尾部导航',
       isNavShow: false,
       flavorList:[],
+      cartList:[],
+      cartNum:0
     }
   },
-  props:['msgFather'],
+  props:['msgFather','clear','num'],
   mounted(){
     this.getflavorList()
+    // this.getCartList()
+  },
+  computed:{
+
+  },
+  activated(){
+    this.getCartList()
+  },
+  watch:{
+    clear: {
+　　　　handler(newValue, oldValue) {
+        this.getCartList()
+　　　　},
+　　　　deep: true
+　　},
+    num:function(){
+      this.getCartList()
+    }
   },
   methods: {
+    getCartList(){
+      let self = this;
+      self.cartList=[]
+      self.Loading.open()
+      self.detailData=''
+      // self.cartNum=0
+      self.$http.get('/api/5e49d89248023811',{
+
+      }).then(function(res){  //接口返回数据
+        self.Loading.close()
+        self.cartNum=0
+        self.ismounted=false
+        console.log(res);
+        self.cartList=[]
+        if(res.code==1){
+          for(let key in res.data){
+              // alert(key)
+              res.data[key].ischecked=true
+              self.cartList.push(res.data[key])
+          }
+          console.log(self.cartList)
+          for(let i=0;i<self.cartList.length;i++){
+            self.cartNum+=self.cartList[i].num-0
+          }
+         // alert(self.cartNum)
+        }
+      },function(error){  //失败
+        console.log(error);
+      });
+    },
     filter(id){
       //alert(11)
       this.isNavShow=false;

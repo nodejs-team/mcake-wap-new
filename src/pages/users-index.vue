@@ -7,11 +7,11 @@
        <div class="user-portrait">
           <div class="user_avater">
             <div class="user-icon">
-              <img src="../style/images/car-img.jpg" alt="">
-              <div class="rank">v2</div>
+              <img :src="userinfo.img" alt="">
+              <div class="rank">v{{userinfo.rid}}</div>
             </div>
 
-           <h2>雨中潇洒走一回</h2>
+           <h2>{{userinfo.uname}}</h2>
            <p><span @click='logout'><i class="icon iconsfont">&#xe626;</i>切换账号</span></p>
         </div>
        </div>
@@ -19,20 +19,20 @@
         <div class="subNav">
           <mt-tabbar>
             <mt-tab-item id="我的订单">
-              <router-link to="/users/orders?orderStatus=1" tag="div">
+              <router-link to="/users/orders" tag="div">
                 <i class="icon iconsfont">&#xe61a;</i><div class="title">我的订单</div>
               </router-link>
             </mt-tab-item>
             <mt-tab-item id="支付">
               <!-- <router-link :to="{ name: 'pay'}" tag="div"> -->
-              <router-link to="/users/orders?orderStatus=3" tag="div">
-                 <i class="icon iconsfont">&#xe625;</i><div class="title">代付款<span>1</span></div>
+              <router-link to="/users/orders?orderStatus=order_dfk" tag="div">
+                 <i class="icon iconsfont">&#xe625;</i><div class="title">待付款<span v-if='unpaidCount'>{{unpaidCount}}</span></div>
               </router-link>
             </mt-tab-item>
             <mt-tab-item id="待收货">
               <!-- <router-link :to="{ name: 'list'}" tag="div"> -->
-                <router-link to="/users/orders?orderStatus=4" tag="div">
-                   <i class="icon iconsfont">&#xe64c;</i><div class="title">待收货<span>18</span></div>
+                <router-link to="/users/orders?orderStatus=order_dsh" tag="div">
+                   <i class="icon iconsfont">&#xe64c;</i><div class="title">待收货<span v-if='waitConfirmCount'>{{waitConfirmCount}}</span></div>
               </router-link>
             </mt-tab-item>
             <mt-tab-item id="会员等级">
@@ -78,16 +78,64 @@ export default {
   data () {
     return {
       msg: '用户中心',
-      isSearch: false
+      isSearch: false,
+      userinfo:'',
+      unpaidCount:'',
+      waitConfirmCount:'',
+      ismonted:false
     }
   },
   mounted(){
-
+    this.getUserInfo()
+    this.ismonted=true
+  },
+  activated(){
+    if(this.ismonted){
+      return false
+    }
+    this.getUserInfo()
+  },
+  deactivated(){
+    this.ismonted=false
   },
   methods:{
+    getUserInfo(){
+      let self = this;
+      self.Loading.open()
+      self.$http.get('/api/781fdd9d4eb4b628',{
+
+      }).then(function(res){  //接口返回数据
+        self.Loading.close()
+        console.log(res);
+        if(res.code==1){
+          self.userinfo = res.data.userInfo
+          self.unpaidCount = res.data.unpaidCount
+          self.waitConfirmCount = res.data.waitConfirmCount
+        }
+      },function(error){  //失败
+        console.log(error);
+      });
+    },
     logout(){
       this.MessageBox.confirm('确定要退出账号吗？').then(action => {
-        this.$router.push('/login')
+          let self = this;
+          self.Loading.open()
+          self.$http.get('/api/1cad3899ac89259c',{
+            params:{
+              'user-token':localStorage.mcake_user_token
+            }
+          }).then(function(res){  //接口返回数据
+            self.Loading.close()
+            console.log(res);
+            if(res.code==1){
+              localStorage.removeItem('mcake_user_token')
+              localStorage.removeItem('mcake_user_token_time')
+              self.$router.push('/login')
+            }
+          },function(error){  //失败
+            console.log(error);
+          });
+        
       });
     }
   }
@@ -151,5 +199,7 @@ export default {
     border:.08rem solid #c4c4c4;
     box-sizing: border-box;
     border-radius: 50%;
+    width: 2.77778rem;
+    height: 2.77778rem;
   }
 </style>

@@ -110,7 +110,7 @@ export default {
         .then(function(res){
             console.log(res);
             self.Loading.close();
-            if(res.code==0){
+            if(res.code==1){
               self.Toast('注册成功');
               setTimeout(function(){
                 self.$router.push('/login')

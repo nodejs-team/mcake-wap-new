@@ -10,8 +10,9 @@
               <div class="swiper-container">
                  <div class="swiper-wrapper" >
                    <template v-for='imgs in item.list' v-if='imgs.id==pound_index'>
+
                      <div class="swiper-slide" v-for='(img,index) in imgs.pic.list'>
-                         <img :src="item.pic.url+img.s" @click='viewImage(index,imgs.pic.list,item.pic.url)'>
+                         <img :src="imgs.pic.url+img.s" @click='viewImage(index,imgs.pic.list,imgs.pic.url)'>
                      </div>
                    </template>
                  </div>
@@ -32,12 +33,13 @@
            </div>
            <div class="cart-line">
               <div class="items">
-                <h3>大小选择</h3>
+                <h3>规格选择</h3>
                 <select v-model='pound_index'>
-                  <option :value="data.id"  v-for='(data,index) in item.list'>{{data.spec}}-{{data.edible}}</option>
+                  <option :value="data.id"  v-for='(data,index) in item.list'>{{data.spec}}<template v-if='data.edible'>-</template>{{data.edible}}</option>
                   <!-- <option value="2">1磅-适合3-5人食用</option>
                   <option value="3">1磅-适合5-7人食用</option> -->
                 </select>
+                <span class="cart_guige" v-for='(data,index) in item.list' v-if='pound_index==data.id'>{{data.spec}}<template v-if='data.edible'>-</template>{{data.edible}}</span>
                 <i class="icon iconsfont icons-jiantouxia"></i>
               </div>
             </div>
@@ -49,6 +51,7 @@
                  @plus='plus'
                   v-model="value"
                   :default-value="value"
+                  max=50
                   />
                </div>
              </div>
@@ -122,6 +125,7 @@ export default {
   deactivated: function () {
       this.imgArr=[]
   },
+
   mounted(){
     this.value=this.item&&this.item.num?this.item.num:1
     this.pound_index = this.item?this.item.list[0].id:''
@@ -137,7 +141,7 @@ export default {
     item:function(){
       console.log(this.item)
       this.value=this.item&&this.item.num?this.item.num:1
-      this.pound_index = this.item?this.item.list[0].id:''
+      this.pound_index = this.item.id
       this.$nextTick(function(){
         var proSwiper = new Swiper('.swiper-container', {
           autoplay: true,
@@ -173,32 +177,76 @@ export default {
       // this.isblur = this.isShowDialog = false;
     },
     addcart(type){
-      let self = this;
-      self.Loading.open()
-      self.$http.post('/api/0a726336d3a19773',{
-       
-          id:self.pound_index,
-          num:self.value,
-          cartName:type
-        
-      }).then(function(res){  //接口返回数据
-        self.Loading.close()
-        console.log(res);
-        if(res.code==1){
-          if(type=='shop'){
-            self.Toast('成功加入购物车')
-            self.$emit('closeDialog')
+      if(type=='edit'){
+          let self = this;
+          self.Loading.open()
+          self.$http.post('/api/b34ce2c4f51281f9',{
+           
+              id:self.item.id,
+              num:self.value,
+              sid:self.pound_index
+            
+          }).then(function(res){  //接口返回数据
+            self.Loading.close()
+            console.log(res);
+            let num=0
+              for(let item in res.data){
+                num+=(res.data[item].num-0)
+              }
+              console.log(num)
+            if(res.code==1){
+                self.Toast({
+                  message: '修改成功',
+                  duration: 500
+                })
+                self.$emit('changenum',res.data,num)
+            }else{
+               self.Toast(res.msg)
+            }
+            
+          },function(error){  //失败
+            console.log(error);
+          });
+      }else{
+        let self = this;
+        self.Loading.open()
+        self.$http.post('/api/0a726336d3a19773',{
+         
+            id:self.pound_index,
+            num:self.value,
+            cartName:type
+          
+        }).then(function(res){  //接口返回数据
+          self.Loading.close()
+          console.log(res);
+          if(res.code==1){
+            let num=0
+              for(let item in res.data){
+                num+=(res.data[item].num-0)
+              }
+              console.log(num)
+            if(type=='shop'){
+              self.Toast({
+                message: '成功加入购物车',
+                duration: 500
+              })
+              // self.Toast('成功加入购物车')
+              
+              self.$emit('closeDialog',num)
+              // self.$emit('changenum',num)
+            }else{
+              self.$router.push('/nowbuy')
+              self.$emit('closeDialog',num)
+            }
           }else{
-            self.$router.push('/nowbuy')
-            self.$emit('closeDialog')
+            // self.Toast(res.msg)
           }
-        }else{
-          self.Toast(res.msg)
-        }
-        
-      },function(error){  //失败
-        console.log(error);
-      });
+          
+        },function(error){  //失败
+          console.log(error);
+        });
+      }
+
     }
   }
 }
@@ -217,5 +265,21 @@ export default {
   }
   .cart-dialog .cart-content .cart-pro .pro-img{
     width: 2.62rem;
+  }
+  .cart_guige{
+    position: absolute;
+    flex: 2;
+    right: 1.1rem;
+    text-align: right;
+    z-index: 1
+  }
+  .cart-dialog .cart-content .items select{
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+  }
+  .btns2 ul {
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <pro-list :id='id'></pro-list>
+    <pro-list :id='id' :ischchangeList='ischchangeList' :clear='clear'></pro-list>
   </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
       ]
     }
   },
+  props:['ischchangeList','clear'],
   watch:{
     '$route':function(to,from){
       if(to.params.listid){
